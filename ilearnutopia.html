@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/custom.css" rel="stylesheet"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/custom.js"></script> -->
+  <style type="text/css">
+  #language{
+    background-color: red;
+    border-color: red;
+  }
+  #social{
+    background-color: #d13632;
+    border-color:#d13632;
+  }
+  #linear{
+    background-color: #e2571e;
+    border-color:#e2571e;
+  }
+  #history{
+    background-color: #ec883a;
+    border-color:#ec883a;
+  }
+  #postmodern{
+    background-color: #e69333;
+    border-color: #e69333;
+  }
+  #chemistry{
+    background-color: #cdb924;
+    border-color: #cdb924;
+  }
+  #evolution{
+    background-color: #479e1b;
+    border-color: #479e1b
+  }
+  #heatlh{
+    background-color: #1d829e;
+    border-color: #1d829e;
+  }
+  #critical{
+    background-color: #503fa9;
+    border-color: #503fa9;
+  }
+  #reading{
+    background-color: #8a2aa7;
+    border-color: #8a2aa7;
+  }
+  #math{
+    background-color: #a8225f;
+    border-color: #a8225f;
+  }
+  #quantum{
+    background-color: #d33264;
+    border-color: #d33264;
+  }
+
+  .col-sm-6{
+    padding-bottom: 10px;
+  }
+
+  .col-md-3{
+    padding-bottom: 10px;
+  }
+
+  .col-xs-12{
+    padding-top: 100px;
+    margin-bottom: 20px;
+  }
+
+  </style>
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+    $("#disclaimer").hide();
+    $("#readmore").one("click",function(){
+      readmore();
+    });
+    function readmore(){
+      console.log("readmore");
+      $("#readmore").text("Forget it, read less");
+      $("#disclaimer").show();
+      $("#readmore").one("click", function(){
+        readless()
+      });
+    }
+    function readless(){
+      console.log("readless");
+      $("#readmore").text("Read more");
+      $("#disclaimer").hide();
+      $("#readmore").one("click", function(){
+        readmore()
+      });
+    }
+  });
+
+  </script>
+  <title>iLearnutopia&mdash;e-Learning for the 21st Century</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron">
+        <h1>iLearnutopia</h1>
+        <h3>e-Learning for the 21st Century</h3>
+        <p>iLearnutopia uses innovative, powerful web technology to help students reach their learning goals. Get started today!</p>
+      </div>
+    </div>
+    <div class="row" id="survey">
+      <div class="col-sm-6 col-md-3"><a id="language" class="btn btn-primary btn-lg" href="http://www.amazon.com/Language-Arts-Patterns-Practice-8th/dp/0132685752/ref=sr_1_5?s=books&ie=UTF8&qid=1454964091&sr=1-5&keywords=language+arts" target="_blank" role="button">Language Arts</a></div>
+      <div class="col-sm-6 col-md-3"><a id="social" class="btn btn-primary btn-lg" href="http://www.amazon.com/United-States-History-Early-Years/dp/0618428852/ref=sr_1_11?s=books&ie=UTF8&qid=1454964127&sr=1-11&keywords=social+studies" target="_blank" role="button">Social Studies</a></div>
+      <div class="col-sm-6 col-md-3"><a id="linear" class="btn btn-primary btn-lg" href="http://www.amazon.com/Linear-Algebra-Its-Applications-Edition/dp/0030105676" target="_blank" role="button">Linear Algebra</a></div>
+      <div class="col-sm-6 col-md-3"><a id="history" class="btn btn-primary btn-lg" href="http://www.amazon.com/Great-Events-History-James-Johonnot-ebook/dp/B00847STZO/ref=sr_1_9?s=books&ie=UTF8&qid=1454964230&sr=1-9&keywords=history" target="_blank" role="button">History</a></div>
+      <div class="col-sm-6 col-md-3"><a id="postmodern" class="btn btn-primary btn-lg" href="http://www.amazon.com/Zen-Postmodern-Philosophy-Carl-Olson/dp/0791446549/ref=sr_1_6?s=books&ie=UTF8&qid=1454963993&sr=1-6&keywords=postmodern+art" target="_blank" role="button">Postmodern Philosophy</a></div>
+      <div class="col-sm-6 col-md-3"><a id="chemistry" class="btn btn-primary btn-lg" href="http://www.amazon.com/Chemistry-Central-Theodore-E-Brown/dp/0321910419/ref=sr_1_4?s=books&ie=UTF8&qid=1454964344&sr=1-4&keywords=chemistry" target="_blank" role="button">Chemistry</a></div>
+      <div class="col-sm-6 col-md-3"><a id="evolution" class="btn btn-primary btn-lg" href="http://www.amazon.com/Holy-Bible-King-James-Version/dp/0310941784/ref=sr_1_1?s=books&ie=UTF8&qid=1454964200&sr=1-1&keywords=bible" target="_blank" role="button">Evolution</a></div>
+      <div class="col-sm-6 col-md-3"><a id="heatlh" class="btn btn-primary btn-lg" href="http://www.amazon.com/Shut-Up-Lift-Huge-Arms-ebook/dp/B01ACLX1YS/ref=sr_1_1?s=books&ie=UTF8&qid=1454964527&sr=1-1&keywords=how+to+get+huge" target="_blank" role="button">Health &amp; Human Development</a></div>
+      <div class="col-sm-6 col-md-3"><a id="critical" class="btn btn-primary btn-lg" href="http://www.amazon.com/Devils-Pleasure-Palace-Critical-Subversion/dp/159403768X/ref=sr_1_4?s=books&ie=UTF8&qid=1454964405&sr=1-4&keywords=critical+theory" target="_blank" role="button">Critical Theory</a></div>
+      <div class="col-sm-6 col-md-3"><a id="reading" class="btn btn-primary btn-lg" href="http://www.amazon.com/Effortless-Reading-Guarantee-Remarkable-Results/dp/1519346573/ref=sr_1_3?s=books&ie=UTF8&qid=1454964619&sr=1-3&keywords=reading" target="_blank" role="button">Reading</a></div>
+      <div class="col-sm-6 col-md-3"><a id="math" class="btn btn-primary btn-lg" href="http://www.amazon.com/Math-Grade-5-Interactive-Notebooks/dp/1483824667?ref=spkl_1_0_2383137202&qid=1454964617&pf_rd_p=2383137202&pf_rd_m=ATVPDKIKX0DER&pf_rd_t=301&pf_rd_s=desktop-auto-sparkle&pf_rd_r=08GGZ81S3NTTAWYM000N&pf_rd_i=reading" target="_blank" role="button">Math</a></div>
+      <div class="col-sm-6 col-md-3"><a id="quantum" class="btn btn-primary btn-lg" href="http://www.amazon.com/Quantum-Mechanics-Theoretical-Leonard-Susskind/dp/0465062903/ref=sr_1_1?s=books&ie=UTF8&qid=1454964470&sr=1-1&keywords=quantum+mechanics" target="_blank" role="button">Quantum Mechanics</a></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <a id="readmore" href="#readmore">Read more</a>
+        <p id="disclaimer"><br>Whereas many technologies disrupt through innovation and impact, iLearnutopia disrupts through mockery and satire.
+          Using technology for the sake of using technology does not meaningfully impact learning.
+          The internet provides access and opportunities for interaction unavailable in other forms of media, so why use it the same way you would a textbook?
+          Inspired by the <a target="_blank" href="http://www.stupidhackathon.com">Stupid Hackathon</a> (warning: NSFW) which aims to disrupt the idea of hackathons
+          (trying to <a href="http://motherboard.vice.com/read/inside-the-stupid-shit-no-one-needs-terrible-ideas-hackathon">"hack" world hunger or income inequality</a> in a weekend is ridiculous),
+          this site aims to satirize those who solve problems that don't exist, those who use technology without purpose, and those who never ask, "why?"
+        </p>
+      </div>
+    </div>
+
+  </body>
+  </html>
