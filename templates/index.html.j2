@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "partials/head.html.j2" %}
+</head>
+<body>
+  {% include "partials/nav.html.j2" %}
+
+  <!-- First/About -->
+  <div class="jumbotron jumbo-white hid" id="about">
+    <div class="container-fluid" id="less">
+      <span class="header"><h1>About</h1></span>
+      <div class="space"></div>
+      <p>I am a technologist, designer, developer, writer, and marketer.
+      </p>
+      <p>I graduated from Lafayette College Cum Laude in 2015
+        with a double major in Computer Science and English with a concentration
+        in creative writing. I was also a four-year member of the
+        Lafayette College Varsity Football Team (NCAA D1).
+      </p>
+      <p>
+        I graduated from the Harvard Graduate School of Education in 2016 with an Ed.M. in Technology, Innovation, and Education.
+      </p>
+      <p>
+        I am currently the User Retention Manager at <a href="https://www.datacamp.com">DataCamp</a>.
+      </p>
+      <br>
+      <h2>Languages &amp; Frameworks</h2>
+      <p>Python <span class="gray">|</span> R <span class="gray">|</span> Ruby <span class="gray">|</span> HTML <span class="gray">|</span> CSS <span class="gray">|</span> JavaScript <span class="gray">|</span> SQL <span class="gray">|</span> C++ <span class="gray">|</span> C <span class="gray">|</span> Java <span class="gray">|</span> LaTeX <span class="gray">|</span> Y86 Assembly <span class="gray">|</span> PBASIC <span class="gray">|</span> Inform7 <span class="gray">|</span> JQuery <span class="gray">|</span> Django <span class="gray">|</span> Rails</p>
+      <!-- <div class="btn-container">
+      <button type="button" class="btn btn-block btn-round" >
+      <img src="images/icon-arrow-down.png" class="icon"></img>
+    </button>
+  </div> -->
+</div>
+</div>
+
+
+
+<!-- Resume -->
+<div class="jumbotron jumbo-white header hid" id="resume">
+  <div class="container-fluid">
+    <div class="row">
+      <h1>Resum&eacute;</h1>
+    </div>
+    <hr class="featurette-divider"></hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <p><a target="_blank" href="https://anthonywbaker.com/resume.pdf">View/Download</a></p>
+      </div>
+      <!-- <div class="col-sm-6">
+      <p><a target="_blank" href="http://anthonywbaker.com/resume.pdf">Download</a></p>
+    </div> -->
+  </div>
+</div>
+</div>
+
+<!-- Project Cards -->
+<div class="jumbotron jumbo-white header hid" id="projects">
+  <div class="container-fluid">
+    <div class="row">
+      <h1>Projects</h1>
+    </div>
+    <hr class="featurette-divider"></hr>
+  </div>
+</div>
+
+<div class="container-fluid cards hid">
+  <div class="row proj-row" id="row-1">
+
+    <div class="col-sm-3 zero card hid" id="disco">
+      <img src="images/disco.png" class="img-responsive" alt="Disco Ball Email Server"></img>
+      <!-- <div class="card-background hid" style="background-color: rgb(211, 198, 166)"> -->
+      <div class="card-background hid">
+        <h3>Email Server &amp; Ambient Display</h3>
+        <hr></hr>
+        <p class="summary">Customized a disco ball to serve as an email server.</p>
+      </div>
+    </div>
+
+
+    <div class="col-sm-3 one card hid" id="pencilcode">
+      <img src="images/pencil-code-logo.png" class="img-responsive" alt="Pencil Code Logo"></img>
+      <div class="card-background hid">
+        <h3>Pencil Code for Educators</h3>
+        <hr></hr>
+        <p class="summary">Worked with Google to create a online resource for educators using Pencil Code.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 two card hid" id="tangible">
+      <img src="images/tangible-programming-3.png" class="img-responsive" alt="Tangible Programming Environment"></img>
+      <div class="card-background dark hid">
+        <h3>Tangible Programming Environment</h3>
+        <hr></hr>
+        <p class="summary">Created a physical programming language using the shape displays at MIT's Media Lab.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 three card hid" id="googhole">
+      <img src="images/Gh.png" class="img-responsive" alt="Googhole Logo"></img>
+      <div class="card-background hid">
+        <h3>Googhole.net</h3>
+        <hr></hr>
+        <p class="summary">The Existential Search Engine.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-full-container">
+    <div class="row card-info full hid" id="disco">
+      <div class="col-sm-6 card-col">
+        <h1>Email Server &amp; Ambient Display</h1>
+        <p>
+          I wrote scripts to automate an email account (send mail, read mail, and move messages to folders).
+          Additional scripts scraped various websites for event information and stored it in a SQL database on a Raspberry Pi.
+          Each week, users who have opted in receive a personalized email containing information about upcoming events
+          from multiple sources based on categories they have selected. The Raspberry Pi was mounted on a customized disco ball
+          so that database activity was reflected in the pattern of lights and motion of the disco ball.
+          As an ambient display, the goal is to visualize digital information in a new way.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/disco.png" class="img-responsive" alt="Disco Ball Email Server"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full hid" id="pencilcode">
+      <div class="col-sm-6 card-col">
+        <h1>Pencil Code for Educators</h1>
+        <p>
+          Pencil Code is a block-based programming language designed to teach computer science and algortihmic thinking.
+          Working with Google, I led a small team that built a prototype of a website for educators to share resources and gain inspiration to teach using Pencil Code.
+          I conducted UX research to guide the site through several iterations.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/pencil-code-tree.png" class="img-responsive" alt="Pencil Code Tree"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full dark hid" id="tangible">
+      <div class="col-sm-6 card-col">
+        <h1>Tangible Programming Environment</h1>
+        <p>
+          Using the shape displays at MIT's Tangible Media Group,
+          I worked with a small team to develop a physical programming language
+          that used gestures and physical interaction to perform basic commands.
+          The goal was to take advantage of the benefits of tangibility to make learning programming
+          more physical. Our team also produced a <a href="http://youtu.be/YxnHD9bZj-Y">concept video.</a>
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/tangible-programming-3.png" class="img-responsive" alt="Tangible Programming Environment"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full hid" id="googhole">
+      <div class="col-sm-6 card-col">
+        <h1>The Existential Search Engine</h1>
+        <p>
+          Rather than serving up a glut of information,
+          Googhole.net does the opposite: it forces us to pause and reflect on our
+          ultimate insignificance. <a href="http://googhole.net" target="_blank">Enter the Googhole.</a>
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/Gh.png" class="img-responsive" alt="Googhole Logo"></img>
+      </div>
+    </div>
+  </div>
+
+  <div class="row proj-row" id="row-2">
+
+    <div class="col-sm-3 zero card hid" id="literacydata">
+      <img src="images/research-tool-3.png" class="img-responsive" alt="Literacy Data Research Tool"></img>
+      <div class="card-background hid">
+        <h3>Literacy Data Research Tool</h3>
+        <hr></hr>
+        <p class="summary">Created a search engine for ~20 years of literacy data.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 one card hid" id="machinelearning">
+      <img src="images/ml-shakespeare-2.png" class="img-responsive" alt="Machine Learning Shakespeare"></img>
+      <div class="card-background dark hid">
+        <h3>Machine Learning Shakespeare Remix</h3>
+        <hr></hr>
+        <p class="summary">Used a machine learning algorithm to generate Shakespearean-like text.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 two card hid" id="jrr">
+      <img src="images/jrr-logo.png"class="img-responsive" alt="Judith's Reading Room Logo"></img>
+      <div class="card-background dark hid">
+        <h3>Judith's Reading Room</h3>
+        <hr></hr>
+        <p class="summary">Redesigned a literacy non-profit's web presence.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 three card hid" id="exomuscle">
+      <img src="images/exomuscle.png" class="img-responsive" alt="Pneumatically Actuated Tshirt"></img>
+      <div class="card-background dark hid">
+        <h3>ExoMuscle</h3>
+        <hr></hr>
+        <p class="summary">Pneumatically actuated t-shirt.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-full-container">
+    <div class="row card-info full hid" id="literacydata">
+      <div class="col-sm-6 card-col">
+        <h1>Literacy Data Research Tool</h1>
+        <p>
+          As part of a Digital Humanities initiative, I built a search engine
+          that could execute complex Boolean queries,
+          perform statistical analysis on 20 years of student writing samples,
+          and provide several customizable viewing options for the data.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/research-tool.png" class="img-responsive" alt="Literacy Data Research Tool"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full dark hid" id="machinelearning">
+      <div class="col-sm-6 card-col">
+        <h1>Machine Learning Shakespeare Remix</h1>
+        <p>
+          I wrote a machine-learning algorithm that generated text that read and felt like Shakespeare,
+          although it didn’t necessarily make sense. Inspired by <a href="https://github.com/xnomagichash/hacklab-ml">Brendan Kohler's code</a>,
+          my algorithm read in Shakespeare’s collected works,
+          then using Markov chains, picked words based on which word was most likely to occur next.
+          The work was presented in class in response to Walter Benjamin’s “The Work of Art in the Age of Mechanical Reproduction.”
+        </p>
+        <a class="credit dark" href="https://www.kickstarter.com/projects/huskyjackaltheater/terminator-the-second">Image from Kickstarter</a>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/ml-shakespeare-2.png" class="img-responsive" alt="Machine Learning Shakespeare"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full hid" id="jrr">
+      <div class="col-sm-6 card-col">
+        <h1>Judith's Reading Room</h1>
+        <p>
+          Designed the organization’s website focusing on branding,
+          Search Engine Optimization, and ease of use to expand the group’s
+          reach and visibility. Judith's Reading Room recieved more international
+          applications in the months following the redesign than in the previous four years.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/jrr-logo.png" class="img-responsive" alt="Judith's Reading Room Logo"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full dark hid" id="exomuscle">
+      <div class="col-sm-6 card-col">
+        <h1>ExoMuscle</h1>
+        <p>
+          Whereas muscles convey information about the immediate physical world
+          through kinesthetic feedback, ExoMuscle can convey information about
+          the non-physical (digital) world beyond the reach of your immediate space.
+          I was a member of the team that developed the concept, created a prototype, and
+          proposed three applications: sensing driving mistakes, syncing with a calender to let users feel the "pressure" of time,
+          and giving wearers a sixth sense by letting users feel radiofrequencies.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/exomuscle.png" class="img-responsive" alt="Pneumatically Actuated Tshirt"></img>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row proj-row" id="row-3">
+
+    <div class="col-sm-3 zero card hid" id="twitterbot">
+      <img src="images/djsplattermommy.png"class="img-responsive" alt="Maoist Baby Propaganda"></img>
+      <div class="card-background dark hid">
+        <h3>Twitter Bot</h3>
+        <hr></hr>
+        <p class="summary">Created a Twitter bot.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 one card hid" id="software">
+      <img src="images/simon.png" class="img-responsive" alt="Simon Game"></img>
+      <div class="card-background dark hid">
+        <h3>Working Memory Research Software</h3>
+        <hr></hr>
+        <p class="summary">Created software to research working memory in blind people.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 two card hid" id="thissite">
+      <div class="img-placeholder">
+      <!-- <img src="images/AWB.jpg" class="img-responsive" alt="This Site"></img> -->
+      <div class="text-container">
+      <p id="a">ANTHONY</p> <p id="w">W.</p> <p id="b">BAKER</p>
+    </div>
+    </div>
+      <div class="card-background hid">
+        <h3 id="awb">anthonywbaker.com</h3>
+        <hr></hr>
+        <p class="summary">Designed and built anthonywbaker.com</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-full-container">
+    <div class="row card-info full hid" id="twitterbot">
+      <div class="col-sm-6 card-col">
+        <h1>Twitter Bot</h1>
+        <p>
+          Wrote scripts to gain followers by selectively following and
+          unfollowing users. Reached over 900 followers in two weeks.
+          The account tweeted rap lyrics set to images of Maoist baby propaganda.
+        </p>
+        <a class="credit" target="_blank" href="https://www.pinterest.com/pin/225672631304492060/">Image from Pinterest</a>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/djsplattermommy.png" class="img-responsive" alt="Maoist Baby Propaganda"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full dark hid" id="software">
+      <div class="col-sm-6 card-col">
+        <h1>Working Memory Research Software</h1>
+        <p>
+          I was a member of a team that created a software version
+          of the game Simon using a Leap Motion Controller for a client
+          interested in researching the working memory span of blind
+          and visually impaired people. The software captured data about gameplay
+          and outputted it as CSV files and was fully deployable on Mac, Windows, and Linux.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <img src="images/simon.png" class="img-responsive" alt="Simon Game" id="software-img"></img>
+      </div>
+    </div>
+
+    <div class="row card-info full hid" id="thissite">
+      <div class="col-sm-6 card-col">
+        <h1>anthonywbaker.com</h1>
+        <p>
+          Designed and built this website from scratch using HTML 5, CSS 3, Bootstrap 3,
+          and JQuery.
+        </p>
+      </div>
+      <div class="col-sm-6 card-col">
+        <!-- <img src="images/awb-site.png" class="img-responsive" alt="This Site"></img> -->
+        <iframe src="mini-projects.html" id="iframe">
+          <p>Your browser does not support iframes.</p>
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+</div> <!--/container-fluid -->
+
+<div class="jumbotron jumbo-white header hid" id="writing">
+  <div class="container-fluid">
+    <div class="row">
+      <h1>Writing</h1>
+    </div>
+    <hr class="featurette-divider"></hr>
+    <div class="row">
+      <p>Writing samples coming soon</p>
+    </div>
+    <!-- <p class="about">anthonywbaker1[at]gmail.com</p> -->
+  </div>
+</div>
+
+<div class="jumbotron jumbo-white header hid" id="contact">
+  <div class="container-fluid">
+    <div class="row">
+      <h1>Contact</h1>
+    </div>
+    <hr class="featurette-divider"></hr>
+    <div class="row">
+      <p>anthonywbaker1[at]gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation blocks -->
+<div class="container-fluid" id="nav-blocks">
+  <div class="row">
+    <div class="col-sm-2 col-sm-offset-1 nav-block text-center button about" id="nav-about">
+      <h1>ABOUT</h1>
+    </div>
+    <div class="col-sm-2 nav-block text-center button resume" id="nav-resume">
+      <h1>RESUM&Eacute;</h1>
+    </div>
+    <div class="col-sm-2 nav-block text-center button projects" id="nav-projects">
+      <h1>PROJECTS</h1>
+    </div>
+    <div class="col-sm-2 nav-block text-center button writing" id="nav-writing">
+      <h1>WRITING</h1>
+    </div>
+    <div class="col-sm-2 nav-block text-center button contact" id="nav-contact">
+      <h1>CONTACT</h1>
+    </div>
+  </div>
+  <hr class="featurette-divider" id="nav-block-div"></hr>
+
+</div>
+
+</body>
+</html>

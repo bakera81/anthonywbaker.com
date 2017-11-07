@@ -9,3 +9,6 @@ quickstart.html
 test.html
 upload.py
 secure.txt
+__pycache__/
+.DS_Store
+awbenv/
