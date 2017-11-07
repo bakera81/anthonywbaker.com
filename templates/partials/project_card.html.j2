@@ -1,0 +1,10 @@
+{% macro create(title, summary, img, alt, id) -%}
+<div class="col-sm-3 zero card hid" id="{{ id }}">
+  <img src="{{ url_for('static', filename='images/'+ img) }}" class="img-responsive" alt="{{ alt }}"></img>
+  <div class="card-background hid">
+    <h3>{{ title }}</h3>
+    <hr></hr>
+    <p class="summary">{{ summary }}</p>
+  </div>
+</div>
+{%- endmacro %}

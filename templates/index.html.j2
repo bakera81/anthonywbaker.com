@@ -67,16 +67,23 @@
 
 <div class="container-fluid cards hid">
   <div class="row proj-row" id="row-1">
+    {% import "partials/project_card.html.j2" as card -%}
 
-    <div class="col-sm-3 zero card hid" id="disco">
+    {{ card.create(title="Email Server &amp; Ambient Display",
+                   summary="Customized a disco ball to serve as an email server.",
+                   id="disco",
+                   img="disco.png",
+                   alt="Disco Ball Email Server")
+    }}
+    <!-- <div class="col-sm-3 zero card hid" id="disco">
       <img src="images/disco.png" class="img-responsive" alt="Disco Ball Email Server"></img>
-      <!-- <div class="card-background hid" style="background-color: rgb(211, 198, 166)"> -->
+       <div class="card-background hid" style="background-color: rgb(211, 198, 166)"> 
       <div class="card-background hid">
         <h3>Email Server &amp; Ambient Display</h3>
         <hr></hr>
         <p class="summary">Customized a disco ball to serve as an email server.</p>
       </div>
-    </div>
+    </div> -->
 
 
     <div class="col-sm-3 one card hid" id="pencilcode">
