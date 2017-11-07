@@ -8,6 +8,10 @@ def index():
 
 @app.route('/landing')
 def landing():
+    # If I get rid of the landing, I don't need cookies...
+    # resp = make_response(render_template(...))
+    # resp.set_cookie('username', 'the username')
+    # return resp
     return render_template('landing.html.j2', title_addendum='')
 
 @app.route('/recipes')
