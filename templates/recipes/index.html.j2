@@ -18,50 +18,15 @@
 
   <div class="container-fluid cards">
     <div class="row proj-row">
+      {% import "partials/recipe_card.html.j2" as card -%}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/arrabbiata.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Arrabbiata</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Arrabbiata", url="arrabbiata") }}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/meat-bowl.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Big Anthony's Anytime Big Breakfast Bowl of Meat</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Big Anthony's Anytime Big Breakfast Bowl of Meat", url="meat-bowl") }}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/honey-sriracha-pork.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Easy Honey-Sriracha Pork Chops</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Easy Honey-Sriracha Pork Chops", url="honey-sriracha-pork") }}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/sausage-suprise.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Happy Sausage Suprise for One</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Happy Sausage Suprise for One", url="sausage-suprise") }}
 
 
     </div>
@@ -70,38 +35,11 @@
   <div class="container-fluid cards">
     <div class="row proj-row">
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/lonely-thanksgiving.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Poor Anthony's Lonely Thanksgiving</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Poor Anthony's Lonely Thanksgiving", url="lonely-thanksgiving") }}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/salads.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>Salads</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="Salads", url="salads") }}
 
-      <a class="card-href" href="https://anthonywbaker.com/recipes/meat-tube.html">
-        <div class="col-sm-3 recipe card">
-          <div class="card-foreground">
-            <h3>60-Second Pink Meat Tubes</h3>
-          </div>
-          <div class="card-background">
-            <hr></hr>
-          </div>
-        </div>
-      </a>
+      {{ card.create(title="60-Second Pink Meat Tubes", url="meat-tube") }}
 
     </div>
   </div> <!--/container-fluid -->
