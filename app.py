@@ -1,10 +1,24 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, request
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html.j2')
+    highlight = request.args.get('highlight')
+    return render_template('index.html.j2', highlight=highlight)
+    # https://stackoverflow.com/questions/26536187/is-it-possible-to-dynamically-update-a-rendered-template-in-flask-server-side
+    # if not highlight:
+    #     return render_template('index.html.j2', highlight=None)
+    # elif hightlight == 'about':
+    #     return render_template('index.html.j2', highlight='about')
+    # elif hightlight == 'resume':
+    #         return render_template('index.html.j2', highlight='resume')
+    # elif hightlight == 'projects':
+    #         return render_template('index.html.j2', highlight='projects')
+    # elif hightlight == 'writing':
+    #     return render_template('index.html.j2', highlight='writing')
+    # else:
+    #     return render_template('index.html.j2', highlight=None)
 
 @app.route('/landing')
 def landing():

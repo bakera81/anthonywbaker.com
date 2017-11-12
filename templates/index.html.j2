@@ -6,8 +6,9 @@
 <body>
   {% include "partials/nav.html.j2" %}
 
+  {% if 'about' in highlight %}
   <!-- First/About -->
-  <div class="jumbotron jumbo-white hid" id="about">
+  <div class="jumbotron jumbo-white" id="about">
     <div class="container-fluid" id="less">
       <span class="header"><h1>About</h1></span>
       <div class="space"></div>
@@ -35,10 +36,10 @@
 </div>
 </div>
 
-
+{% elif 'resume' in highlight %}
 
 <!-- Resume -->
-<div class="jumbotron jumbo-white header hid" id="resume">
+<div class="jumbotron jumbo-white header" id="resume">
   <div class="container-fluid">
     <div class="row">
       <h1>Resum&eacute;</h1>
@@ -46,7 +47,7 @@
     <hr class="featurette-divider"></hr>
     <div class="row">
       <div class="col-sm-12">
-        <p><a target="_blank" href="https://anthonywbaker.com/resume.pdf">View/Download</a></p>
+        <p><a target="_blank" href="{{ url_for('static', filename='data/baker_resume.pdf') }}">View/Download</a></p>
       </div>
       <!-- <div class="col-sm-6">
       <p><a target="_blank" href="http://anthonywbaker.com/resume.pdf">Download</a></p>
@@ -55,8 +56,10 @@
 </div>
 </div>
 
+{% elif 'projects' in highlight %}
+
 <!-- Project Cards -->
-<div class="jumbotron jumbo-white header hid" id="projects">
+<div class="jumbotron jumbo-white header" id="projects">
   <div class="container-fluid">
     <div class="row">
       <h1>Projects</h1>
@@ -65,7 +68,7 @@
   </div>
 </div>
 
-<div class="container-fluid cards hid">
+<div class="container-fluid cards">
   <div class="row proj-row" id="row-1">
     {% import "partials/project_card.html.j2" as card -%}
 
@@ -77,7 +80,7 @@
     }}
     <!-- <div class="col-sm-3 zero card hid" id="disco">
       <img src="images/disco.png" class="img-responsive" alt="Disco Ball Email Server"></img>
-       <div class="card-background hid" style="background-color: rgb(211, 198, 166)"> 
+       <div class="card-background hid" style="background-color: rgb(211, 198, 166)">
       <div class="card-background hid">
         <h3>Email Server &amp; Ambient Display</h3>
         <hr></hr>
@@ -373,7 +376,9 @@
 
 </div> <!--/container-fluid -->
 
-<div class="jumbotron jumbo-white header hid" id="writing">
+{% elif 'writing' in highlight %}
+
+<div class="jumbotron jumbo-white header" id="writing">
   <div class="container-fluid">
     <div class="row">
       <h1>Writing</h1>
@@ -386,7 +391,9 @@
   </div>
 </div>
 
-<div class="jumbotron jumbo-white header hid" id="contact">
+{% elif 'contact' in highlight %}
+
+<div class="jumbotron jumbo-white header" id="contact">
   <div class="container-fluid">
     <div class="row">
       <h1>Contact</h1>
@@ -398,23 +405,28 @@
   </div>
 </div>
 
+{% endif %}
+
 <!-- Navigation blocks -->
 <div class="container-fluid" id="nav-blocks">
   <div class="row">
     <div class="col-sm-2 col-sm-offset-1 nav-block text-center button about" id="nav-about">
-      <h1>ABOUT</h1>
+      <a href="{{ url_for('index', highlight='about') }}"><h1>ABOUT</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button resume" id="nav-resume">
-      <h1>RESUM&Eacute;</h1>
+      <a href="{{ url_for('index', highlight='resume') }}"><h1>RESUM&Eacute;</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button projects" id="nav-projects">
-      <h1>PROJECTS</h1>
+      <a href="{{ url_for('index', highlight='projects') }}"><h1>PROJECTS</h1></a>
+    </div>
+    <div class="col-sm-2 nav-block text-center button recipes" id="nav-recipes">
+      <a href="{{ url_for('recipes') }}"><h1>RECIPES</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button writing" id="nav-writing">
-      <h1>WRITING</h1>
+      <a href="{{ url_for('index', highlight='writing') }}"><h1>WRITING</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button contact" id="nav-contact">
-      <h1>CONTACT</h1>
+      <a href="{{ url_for('index', highlight='contact') }}"><h1>CONTACT</h1><a/>
     </div>
   </div>
   <hr class="featurette-divider" id="nav-block-div"></hr>
