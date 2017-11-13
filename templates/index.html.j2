@@ -6,7 +6,7 @@
 <body>
   {% include "partials/nav.html.j2" %}
 
-  {% if 'about' in highlight %}
+  {% if show == "about" %}
   <!-- First/About -->
   <div class="jumbotron jumbo-white" id="about">
     <div class="container-fluid" id="less">
@@ -36,7 +36,7 @@
 </div>
 </div>
 
-{% elif 'resume' in highlight %}
+{% elif show == "resume" %}
 
 <!-- Resume -->
 <div class="jumbotron jumbo-white header" id="resume">
@@ -56,7 +56,8 @@
 </div>
 </div>
 
-{% elif 'projects' in highlight %}
+
+{% elif show == "projects" %}
 
 <!-- Project Cards -->
 <div class="jumbotron jumbo-white header" id="projects">
@@ -376,7 +377,7 @@
 
 </div> <!--/container-fluid -->
 
-{% elif 'writing' in highlight %}
+{% elif show == "writing" %}
 
 <div class="jumbotron jumbo-white header" id="writing">
   <div class="container-fluid">
@@ -391,7 +392,7 @@
   </div>
 </div>
 
-{% elif 'contact' in highlight %}
+{% elif show == "contact" %}
 
 <div class="jumbotron jumbo-white header" id="contact">
   <div class="container-fluid">
@@ -411,22 +412,19 @@
 <div class="container-fluid" id="nav-blocks">
   <div class="row">
     <div class="col-sm-2 col-sm-offset-1 nav-block text-center button about" id="nav-about">
-      <a href="{{ url_for('index', highlight='about') }}"><h1>ABOUT</h1></a>
+      <a href="{{ url_for('index', show='about') }}"><h1>ABOUT</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button resume" id="nav-resume">
-      <a href="{{ url_for('index', highlight='resume') }}"><h1>RESUM&Eacute;</h1></a>
+      <a href="{{ url_for('index', show='resume') }}"><h1>RESUM&Eacute;</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button projects" id="nav-projects">
-      <a href="{{ url_for('index', highlight='projects') }}"><h1>PROJECTS</h1></a>
+      <a href="{{ url_for('index', show='projects') }}"><h1>PROJECTS</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button recipes" id="nav-recipes">
       <a href="{{ url_for('recipes') }}"><h1>RECIPES</h1></a>
     </div>
     <div class="col-sm-2 nav-block text-center button writing" id="nav-writing">
-      <a href="{{ url_for('index', highlight='writing') }}"><h1>WRITING</h1></a>
-    </div>
-    <div class="col-sm-2 nav-block text-center button contact" id="nav-contact">
-      <a href="{{ url_for('index', highlight='contact') }}"><h1>CONTACT</h1><a/>
+      <a href="{{ url_for('index', show='writing') }}"><h1>WRITING</h1></a>
     </div>
   </div>
   <hr class="featurette-divider" id="nav-block-div"></hr>

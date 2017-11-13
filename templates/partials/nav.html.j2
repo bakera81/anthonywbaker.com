@@ -9,18 +9,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" id="name" href="#">ANTHONY W. BAKER</a>
+      <a class="navbar-brand" id="name" href="{{ url_for('index') }}">ANTHONY W. BAKER</a>
     </div>
 
+    {% if nav_items == True %}
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav hid" id="nav-links">
-        <li><a class="about nav-link" href="{{ url_for('index', highlight='about') }}">ABOUT</a></li>
-        <li><a class="resume nav-link" href="{{ url_for('index', highlight='resume') }}">RESUM&Eacute;</a></li>
-        <li><a class="resume nav-link" href="{{ url_for('recipes') }}">RECIPES</a></li>
-        <li><a class="projects nav-link" href="{{ url_for('index', highlight='projects') }}">PROJECTS</a></li>
-        <li><a class="writing nav-link" href="{{ url_for('index', highlight='writing') }}">WRITING</a></li>
-        <li><a class="contact nav-link" href="{{ url_for('index', highlight='writing') }}">CONTACT</a></li>
+        <li><a class="about nav-link" href="{{ url_for('index', show='about') }}">ABOUT</a></li>
+        <li><a class="resume nav-link" href="{{ url_for('index', show='resume') }}">RESUM&Eacute;</a></li>
+        <li><a class="projects nav-link" href="{{ url_for('index', show='projects') }}">PROJECTS</a></li>
+        <li><a class="recipes nav-link" href="{{ url_for('recipes') }}">RECIPES</a></li>
+        <li><a class="writing nav-link" href="{{ url_for('index', show='writing') }}">WRITING</a></li>
+        {# <li><a class="contact nav-link" href="{{ url_for('index', show='contect') }}">CONTACT</a></li> #}
         <!-- <li class="about nav-link">About</li>
         <li class="resume nav-link">Resum&eacute;</li>
         <li class="projects nav-link">Projects</li>
@@ -28,6 +29,7 @@
         <li class="contact nav-link">Contact</li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
+    {% endif %}
   </div><!-- /.container-fluid -->
 </nav>
 

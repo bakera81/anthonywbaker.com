@@ -4,8 +4,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    highlight = request.args.get('highlight')
-    return render_template('index.html.j2', highlight=highlight)
+    show = request.args.get('show')
+    if show:
+        nav_items = True
+    else:
+        nav_items = False
+
+    return render_template('index.html.j2', show=show, nav_items=nav_items)
     # https://stackoverflow.com/questions/26536187/is-it-possible-to-dynamically-update-a-rendered-template-in-flask-server-side
     # if not highlight:
     #     return render_template('index.html.j2', highlight=None)
@@ -30,8 +35,8 @@ def landing():
 
 @app.route('/recipes')
 def recipes():
-    return render_template('recipes/index.html.j2', title_addendum=' | Recipes')
+    return render_template('recipes/index.html.j2', title_addendum=' | Recipes', nav_items=True)
 
 @app.route('/recipes/<recipe>')
 def render_recipe(recipe):
-    return render_template('recipes/{0}.html.j2'.format(recipe), title_addendum=' | Recipes')
+    return render_template('recipes/{0}.html.j2'.format(recipe), title_addendum=' | Recipes', nav_items=True)
