@@ -1,11 +1,2 @@
-images/full
-images/jpgs
-images/orig
-images/unused
-images/updated
-OLD_custom.js
-OLD_index.html
-quickstart.html
-test.html
-upload.py
-secure.txt
+.DS_Store
+.cache
