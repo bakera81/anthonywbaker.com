@@ -1,5 +1,5 @@
 ---
-title: Mexican street fair
+title: Mexican inspired
 ---
 
 # Ingredients
