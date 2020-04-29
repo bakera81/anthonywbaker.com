@@ -17,13 +17,18 @@ const RecipeSection = styled.h2`
   text-align: left;
 `
 
+const ComingSoon = styled.span`
+  font-size: .7em;
+  font-style: italic;
+`
+
 const RecipeList = props => (
   <ul>
   {props.recipeData.map(({ node }) => (
     <li>
-      <Link to={node.path}>
-        <P style={{textAlign: `left`}}>{node.context.title}</P>
-      </Link>
+      {/*<Link to={node.path}>*/}
+        <P style={{textAlign: `left`}}>{node.context.title} <ComingSoon>[coming soon]</ComingSoon></P>
+      {/*</Link>*/}
     </li>
   ))}
   </ul>
