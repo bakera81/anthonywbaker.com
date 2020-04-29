@@ -23,7 +23,6 @@ const H3 = styled.h3`
 `
 
 export default ({ data }) => {
-  console.log(data.markdownRemark.htmlAst.children)
   // split the array of top-level children
   const isIngredients = element => element.tagName === "h1" && toString(element) === "Ingredients"
   const isInstructions = element => element.tagName === "h1" && toString(element) === "Instructions"
@@ -32,8 +31,6 @@ export default ({ data }) => {
   // order matters in the markdown:
   // 1. Ingredients
   // 2. Instructions
-  console.log(ingredientsIndex)
-  console.log(instructionsIndex)
   const ingredients = data.markdownRemark.htmlAst.children.slice(ingredientsIndex + 1, instructionsIndex)
   const instructions = data.markdownRemark.htmlAst.children.slice(instructionsIndex + 1)
 

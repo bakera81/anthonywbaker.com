@@ -53,7 +53,6 @@ export default ({ data }) => {
  // When finished traversing the tree, push the remaining obj
  simplifiedMdContent.push(idea)
 
- // console.log(simplifiedMdContent)
   return (
     <Layout>
       <PageTitle>Ideas</PageTitle>

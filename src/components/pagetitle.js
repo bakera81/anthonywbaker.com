@@ -34,7 +34,6 @@ export default props => {
   )
 
   const randomImg =  data.allFile.edges[Math.floor(Math.random() * data.allFile.edges.length)]
-  console.log(randomImg)
   return (
     <section className="section">
       <div className="container">
