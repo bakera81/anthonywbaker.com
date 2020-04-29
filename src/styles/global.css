@@ -18,7 +18,7 @@
   font-family: "Pixel Airal 11";
   font-weight: 400;
   font-style: normal;
-  src: url("../fonts/PIXEARG_.TTF") format("ttf");
+  src: url("../fonts/PIXEARG_.ttf") format("ttf");
   font-display: swap;
   font-smooth: never;
   -webkit-font-smoothing : none;
