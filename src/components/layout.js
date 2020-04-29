@@ -2,10 +2,6 @@ import React from "react"
 
 import 'bulma/css/bulma.css'
 
-import { Global, css } from "@emotion/core"
-import styled from "@emotion/styled"
-
-import { useStaticQuery, graphql } from "gatsby"
 import NavBar from "./navbar"
 import Footer from "./footer"
 

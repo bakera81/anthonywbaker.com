@@ -1,10 +1,5 @@
 import React from "react"
 
-import { css } from "@emotion/core"
-
-import { graphql, Link } from 'gatsby'
-import Img from "gatsby-image"
-import Layout from "./layout"
 import PageTitle from "./pagetitle"
 
 

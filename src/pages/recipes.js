@@ -6,8 +6,6 @@ import styled from "@emotion/styled"
 import Layout from  "../components/layout"
 import PageTitle from "../components/pagetitle"
 import P from "../components/paragraph"
-import Container from "../components/container"
-import RecipePreview from "../components/recipepreview"
 
 
 const RecipeSection = styled.h2`

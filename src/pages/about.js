@@ -1,7 +1,6 @@
 import React from "react"
 
 import { Link } from "gatsby"
-import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
 import PageTitle from  "../components/pagetitle"

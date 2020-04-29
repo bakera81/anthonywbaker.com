@@ -1,10 +1,6 @@
 import React from "react"
 
-import { css } from "@emotion/core"
-import styled from "@emotion/styled"
-
-import { graphql, Link } from 'gatsby'
-import Img from "gatsby-image"
+import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
 import Idea from "../components/idea"
@@ -31,9 +27,9 @@ export default ({ data }) => {
  let idea = {}
  visit(data.markdownRemark.htmlAst, node => {
    // If we encounter a header, push the idea obj then create a new obj
-   if (node.tagName == "h1") {
+   if (node.tagName === "h1") {
      // Exception: the first header should not be pushed
-     if (!(simplifiedMdContent.length == 0 && Object.keys(idea).length == 0)) {
+     if (!(simplifiedMdContent.length === 0 && Object.keys(idea).length === 0)) {
        simplifiedMdContent.push(idea)
        idea = {}
      }
@@ -41,12 +37,12 @@ export default ({ data }) => {
    }
 
    // h2 must be the date
-   if (node.tagName == "h3") {
+   if (node.tagName === "h3") {
      idea.date = toString(node)
    }
 
    // If we encounter a paragraph, add the node and its children to an array
-   if (node.tagName == "p") {
+   if (node.tagName === "p") {
      if ("content" in idea) {
        idea.content.push(node)
      } else {

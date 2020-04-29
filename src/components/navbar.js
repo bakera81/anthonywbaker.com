@@ -4,7 +4,6 @@ import { css } from "@emotion/core"
 import 'bulma/css/bulma.css'
 
 import { Link, useStaticQuery, graphql } from "gatsby"
-import NavItem from "./navitem"
 
 const logo = css`
   /* font-style: italic; */

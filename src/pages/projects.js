@@ -1,9 +1,6 @@
 import React from "react"
 
-import { css } from "@emotion/core"
-
-import { graphql, Link } from 'gatsby'
-import Img from "gatsby-image"
+import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
 import ProjectPreview from "../components/projectpreview"
@@ -29,7 +26,7 @@ export default ({ data }) => {
         <div className="columns is-multiline">
           {completedProjects.map(({ node }, i) => (
             <ProjectPreview
-              alignRight={i % 2 == 0}
+              alignRight={i % 2 === 0}
               description={node.frontmatter.description}
               slug={`projects/${sluggify(node.fileAbsolutePath)}`}
               imgSrc={findPreviewImage(node.frontmatter.preview)}
@@ -44,7 +41,7 @@ export default ({ data }) => {
         <div className="columns is-multiline">
           {inProgressProjects.map(({ node }, i) => (
             <ProjectPreview
-              alignRight={i % 2 == 0}
+              alignRight={i % 2 === 0}
               description={node.frontmatter.description}
               slug={`projects/${sluggify(node.fileAbsolutePath)}`}
               imgSrc={findPreviewImage(node.frontmatter.preview)}

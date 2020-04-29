@@ -3,7 +3,7 @@ import React from "react"
 import styled from "@emotion/styled"
 import 'bulma/css/bulma.css'
 
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import Img from "gatsby-image"
 
 const PageTitle = styled.h1`

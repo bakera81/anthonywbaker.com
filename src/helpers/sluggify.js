@@ -1,5 +1,5 @@
 const sluggify = fullPath => {
-  return fullPath.replace(/^.*[\\\/]/, '').replace('\.js', '')
+  return fullPath.replace(/^.*[\\\/]/, '').replace('.js', '')
 }
 
 export default sluggify
