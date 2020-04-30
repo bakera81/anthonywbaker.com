@@ -18,7 +18,7 @@ const ListLink = props => {
   if (props.href) {
     return (
       <div className="level-item">
-        <a href={ props.href }>
+        <a href={ props.href } target="_blank">
           <h1 className="title is-1" css={ listLinkStyle }>{ props.children }</h1>
         </a>
       </div>

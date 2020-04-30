@@ -23,7 +23,7 @@ export default () => (
         Built a Twitterbot that tweets out wine reviews for made up wines, powered by Markov chains.
       </P>
       <P style={{textAlign: `left`}}>
-        Follow <a href="https://twitter.com/wectator">@wectator</a> to get a taste.
+        Follow <a href="https://twitter.com/wectator" target="_blank">@wectator</a> to get a taste.
       </P>
     </Project>
   </Layout>

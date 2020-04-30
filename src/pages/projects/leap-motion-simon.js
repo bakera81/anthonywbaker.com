@@ -20,7 +20,7 @@ export default () => (
   <Layout>
     <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
       <P style={{textAlign: `left`}}>
-        I was a member of a team that created a software version of the game Simon using a <a href="https://developer.leapmotion.com/">Leap Motion Controller</a> designed to research working memory in blind and visually impaired people. The Simon is commonly used to study working memory, however, the original game requires working eyesight.
+        I was a member of a team that created a software version of the game Simon using a <a href="https://developer.leapmotion.com/" target="_blank">Leap Motion Controller</a> designed to research working memory in blind and visually impaired people. The Simon is commonly used to study working memory, however, the original game requires working eyesight.
       </P>
       <P style={{textAlign: `left`}}>
         Users played our version of the game by using physical gestures (captured by the Leap Motion Controller) and responding to sounds rather the traditional Simon interface. The software captured gameplay data and allowed researchers to easily export it for analysis. The software was written in C++ and came with installers for Mac, Windows, and Linux.

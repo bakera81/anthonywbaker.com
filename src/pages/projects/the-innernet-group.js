@@ -20,7 +20,7 @@ export default () => (
   <Layout>
     <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
       <P style={{textAlign: `left`}}>
-        Coming soon: <a href="www.theinnernetgroup.com">www.theinnernetgroup.com</a>
+        Coming soon: <a href="www.theinnernetgroup.com" target="_blank">www.theinnernetgroup.com</a>
       </P>
     </Project>
   </Layout>

@@ -49,7 +49,7 @@ export default props => {
           <P><Link to="/recipes">recipes</Link></P>
         </div>
         <div className="level-item">
-          <P><Link to="/writing">writing</Link></P>
+          <P><a href="https://medium.com/@addiebundren" target="_blank">writing</a></P>
         </div>
         <div className="level-item">
           <P><Link to="/contact">contact</Link></P>

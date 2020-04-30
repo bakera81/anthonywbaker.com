@@ -20,7 +20,7 @@ export default () => (
   <Layout>
     <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
       <P style={{textAlign: `left`}}>
-        Lonk and load, the world's worst job search site is coming soon. Lonk in and launch a new career. <a href="http://www.lonked.in">www.lonked.in</a>
+        Lonk and load, the world's worst job search site is coming soon. Lonk in and launch a new career. <a href="http://www.lonked.in" target="_blank">www.lonked.in</a>
       </P>
     </Project>
   </Layout>

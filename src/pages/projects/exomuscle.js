@@ -23,7 +23,7 @@ export default ({ data }) => (
         Whereas muscles convey information about the immediate physical world through kinesthetic feedback, ExoMuscle can convey information about the non-physical (digital) world beyond the reach of your immediate space. I was a member of the team that developed the concept, created a prototype, and proposed three applications: sensing driving mistakes, syncing with a calender to let users feel the "pressure" of time, and giving wearers a sixth sense by letting users feel radiofrequencies.
       </P>
       <P style={{textAlign: `left`}}>
-        <a href={slides}>slides</a>
+        <a href={slides} target="_blank">slides</a>
       </P>
     </Project>
   </Layout>

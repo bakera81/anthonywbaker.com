@@ -19,7 +19,7 @@ export default () => (
   <Layout>
     <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
       <P style={{textAlign: `left`}}>
-        Using the TRANSFORM shape displays at the MIT Media Lab's <a href="https://tangible.media.mit.edu/">Tangible Media Group</a>, I worked with a small team to develop a physical programming language that used gestures and physical interaction to perform basic commands.
+        Using the TRANSFORM shape displays at the MIT Media Lab's <a href="https://tangible.media.mit.edu/" target="_blank">Tangible Media Group</a>, I worked with a small team to develop a physical programming language that used gestures and physical interaction to perform basic commands.
       </P>
       <P style={{textAlign: `left`}}>
         Computer programming is a skill with a high initial learning curve, which can often discourage early learners. Our team developed a tactile, holistic programming environment that leveraged the benefits of tangibility to help learners develop a more resilient understanding of computer science concepts.

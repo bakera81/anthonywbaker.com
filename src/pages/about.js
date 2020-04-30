@@ -44,9 +44,9 @@ export default () => {
       <P>{shuffle(aboutMe).map(item => (item + " "))} <span css={{fontSize: `.7em`}}>[<Link to="/about">shuffle</Link>]</span></P>
       */}
       <Hr />
-      <P>Creative writing & computer science (bachelor's) @ <a href="https://www.lafayette.edu/">Lafayette College</a>: 2011-2015.</P>
-      <P>Technology, innovation, and education (master's) @ <a href="https://www.gse.harvard.edu/masters/tie" >Harvard Graduate School of Education</a>: 2015-2016.</P>
-      <P>Product, data science, and growth @ <a href="https://www.datacamp.com">DataCamp</a>: 2016-present.</P>
+      <P>Creative writing & computer science (bachelor's) @ <a href="https://www.lafayette.edu/" target="_blank">Lafayette College</a>: 2011-2015.</P>
+      <P>Technology, innovation, and education (master's) @ <a href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</a>: 2015-2016.</P>
+      <P>Product, data science, and growth @ <a href="https://www.datacamp.com" target="_blank">DataCamp</a>: 2016-present.</P>
       <Hr />
       <P><Link to="/contact">Contact</Link></P>
     </Layout>
