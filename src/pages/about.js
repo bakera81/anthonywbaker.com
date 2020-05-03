@@ -9,7 +9,7 @@ import Hr from "../components/hr"
 import shuffle from "../helpers/shuffle"
 
 const aboutMe = [
-  "Product manager.", "Growth marketer.", "Data scientist.", "Designer.", "Communicator.", "Process enthusiast.", "Aspiring Renaissance man."
+  "Product manager.", "Growth marketer.", "Data scientist.", "Designer.", "Communicator.", "Process enthusiast.", "Iced coffee lover."
 ]
 
 class AboutMe extends React.Component {
