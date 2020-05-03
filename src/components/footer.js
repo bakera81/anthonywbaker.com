@@ -10,7 +10,7 @@ export default props => {
   const data = useStaticQuery(
     graphql`
       query {
-        allFile(filter: {relativePath: {regex: "/renaissance/"}}) {
+        allFile(filter: {relativePath: {regex: "/renaissance/"}, childImageSharp: {internal: {type: {eq: "ImageSharp"}}}}) {
           edges {
             node {
               relativePath
