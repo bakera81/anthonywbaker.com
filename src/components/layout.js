@@ -5,6 +5,14 @@ import 'bulma/css/bulma.css'
 import NavBar from "./navbar"
 import Footer from "./footer"
 
+const renderFooter = props => {
+  if (props.hideFooter) {
+    return
+  }
+  return (
+    <Footer hideNav={props.hideNav} />
+  )
+}
 
 export default props => (
   <div>
@@ -14,6 +22,6 @@ export default props => (
         {props.children}
       </div>
     </section>
-    <Footer hideNav={props.hideNav} />
+    {renderFooter(props)}
   </div>
 )
