@@ -31,7 +31,7 @@ export default props => {
              node {
                relativePath
                childImageSharp {
-                 fixed(height: 80) {
+                 fixed(height: 85) {
                    ...GatsbyImageSharpFixed
                  }
                }
