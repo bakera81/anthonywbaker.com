@@ -8,9 +8,18 @@ import Img from "gatsby-image"
 
 const PageTitle = styled.h1`
   font-family: Chomsky;
-  font-size: 5rem !important;
   font-weight: normal;
   text-align: right;
+  font-size: calc(3rem + 3vw);
+  /* font-size: 5rem !important; */
+  /* Perf optimization for fitty: */
+  /* display: inline-block;
+  white-space: nowrap;
+ font-size: 3rem;
+  @media screen and (min-width: 796px) {
+    color: red;
+  }
+  */
 `
 
 export default props => {
@@ -38,12 +47,12 @@ export default props => {
     <section className="section">
       <div className="container">
         <div className="level">
-          <div className="level-right has-text-right" css={{marginLeft: `auto;`, marginRight: `15px;`}}>
-          {/*TODO: FLip this to fluid and make it fill the height */}
+          <div className="level-right has-text-right is-hidden-mobile" css={{marginLeft: `auto;`, marginRight: `15px;`}}>
+          {/*TODO: FLip this to fluid and make it fill the height title is-1  */}
             <Img fixed={randomImg.node.childImageSharp.fixed} />
           </div>
           <div className="level-right">
-            <PageTitle className="title is-1">{props.children}</PageTitle>
+            <PageTitle className="fit">{props.children}</PageTitle>
           </div>
         </div>
       </div>

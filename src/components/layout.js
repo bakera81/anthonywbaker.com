@@ -15,7 +15,7 @@ const renderFooter = props => {
 }
 
 export default props => (
-  <div>
+  <>
     <NavBar />
     <section className="section">
       <div className="container">
@@ -23,5 +23,5 @@ export default props => (
       </div>
     </section>
     {renderFooter(props)}
-  </div>
+  </>
 )
