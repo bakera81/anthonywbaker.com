@@ -1,7 +1,5 @@
 import React from "react"
 
-import 'bulma/css/bulma.css'
-
 import Layout from  "../components/layout"
 import PageTitle from  "../components/pagetitle"
 import P from "../components/paragraph"

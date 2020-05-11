@@ -1,7 +1,7 @@
 import React from "react"
 
 import styled from "@emotion/styled"
-import 'bulma/css/bulma.css'
+import "../styles/global.scss"
 
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from "gatsby-image"
@@ -10,15 +10,15 @@ const PageTitle = styled.h1`
   font-family: Chomsky;
   font-weight: normal;
   text-align: right;
-  font-size: calc(3rem + 3vw);
+  @media screen and (max-width: 400px) {
+    font-size: 3rem !important;
+  }
+  /* font-size: calc(3rem + 3vw); */
   /* font-size: 5rem !important; */
   /* Perf optimization for fitty: */
   /* display: inline-block;
   white-space: nowrap;
  font-size: 3rem;
-  @media screen and (min-width: 796px) {
-    color: red;
-  }
   */
 `
 
@@ -52,7 +52,7 @@ export default props => {
             <Img fixed={randomImg.node.childImageSharp.fixed} />
           </div>
           <div className="level-right">
-            <PageTitle className="fit">{props.children}</PageTitle>
+            <PageTitle className="title is-1">{props.children}</PageTitle>
           </div>
         </div>
       </div>

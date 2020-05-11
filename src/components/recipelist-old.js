@@ -1,6 +1,5 @@
 import React from "react"
 
-import 'bulma/css/bulma.css'
 import styled from "@emotion/styled"
 
 const RecipeListContainer = styled.div`

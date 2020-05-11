@@ -1,6 +1,5 @@
 import React from "react"
 
-import 'bulma/css/bulma.css'
 
 import { Link } from "gatsby"
 

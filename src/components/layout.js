@@ -1,6 +1,6 @@
 import React from "react"
 
-import 'bulma/css/bulma.css'
+import "../styles/global.scss"
 
 import NavBar from "./navbar"
 import Footer from "./footer"
