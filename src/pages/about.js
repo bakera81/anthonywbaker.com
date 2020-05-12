@@ -38,7 +38,7 @@ class AboutMe extends React.Component {
 export default () => {
   return (
     <Layout>
-      <PageTitle>About</PageTitle>
+      <PageTitle>Anthony W. Baker</PageTitle>
       <AboutMe />
       {/*TODO: only shuffle on click
       <P>{shuffle(aboutMe).map(item => (item + " "))} <span css={{fontSize: `.7em`}}>[<Link to="/about">shuffle</Link>]</span></P>

@@ -44,7 +44,7 @@ export default props => {
 
   const randomImg =  data.allFile.edges[Math.floor(Math.random() * data.allFile.edges.length)]
   return (
-    <section className="section">
+    <section className="section" css={{padding: `0 0 `}}>
       <div className="container">
         <div className="level">
           <div className="level-right has-text-right is-hidden-mobile" css={{marginLeft: `auto;`, marginRight: `15px;`}}>
