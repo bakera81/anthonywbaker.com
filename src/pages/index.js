@@ -4,21 +4,26 @@ import { css } from "@emotion/core"
 
 import { Link } from 'gatsby'
 import Layout from "../components/layout"
-// Helpful hints when it's time to migate this repo:
-//https://gist.github.com/trongthanh/2779392
+
 const listLinkStyle = css`
   /* font-family: "Pixel Arial 11"; */
   font-family: Chomsky;
   font-smooth: never;
   -webkit-font-smoothing : none;
   font-weight: normal;
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    font-size: 2.5rem !important;
+  }
+  @media screen and (min-width: 769px) and (max-width: 860px) {
+    font-size: 2rem !important;
+  }
 `
 const ListLink = props => {
   if (props.href) {
     return (
       <div className="level-item">
         <a href={ props.href } target="_blank">
-          <h1 className="title is-1" css={ listLinkStyle }>{ props.children }</h1>
+          <h1 className="title is-2" css={ listLinkStyle }>{ props.children }</h1>
         </a>
       </div>
     )
@@ -27,7 +32,7 @@ const ListLink = props => {
     <div className="level-item">
     {/* user anchors vs Gatsby links */}
       <Link to={ props.to }>
-        <h1 className="title is-1" css={ listLinkStyle }>{ props.children }</h1>
+        <h1 className="title is-2" css={ listLinkStyle }>{ props.children }</h1>
       </Link>
     </div>
   )
