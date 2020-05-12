@@ -14,9 +14,16 @@ const renderFooter = props => {
   )
 }
 
+const renderNav = props => {
+  if (props.hideName) {
+    return
+  }
+  return <NavBar />
+}
+
 export default props => (
   <>
-    <NavBar />
+    {renderNav(props)}
     <section className="section">
       <div className="container">
         {props.children}
