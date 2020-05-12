@@ -18,21 +18,28 @@ const listLinkStyle = css`
     font-size: 2rem !important;
   }
 `
+
+const levelItemStyle = css`
+  @media screen and (max-width: 768px) {
+    justify-content: flex-end;
+  }
+`
+
 const ListLink = props => {
   if (props.href) {
     return (
-      <div className="level-item">
+      <div className="level-item" css={levelItemStyle}>
         <a href={ props.href } target="_blank">
-          <h1 className="title is-2" css={ listLinkStyle }>{ props.children }</h1>
+          <h1 className="title is-2" css={listLinkStyle}>{props.children}</h1>
         </a>
       </div>
     )
   }
   return (
-    <div className="level-item">
+    <div className="level-item" css={levelItemStyle}>
     {/* user anchors vs Gatsby links */}
       <Link to={ props.to }>
-        <h1 className="title is-2" css={ listLinkStyle }>{ props.children }</h1>
+        <h1 className="title is-2" css={listLinkStyle}>{props.children}</h1>
       </Link>
     </div>
   )
