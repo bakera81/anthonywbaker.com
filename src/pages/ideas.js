@@ -59,11 +59,7 @@ export default ({ data }) => {
       <div className="columns">
         <div className="column is-6 is-offset-6">
           <P style={{textAlign: `left`}}>
-            These are big ideas I’ve come across that seemed important to me at the time.
-            All of them, to some extent, were “lightbulb moments” for me when I first heard of them.
-            Inspired by “Today I Learned” blogs, there is a pretty big range of what is included here:
-            these ideas have shaped how I do my job and how I see the world; they are small tidbits that seem cool; they border on life philosophies...
-            To me, they all seemed to strike upon a truth—big or small.
+            Inspired by “Today I Learned” blogs, these are ideas I've come across that seemed worth writing down.
           </P>
           <Hr />
         </div>
