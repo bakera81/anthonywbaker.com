@@ -59,13 +59,14 @@ export default ({ data }) => {
       <div className="columns">
         <div className="column is-6 is-offset-6">
           <P style={{textAlign: `left`}}>
-            Inspired by “Today I Learned” blogs, these are ideas I've come across that seemed worth writing down.
+            Inspired by "Today I Learned" blogs, these are ideas I've come across that seemed worth writing down.
           </P>
           <Hr />
         </div>
       </div>
       <div className="columns">
-        <div className="column is-three-quarters">
+        <div className="column is-1-desktop is-hidden-touch"></div>
+        <div className="column is-two-thirds-desktop">
           {/*Walk through each "idea" and send the heading and content to a subcomponent */}
           {simplifiedMdContent.map(idea => (
             <Idea heading={idea.heading} date={idea.date} paragraphs={idea.content} />

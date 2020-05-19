@@ -28,9 +28,11 @@ const Heading = styled.h4`
 `
 // https://www.gatsbyjs.org/packages/gatsby-plugin-anchor-links/
 export default props => (
-  <section className="section" css={{padding: `3rem 8rem`}}>
+  <section className="section">
     {/* <AnchorLink to={`/ideas#${slugger(props.heading)}`} title={props.heading} /> */}
-    <a id={slugger(props.heading)} href={`/ideas#${slugger(props.heading)}`}><Heading className="title is-4">{props.heading}</Heading></a>
+    <a id={slugger(props.heading)} href={`/ideas#${slugger(props.heading)}`}>
+      <Heading className="title is-4">{props.heading}</Heading>
+    </a>
     {/* For each paragraph, render a P and it's children */}
     <MdContainer>
       {props.paragraphs.map(paragraph => (
