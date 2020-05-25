@@ -23,7 +23,7 @@ export default () => (
         I decided to deliberately make this site feel a bit offputting: The fonts are unpleasant to read and mismatched (Microsoft Sans Serif circa Windows 98 and a New York Times knockoff—stalwart fonts of digital and print), text is right aligned, black font and whitespace is juxtaposed with bursts of color from classic Renaissance art.
       </P>
       <P style={{textAlign: `left`}}>
-        Hopefully it says something about my fondness for irreverence and my distrust of settling for "normal."
+        I think it says something about my fondness for irreverence.
       </P>
     </Project>
   </Layout>
