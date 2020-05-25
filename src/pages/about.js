@@ -8,6 +8,8 @@ import P from "../components/paragraph"
 import Hr from "../components/hr"
 import shuffle from "../helpers/shuffle"
 
+import resume from "../data/BakerResume_v17.pdf"
+
 const aboutMe = [
   "Product manager.", "Growth marketer.", "Data scientist.", "Designer.", "Communicator.", "Process enthusiast.", "Iced coffee lover."
 ]
@@ -47,6 +49,7 @@ export default () => {
       <P>Creative writing & computer science (bachelor's) @ <a href="https://www.lafayette.edu/" target="_blank">Lafayette College</a>: 2011-2015.</P>
       <P>Technology, innovation, and education (master's) @ <a href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</a>: 2015-2016.</P>
       <P>Product, data science, and growth @ <a href="https://www.datacamp.com" target="_blank">DataCamp</a>: 2016-present.</P>
+      <P><a href={resume} target="_blank">Resume</a></P>
       <Hr />
       <P><Link to="/contact">Contact</Link></P>
     </Layout>
