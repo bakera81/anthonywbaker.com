@@ -1,16 +1,16 @@
 import re
 from datetime import datetime
 
-img_map = {
-    '![alt_text](images/image1.png "image_tooltip")': {
-        'alt': 'SaaS Retention Curve', 'file': 'pm+fit+3.png'
-    },
-    '![alt_text](images/image2.jpg "image_tooltip")': {
-        'alt': 'P/M/M/C Fit', 'file': 'whatsneededtobuild100M-Reforge.jpg'
-    }
-}
+img_map = [
+    { 'alt': 'Speed vs Velocity', 'file': 'speed_vs_velocity.png' },
+    { 'alt': 'Impact vs Effort: Linear', 'file': 'linear_impact_vs_effort.png' },
+    { 'alt': 'Impact vs Effort: Logarithmic', 'file': 'logarithmic_impact_vs_effort.png' },
+    { 'alt': 'Impact vs Effort: Exponential', 'file': 'exponential_impact_vs_effort.png' },
+    { 'alt': 'SaaS Retention Curve', 'file': 'pm+fit+3.png' },
+    { 'alt': 'P/M/M/C Fit', 'file': 'whatsneededtobuild100M-Reforge.jpg' }
+]
 
-with open('src/data/ideas/ideas_v2.md') as f:
+with open('src/data/ideas/ideas.md') as f:
     raw_md = f.read()
 
 # Remove warnings
@@ -21,11 +21,15 @@ warning_pattern_2 = re.compile(r'<p id="gdcalert.*?</p>')
 raw_md = re.sub(warning_pattern_2, '', raw_md)
 
 
-for key, value in img_map.items():
-    alt_text = value.get('alt')
-    filename = value.get('file')
-    new_img = '![' + alt_text + '](../../images/ideas/' + filename + ')'
-    raw_md = raw_md.replace(key, new_img)
+for i, img in enumerate(img_map):
+    new_img = '![' + img['alt'] + '](../../images/ideas/' + img['file'] + ')'
+    # old = '!\[alt_text\]\(images/image{}.* "image_tooltip"\)'.format(i + 1)
+    # pat = re.compile(old)
+    pat = re.compile('!\[alt_text\]\(images/image\d.* "image_tooltip"\)')
+
+    # import pdb; pdb.set_trace()
+    raw_md = re.sub(pat, new_img, raw_md, count=1)
+    # raw_md = raw_md.replace(old, new_img)
 
 yaml_header = '---\ndate: ' + datetime.today().strftime('%Y-%m-%d') + '\n---\n\n'
 

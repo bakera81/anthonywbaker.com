@@ -1,6 +1,74 @@
 ---
-date: 2020-09-12
+date: 2020-10-08
 ---
+
+# Speed vs velocity and the bias-for-building fallacy
+
+
+#### 2020-09-25
+
+How do you measure your success as a product manager? In my experience, “speed” is one of the most common ways—in fact, someone I know was fired for being “too slow to ship.” Yes, you can’t create value if you don’t ship anything, but more often than not, speed isn’t the issue. In fact, evaluating PMs for how “fast” their team moves can have pretty negative side effects.
+
+Instead of speed, we should think about velocity. Velocity has speed _and_ direction. “How fast are we moving _in a certain direction?”_ is a much better way to evaluate the pace of a product team. Moving fast with no direction won’t result in success. Most products don’t fail because they didn’t move fast enough; they fail because they built the wrong thing.
+
+“If you go speedily in the wrong direction, you will end up in the wrong place.”
+
+
+
+
+
+
+![Speed vs Velocity](../../images/ideas/speed_vs_velocity.png)
+
+
+In the plot above, each of the vectors represents a project or feature. The magnitude of the vectors could be considered “speed”: it is how quickly / how much progress was made towards that particular feature’s goals and KPIs. Even though the plot on the right has smaller magnitudes (i.e. less “speed”), the net effect is much closer to the goal. Direction matters. It shouldn’t be surprising that shipping features willy-nilly without a clear product direction won’t result in success, but even so, it seems pretty common for teams to obsess about speed.
+
+I joined a team that had almost exclusively focused on speed. Before I joined, they tried a lot of different things in a short period of time and they were able to launch new features at a record setting pace. But it was not clear _why_ their product existed. There was no vision for where the product was headed, there wasn’t suitable analytics in place, the deployment CI/CD pipeline was a mess, there were A/B tests left running in various states… There were some big changes we needed to make to make sure we could provide value to our customers and our business. But when the team was lauded for their speed and encouraged to “move faster”, there was no incentive to slow down and focus on the things that mattered most.
+
+_From [@shreyas](https://twitter.com/shreyas/status/1309708343963865088)_
+
+
+# Impact and effort
+
+For a given project, we often assume that there is a linear relationship between the amount of effort (or time) we put in and the amount of impact we get out. “The more time we spend on this feature, the more impactful it will be,” we might tell ourselves.
+
+
+
+
+
+
+![Impact vs Effort: Linear](../../images/ideas/linear_impact_vs_effort.png)
+
+
+But this is rarely—if ever— the case. Many projects follow the [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle): 80% of the impact comes from 20% of the effort. This is often the case in the earlier stages of product maturity: just _having_ a feature is the most impactful thing you can do; polishing and tuning that feature will only have small incremental effects.
+
+
+
+
+
+
+![Impact vs Effort: Logarithmic](../../images/ideas/logarithmic_impact_vs_effort.png)
+
+
+But there is another case: the inverse Pareto principle, where there is an exponential relationship between impact and effort. Some examples where this can happen are:
+
+
+
+*   When an initial feature simply doesn’t work on its own because it is meant to work in concert with other, not yet developed features;
+*   When you’re in an all-or-nothing situation. One of these all-or-nothing scenarios is fixing data quality issues: there is _no_ value in your data analytics ecosystem if the data only accurate some of the time.
+
+
+
+
+
+
+![Impact vs Effort: Exponential](../../images/ideas/exponential_impact_vs_effort.png)
+
+
+If you are exclusively focused on speed, projects that have this type of curve can be dangerous. If you only build features that are easy to implement, you might be skipping the most impactful work.
+
+Thinking about these curves is also important when scoping a project. You certainly don’t want to end up building an MVP that simply isn’t impactful.
+
 
 # The trap of big deals
 
@@ -36,6 +104,9 @@ _Inspired by [this post](https://larahogan.me/blog/how-to-manage-up/)_
 
 # Conway’s law
 
+
+#### 2020-01-01
+
 “Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.”
 
 	—Melvin Conway
@@ -61,7 +132,10 @@ _Inspired by [this post](https://brianbalfour.com/essays/product-market-fit)_
 
 # Product/Market/Model/Channel fit
 
-Another one from Brian Balfour and the good people of the [Reforge program](https://brianbalfour.com/courses). In essence: product-market fit isn’t enough. Product-market fit alone could lead you into the “if you build it, they will come” fallacy. Does your product solve a need _well?_ Is that need important enough that your users “can’t live without it?” Is there a significant group of people who have that need? If so you’ve found product-market fit.
+
+#### 2019-01-01
+
+Another one from Brian Balfour and the good people of the [Reforge program](https://brianbalfour.com/courses). In essence: product-market fit isn’t enough. Product-market fit alone could lead you into the “if you build it, they will come” fallacy. Does your product solve a need _well? _Is that need important enough that your users “can’t live without it?” Is there a significant group of people who have that need? If so you’ve found product-market fit.
 
 But it goes on: do you have a monetization model that makes sense for your product and your market? Do you have a viable channel for new users to find your product? If so, you’ve found product-market-model-channel fit. A business will fail if it doesn’t find all of these “fits.”
 
@@ -76,6 +150,9 @@ But it goes on: do you have a monetization model that makes sense for your produ
 
 # Premortems
 
+
+#### 2019-05-01
+
 [Jared Silver](https://twitter.com/JaredSilver) introduced this to our team. A premortem is a great way to get the gears turning to make sure you’ve considered all options before making a big decision. It goes like this: Imagine you and your team get called into your boss’ office in a few months because the project you’ve been working on has become a total disaster (for a more extreme version: imagine you are all getting fired). What could have gone wrong? It’s a fun twist on the classic pro/cons list, and works best when choosing between two potential options.
 
 
@@ -88,6 +165,9 @@ I heard of this one from [Weston Stearns](https://www.linkedin.com/in/weston-ste
 
 
 # Machine learning as translation into N-dimensional space
+
+
+#### 2018-10-01
 
 This is a mile-high, extremely oversimplified view of machine learning, but this idea helped a lot of various machine learning approaches click for me.
 
@@ -111,7 +191,7 @@ _Inspired by_ [Change by Design](https://www.amazon.com/Change-Design-Transforms
 
 Whatever outcome you are after, a good process makes it repeatable, scalable, and more likely. Processes work in two directions: good processes can make good outcomes more likely and bad outcomes less likely. For example, a good process for product development involves systematically evaluating the impact of your product on your target market, making it more likely your new features / products will be successful. A good process for deploying code involves unit testing and end-to-end testing to make it less likely you’ll release bugs.
 
-When something bad does happen, it is often more important to look at _what in the process_ allowed that thing to happen rather than just investigating _what_ bad thing happened. For example, recently my team shipped some code that caused a crash. The particular mistake was identified, but we also identified a flaw in our testing process. We’re now more likely to ship crash-free code because of the additional focus on process. We didn’t fix a bug, we made it more likely bugs won’t be shipped in the future. That’s the power of process: making desired outcomes more repeatable.
+When something bad does happen, it is often more important to look at _what in the process _allowed that thing to happen rather than just investigating _what_ bad thing happened. For example, recently my team shipped some code that caused a crash. The particular mistake was identified, but we also identified a flaw in our testing process. We’re now more likely to ship crash-free code because of the additional focus on process. We didn’t fix a bug, we made it more likely bugs won’t be shipped in the future. That’s the power of process: making desired outcomes more repeatable.
 
 I am a strong believer in strong processes, but how much is too much? It’s easy to over-engineer processes that ultimately slow the team down. Two useful tools for finding balance are 1. the rule of threes (if something happens three times, it’s worth spending more time on improving relevant processes) and 2. considering the [cost of quality](https://anthonywbaker.com/ideas/#cost-of-quality).
 
@@ -127,4 +207,4 @@ The cost of shipping a low-quality product is degraded user experience (imagine 
 
 Time is valuable, and spending too much of it polishing features or conducting extensive QA takes time, especially when the Pareto principle comes into play (the last 20% of the work could take 80% of the time). What is the cost of the chance of a few small bugs? What is the cost of starting the next team project a week later?
 
-The cost of quality is yet another area that requires [finding balance](https://anthonywbaker.com/ideas/#product-management-is-a-balancing-act).
+The cost of quality is yet another area that requires finding balance.
