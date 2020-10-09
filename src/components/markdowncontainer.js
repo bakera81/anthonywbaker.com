@@ -9,6 +9,11 @@ const MdContainer = styled.div`
     padding-top: 1em;
     padding-bottom: 1em;
   }
+
+  ul {
+    list-style-type: circle;
+    margin-left: 20px;
+  }
 `
 
 export default MdContainer

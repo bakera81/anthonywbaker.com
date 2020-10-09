@@ -25,6 +25,7 @@ export default ({ data }) => {
   */
  var simplifiedMdContent = []
  let idea = {}
+ console.log(data.markdownRemark.htmlAst)
  visit(data.markdownRemark.htmlAst, node => {
    // If we encounter a header, push the idea obj then create a new obj
    if (node.tagName === "h1") {
@@ -36,13 +37,13 @@ export default ({ data }) => {
      idea.heading = toString(node)
    }
 
-   // h2 must be the date
+   // h3 must be the date
    if (node.tagName === "h3") {
      idea.date = toString(node)
    }
 
    // If we encounter a paragraph, add the node and its children to an array
-   if (node.tagName === "p") {
+   if (node.tagName === "p" || node.tagName === "ul") {
      if ("content" in idea) {
        idea.content.push(node)
      } else {
