@@ -14,6 +14,10 @@ const MdContainer = styled.div`
     list-style-type: circle;
     margin-left: 20px;
   }
+
+  ol {
+    margin-left: 20px;
+  }
 `
 
 export default MdContainer

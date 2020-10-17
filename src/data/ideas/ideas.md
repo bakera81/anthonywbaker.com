@@ -1,15 +1,22 @@
 ---
-date: 2020-10-08
+date: 2020-10-17
 ---
 
-# Speed vs velocity and the bias-for-building fallacy
+# Carcinisation
+
+Crustaceans will always evolve into crabs. They’re all on their evolutionary journey to their final form: crabs. There’s a weird corner of the internet that is really into this topic right now.
+
+_From [Wikipedia](https://en.wikipedia.org/wiki/Carcinisation)_
+
+
+# Speed vs velocity
 
 
 #### 2020-09-25
 
 How do you measure your success as a product manager? In my experience, “speed” is one of the most common ways—in fact, someone I know was fired for being “too slow to ship.” Yes, you can’t create value if you don’t ship anything, but more often than not, speed isn’t the issue. In fact, evaluating PMs for how “fast” their team moves can have pretty negative side effects.
 
-Instead of speed, we should think about velocity. Velocity has speed _and_ direction. “How fast are we moving _in a certain direction?”_ is a much better way to evaluate the pace of a product team. Moving fast with no direction won’t result in success. Most products don’t fail because they didn’t move fast enough; they fail because they built the wrong thing.
+Instead of speed, we should think about velocity. Velocity has speed _and_ direction. “How fast are we moving _in a certain direction?” _is a much better way to evaluate the pace of a product team. Moving fast with no direction won’t result in success. Most products don’t fail because they didn’t move fast enough; they fail because they built the wrong thing.
 
 “If you go speedily in the wrong direction, you will end up in the wrong place.”
 
@@ -70,6 +77,63 @@ If you are exclusively focused on speed, projects that have this type of curve c
 Thinking about these curves is also important when scoping a project. You certainly don’t want to end up building an MVP that simply isn’t impactful.
 
 
+# The product death cycle
+
+
+#### 2020-07-01
+
+This is a scary and powerful way to describe a product development pattern that I’ve seen first hand. There’s a lot of different scenarios to illustrate this concept—Shreyas Doshi outlines a good one [here](https://twitter.com/shreyas/status/1309708395067240448?s=20)—but this is one recent example I’ve heard:
+
+
+
+1. We have an idea for a feature—or sometimes the executive team has an idea for a feature.
+2. We do some user research. We propose our solution to a few clients. We show them the shiny new prototypes. They like them.
+3. We report back to the executive team: “Users like the feature!”
+4. The feature is greenlit and implementation begins.
+5. The feature launches. It is rarely used and has little effect.
+6. We’ve come this far and we still think the feature could work, so we restart the whole cycle and do more iterations on the feature. Time goes by and we have accomplished nothing.
+
+This is what the cycle looks like:
+
+
+
+
+
+
+![The Product Death Cycle](../../images/ideas/product-death-cycle-1.jpeg)
+
+
+If you zoom in on the lifecycle of a single feature, here is what the cycle looks like. The X axis is time and the Y axis is whichever KPI was chosen for the particular feature:
+
+
+
+
+
+
+![The Product Death Cycle for a feature](../../images/ideas/product-death-cycle-2.jpeg)
+
+
+This is closely related to [the speed vs velocity concept](https://anthonywbaker.com/ideas#speed-vs-velocity): often, the most dangerous thing a product team can do is head in the wrong direction or build the wrong thing.
+
+Some red flags that could be early indicators you’re heading toward (or already in) the death cycle:
+
+
+
+*   Your company starts having a larger and larger focus on “go to market”—even within the product org.
+*   There is a high emphasis placed on features. People talk about the business in terms of features, not problems. Everyone is highly solution-oriented, not problem-oriented.
+*   The people selling the product don’t feel confident that new features are going to help them.
+
+The product death cycle is insidious: it takes a long time for the symptoms to manifest, which means it is difficult and slow to diagnose.
+
+If you think you’re in it, how do you get out of the product death cycle? A big part is being aware of your own biases. If you can carefully distinguish things that you assume from things that you know, you are a lot less likely to fall into the product death cycle.
+
+Part of this means walking the walk of user centric design, not just talking the talk. Deeply understanding a user need is a lot different than determining if a user “likes” a certain feature. User research is hard.
+
+Another way to avoid sinking into this downward spiral is to make sure you are leveraging multiple frameworks. Does your product have [the four fits](https://anthonywbaker.com/ideas#productmarketmodelchannel-fit)? Does it have [traction](https://www.amazon.com/Traction-Startup-Achieve-Explosive-Customer/dp/0241242533/ref=sr_1_4)? Is it loved by some core audience? If you can leverage multiple different tools or thought frameworks and your feature seems to pass the test for each of them, you’re probably on the right path.
+
+_From [Brian Balfour](https://brianbalfour.com/essays/product-market-fit-isnt-enough)_
+
+
 # The trap of big deals
 
 
@@ -109,7 +173,7 @@ _Inspired by [this post](https://larahogan.me/blog/how-to-manage-up/)_
 
 “Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.”
 
-	—Melvin Conway
+	—[Melvin Conway](https://en.wikipedia.org/wiki/Conway%27s_law)
 
 
 # SaaS retention as an indicator of P/M fit
@@ -207,4 +271,6 @@ The cost of shipping a low-quality product is degraded user experience (imagine 
 
 Time is valuable, and spending too much of it polishing features or conducting extensive QA takes time, especially when the Pareto principle comes into play (the last 20% of the work could take 80% of the time). What is the cost of the chance of a few small bugs? What is the cost of starting the next team project a week later?
 
-The cost of quality is yet another area that requires finding balance.
+The cost of quality is yet another area that requires [finding balance](https://anthonywbaker.com/ideas/#product-management-is-a-balancing-act).
+
+

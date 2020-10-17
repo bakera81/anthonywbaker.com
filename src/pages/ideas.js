@@ -43,7 +43,7 @@ export default ({ data }) => {
    }
 
    // If we encounter a paragraph, add the node and its children to an array
-   if (node.tagName === "p" || node.tagName === "ul") {
+   if (node.tagName === "p" || node.tagName === "ul" || node.tagName === "ol") {
      if ("content" in idea) {
        idea.content.push(node)
      } else {

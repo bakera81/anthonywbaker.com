@@ -6,6 +6,8 @@ img_map = [
     { 'alt': 'Impact vs Effort: Linear', 'file': 'linear_impact_vs_effort.png' },
     { 'alt': 'Impact vs Effort: Logarithmic', 'file': 'logarithmic_impact_vs_effort.png' },
     { 'alt': 'Impact vs Effort: Exponential', 'file': 'exponential_impact_vs_effort.png' },
+    { 'alt': 'The Product Death Cycle', 'file': 'product-death-cycle-1.jpeg' },
+    { 'alt': 'The Product Death Cycle for a feature', 'file': 'product-death-cycle-2.jpeg' },
     { 'alt': 'SaaS Retention Curve', 'file': 'pm+fit+3.png' },
     { 'alt': 'P/M/M/C Fit', 'file': 'whatsneededtobuild100M-Reforge.jpg' }
 ]
@@ -20,6 +22,9 @@ raw_md = re.sub(warning_pattern_1, '#', raw_md)
 warning_pattern_2 = re.compile(r'<p id="gdcalert.*?</p>')
 raw_md = re.sub(warning_pattern_2, '', raw_md)
 
+# Remove everything after the divider
+hr_pat = re.compile(r'\n---\n.*', re.DOTALL)
+raw_md = re.sub(hr_pat, '', raw_md)
 
 for i, img in enumerate(img_map):
     new_img = '![' + img['alt'] + '](../../images/ideas/' + img['file'] + ')'
