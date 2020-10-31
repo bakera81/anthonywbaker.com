@@ -4,6 +4,8 @@ import { css } from "@emotion/core"
 
 import { Link, useStaticQuery, graphql } from "gatsby"
 
+import Back from "./back"
+
 const logo = css`
   /* font-style: italic; */
   /* font-family: "Chomsky"; */
@@ -33,6 +35,7 @@ export default () => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <Link to="/" css={logo} className="navbar-item">{data.site.siteMetadata.title}</Link>
+        <Back style={logo} />
         {/*
           <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
