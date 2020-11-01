@@ -1,8 +1,27 @@
 ---
-date: 2020-10-17
+date: 2020-11-01
 ---
 
+# The commodification of attention
+
+
+#### 2020-10-01
+
+Commodification can only occur in a marketplace that has already been standardized and abstracted. Tim Hwang, who formerly worked on public policy at Google, explains this using the example of Chicago grain markets: at first, farmers traveled to the market and sold their grain in person. With the rise of railroads, more grain was coming into the city’s markets than merchants could haggle over with each individual farmer. Additionally, there may have been many farmers all contributing grain that ended up on a single car on the train, at which point it was impossible to tell which farmer the grain belonged to.
+
+To solve this problem, the grain markets took the first step towards commodification: standardization. The Chicago Board of Trade developed specific metrics to grade each category of grain. Merchants no longer needed to know the farmer that the grain came from; the system of standards assured the level of quality.
+
+The next step toward commodification is abstraction. Now that merchants only needed to know the grade and quantity of the grain they are buying, there was no interaction with the farmers. Merchants who may not have any expertise about grain could now buy and sell quantities of grain effectively. The receipts for the quantity and grade of grain were the things being bought and sold, not the grain itself. Grain was now a commodity because the market had been standardized and then abstracted.
+
+Tim Hwang argues the same process has happened in the marketplace for attention. The Interactive Advertising Bureau has created standards for internet advertisements much like much like the Chicago Board of Trade had standardized grain quality. Although attention is certainly less concrete than train cars of grain, the internet has provided the data and tools to measure the amount of interaction and attention each ad receives. As the technology matured, the marketplaces for buying and selling online advertisements have become more abstract. Ads are surfaced on the internet algorithmically and buyers are far removed from the users consuming the ads and often the individual products or sites where the ads appear. Your attention is a commodity.
+
+_From [Subprime Attention Crisis](https://www.amazon.com/Subprime-Attention-Crisis-Advertising-Originals/dp/0374538654)_
+
+
 # Carcinisation
+
+
+#### 2020-09-01
 
 Crustaceans will always evolve into crabs. They’re all on their evolutionary journey to their final form: crabs. There’s a weird corner of the internet that is really into this topic right now.
 
