@@ -1,6 +1,56 @@
 ---
-date: 2020-11-01
+date: 2020-11-14
 ---
+
+# Product management is a balancing act
+
+
+#### 2020-11-14
+
+As a PM, you’re constantly finding tradeoffs. How do we balance value creation with value extraction? Short-term goals versus long-term goals? There are [so many of these types of questions](https://productcoalition.com/paradoxes-of-product-management-47485df421ac). In product management, balance is everything. To find balance, it takes focus, presence, and practice.
+
+Balance requires awareness of what is on either side of the scale. I find myself constantly asking questions like “On the spectrum from X to Y, where do we want to be?” For example, imagine you are building a new feature. One of the balances you might want to strike is the eternal “MVP” debate:
+
+
+
+
+
+
+![1-dimensional balance: spectrum](../../images/ideas/1d_spectrum.png)
+
+
+But so often dichotomies don’t exist; you are never really only balancing just one thing, and it often isn’t the case that you must choose one at the expense of the other. For example, if we are trying to balance business needs vs user needs, maybe a spectrum is the wrong mental model to use (a lot of people use a Venn diagram for this). Ideally, we want to create opportunities that are good for users and good for the business. If we add a second dimension, our “spectrums” becomes chords on a circle:
+
+
+
+
+
+
+![2-dimensional balance: chords](../../images/ideas/2d_spectrum.png)
+
+
+Each of the balances you try to strike as a PM doesn’t happen in isolation—they interact with each other. Add a third dimension, and now instead of a 1-dimensional spectrum, we’re thinking about balance as coordinates on a sphere:
+
+
+
+
+
+
+![3-dimensional balance: sphere](../../images/ideas/3d_spectrum.png)
+
+
+The final complication I can even imagine visualizing here is a fourth dimension: these balances don’t only interact with each other, they evolve and change over time. Business needs and user needs are constantly evolving, after all. Now, instead of visualizing “balance” as coordinates on a sphere, we are also considering how those balances change over time:
+
+
+
+
+
+
+![4-dimensional balance: spheres throught time](../../images/ideas/4d_spectrum.png)
+
+
+Balance is important. Recognizing what you are balancing is important. And in my opinion, a linear spectrum doesn’t always paint a complete picture when trying to describe what you are balancing.
+
 
 # The commodification of attention
 
@@ -274,7 +324,7 @@ _Inspired by_ [Change by Design](https://www.amazon.com/Change-Design-Transforms
 
 Whatever outcome you are after, a good process makes it repeatable, scalable, and more likely. Processes work in two directions: good processes can make good outcomes more likely and bad outcomes less likely. For example, a good process for product development involves systematically evaluating the impact of your product on your target market, making it more likely your new features / products will be successful. A good process for deploying code involves unit testing and end-to-end testing to make it less likely you’ll release bugs.
 
-When something bad does happen, it is often more important to look at _what in the process _allowed that thing to happen rather than just investigating _what_ bad thing happened. For example, recently my team shipped some code that caused a crash. The particular mistake was identified, but we also identified a flaw in our testing process. We’re now more likely to ship crash-free code because of the additional focus on process. We didn’t fix a bug, we made it more likely bugs won’t be shipped in the future. That’s the power of process: making desired outcomes more repeatable.
+When something bad does happen, it is often more important to look at _what in the process_ allowed that thing to happen rather than just investigating _what_ bad thing happened. For example, recently my team shipped some code that caused a crash. The particular mistake was identified, but we also identified a flaw in our testing process. We’re now more likely to ship crash-free code because of the additional focus on process. We didn’t fix a bug, we made it more likely bugs won’t be shipped in the future. That’s the power of process: making desired outcomes more repeatable.
 
 I am a strong believer in strong processes, but how much is too much? It’s easy to over-engineer processes that ultimately slow the team down. Two useful tools for finding balance are 1. the rule of threes (if something happens three times, it’s worth spending more time on improving relevant processes) and 2. considering the [cost of quality](https://anthonywbaker.com/ideas/#cost-of-quality).
 
@@ -291,5 +341,3 @@ The cost of shipping a low-quality product is degraded user experience (imagine 
 Time is valuable, and spending too much of it polishing features or conducting extensive QA takes time, especially when the Pareto principle comes into play (the last 20% of the work could take 80% of the time). What is the cost of the chance of a few small bugs? What is the cost of starting the next team project a week later?
 
 The cost of quality is yet another area that requires [finding balance](https://anthonywbaker.com/ideas/#product-management-is-a-balancing-act).
-
-

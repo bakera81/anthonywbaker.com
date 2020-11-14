@@ -2,6 +2,10 @@ import re
 from datetime import datetime
 
 img_map = [
+    { 'alt': '1-dimensional balance: spectrum', 'file': '1d_spectrum.png' },
+    { 'alt': '2-dimensional balance: chords', 'file': '2d_spectrum.png' },
+    { 'alt': '3-dimensional balance: sphere', 'file': '3d_spectrum.png' },
+    { 'alt': '4-dimensional balance: spheres throught time', 'file': '4d_spectrum.png' },
     { 'alt': 'Speed vs Velocity', 'file': 'speed_vs_velocity.png' },
     { 'alt': 'Impact vs Effort: Linear', 'file': 'linear_impact_vs_effort.png' },
     { 'alt': 'Impact vs Effort: Logarithmic', 'file': 'logarithmic_impact_vs_effort.png' },
