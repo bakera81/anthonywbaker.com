@@ -131,7 +131,7 @@ But there is another case: the inverse Pareto principle, where there is an expon
 
 
 *   When an initial feature simply doesn’t work on its own because it is meant to work in concert with other, not yet developed features;
-*   When you’re in an all-or-nothing situation. One of these all-or-nothing scenarios is fixing data quality issues: there is _no_ value in your data analytics ecosystem if the data only accurate some of the time.
+*   When you’re in an all-or-nothing situation. One of these all-or-nothing scenarios is fixing data quality issues: there is _no_ value in your data analytics ecosystem if the data is only accurate some of the time.
 
 
 
