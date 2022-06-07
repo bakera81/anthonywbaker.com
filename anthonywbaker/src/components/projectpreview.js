@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Link } from 'gatsby'
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import P from "./paragraph"
 
 
@@ -10,11 +10,12 @@ export default props => {
   return (
     <div className="column is-one-quarter-desktop is-half-tablet" css={{textAlign: `center`, paddingBottom: `6em`}}>
       <Link to={props.slug}>
-        <Img fixed={props.imgSrc.childImageSharp.fixed}
-             imgStyle={{border: `33px solid ${props.themeColor}`, backgroundColor: props.backgroundColor}}
-             style={{backgroundColor: props.backgroundColor}}/>
+        <GatsbyImage
+          image={props.imgSrc.childImageSharp.gatsbyImageData}
+          imgStyle={{border: `33px solid ${props.themeColor}`, backgroundColor: props.backgroundColor}}
+          style={{backgroundColor: props.backgroundColor}} />
       </Link>
       <P style={{fontSize: `.7em`, textAlign: `center`}}>{props.description}</P>
     </div>
-  )
+  );
 }
