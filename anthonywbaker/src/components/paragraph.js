@@ -13,5 +13,5 @@ const P = styled.p`
 `
 
 export default props => (
-  <P css={props.style}>{props.children}</P>
+  <P css={props.style} rel="noreferrer">{props.children}</P>
 )
