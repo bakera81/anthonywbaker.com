@@ -21,7 +21,7 @@ const renderNav = props => {
   return <NavBar />
 }
 
-const Layout = ({ props }) => (
+export default props => (
   <>
     {renderNav(props)}
     <section className="section">
@@ -32,5 +32,3 @@ const Layout = ({ props }) => (
     {renderFooter(props)}
   </>
 )
-
-export default Layout;

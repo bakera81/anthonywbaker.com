@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "bulma": "^0.9.4",
     "next": "latest",
     "node-sass": "^7.0.1",
