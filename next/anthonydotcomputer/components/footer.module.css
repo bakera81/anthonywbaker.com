@@ -1,0 +1,9 @@
+.footerNav {
+    background-color: white;
+    padding: 3rem 0rem 0rem;
+}
+
+.footerNoNav {
+    background-color: white;
+    padding: 3rem 0rem 1rem;
+}
