@@ -1,10 +1,21 @@
 import Head from 'next/head'
 
+import style from './index.module.css'
+
 import Layout from '../components/layout'
+import ListLink from '../components/listlink'
 
 export default function Home() {
   return (
     <Layout>
+      <div className={`level ${style.listLinkLevel}`}>
+        <ListLink href="/about">About</ListLink>
+        <ListLink href="/projects">Projects</ListLink>
+        <ListLink href="/ideas">Ideas</ListLink>
+        <ListLink href="/recipes">Recipes</ListLink>
+        <ListLink href="https://medium.com/@addiebundren">Writing</ListLink>
+        <ListLink href="/contact">Contact</ListLink>
+      </div>
       <div className="container">
         <Head>
           <title>Create Next App</title>
