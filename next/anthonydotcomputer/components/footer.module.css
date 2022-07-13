@@ -10,14 +10,58 @@
     /* position: relative; */
 }
 
-.footerImg {
-    object-fit: cover; 
-    object-position: 50% 10%;
-    height: 250px;
-}
-
 .footerImgWrapper {
     position: relative; 
     overflow: hidden; 
     height: 250px;
+}
+
+.footerImg {
+    object-fit: cover; 
+    /* object-position: 50% 10%; */
+    height: 250px;
+}
+
+.footerImg0 {
+    object-position: 50% 0%;
+}
+
+.footerImg10 {
+    object-position: 50% 10%;
+}
+
+.footerImg20 {
+    object-position: 50% 20%;
+}
+
+.footerImg30 {
+    object-position: 50% 30%;
+}
+
+.footerImg40 {
+    object-position: 50% 40%;
+}
+
+.footerImg50 {
+    object-position: 50% 50%;
+}
+
+.footerImg60 {
+    object-position: 50% 60%;
+}
+
+.footerImg70 {
+    object-position: 50% 70%;
+}
+
+.footerImg80 {
+    object-position: 50% 80%;
+}
+
+.footerImg90 {
+    object-position: 50% 90%;
+}
+
+.footerImg100 {
+    object-position: 50% 100%;
 }
