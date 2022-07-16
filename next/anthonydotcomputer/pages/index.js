@@ -1,4 +1,4 @@
-import Header from '../components/head'
+import Header from '../components/header'
 
 import style from './index.module.css'
 
