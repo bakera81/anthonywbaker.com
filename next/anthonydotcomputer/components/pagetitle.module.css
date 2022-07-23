@@ -5,6 +5,16 @@
 .level {
     margin-left: auto; 
     margin-right: 15px;
+    /* width: 100%; */
+}
+
+/* .level > div {
+    position: unset !important;
+} */
+
+.img {
+    height: 85px;
+    /* object-fit: contain; */
 }
 
 @media screen and (max-width: 400px) {
