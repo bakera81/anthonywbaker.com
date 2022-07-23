@@ -1,31 +1,13 @@
-import Image from "next/image"
+// import Image from "next/image"
+import allImages from '../helpers/images'
 
 import style from './pagetitle.module.css'
 
 
-// export default props => {
-//    const data = useStaticQuery(
-//      graphql`
-//        query {
-//          allFile(filter: {relativePath: {regex: "/renaissance/"}}) {
-//            edges {
-//              node {
-//                relativePath
-//                childImageSharp {
-//                  fixed(height: 85) {
-//                    ...GatsbyImageSharpFixed
-//                  }
-//                }
-//              }
-//            }
-//          }
-//        }
-//      `
-//   )
-
-//   const randomImg =  data.allFile.edges[Math.floor(Math.random() * data.allFile.edges.length)]
-
 export default function ({ children }) {
+
+  const randomImg = allImages[Math.floor(Math.random() * allImages.length)]
+
   return (
     <section className={`section ${style.section}`}>
       <div className="container">
@@ -33,7 +15,8 @@ export default function ({ children }) {
           <div className={`level-right has-text-right is-hidden-mobile ${style.level}`}>
             <img 
               className={style.img} 
-              src="/images/renaissance/2560px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" 
+              // src="/images/renaissance/2560px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" 
+              src={randomImg.src}
               alt="Another Renaissance painting"
             />
                 {/*TODO: FLip this to fluid and make it fill the height title is-1  */}
