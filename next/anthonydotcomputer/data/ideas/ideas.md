@@ -16,7 +16,7 @@ Balance requires awareness of what is on either side of the scale. I find myself
 
 
 
-![1-dimensional balance: spectrum](../../images/ideas/1d_spectrum.png)
+![1-dimensional balance: spectrum](/../public/images/ideas/1d_spectrum.png)
 
 
 But so often dichotomies don’t exist; you are never really only balancing just one thing, and it often isn’t the case that you must choose one at the expense of the other. For example, if we are trying to balance business needs vs user needs, maybe a spectrum is the wrong mental model to use (a lot of people use a Venn diagram for this). Ideally, we want to create opportunities that are good for users and good for the business. If we add a second dimension, our “spectrums” becomes chords on a circle:
@@ -26,7 +26,7 @@ But so often dichotomies don’t exist; you are never really only balancing just
 
 
 
-![2-dimensional balance: chords](../../images/ideas/2d_spectrum.png)
+![2-dimensional balance: chords](/../public/images/ideas/2d_spectrum.png)
 
 
 Each of the balances you try to strike as a PM doesn’t happen in isolation—they interact with each other. Add a third dimension, and now instead of a 1-dimensional spectrum, we’re thinking about balance as coordinates on a sphere:
@@ -36,7 +36,7 @@ Each of the balances you try to strike as a PM doesn’t happen in isolation—t
 
 
 
-![3-dimensional balance: sphere](../../images/ideas/3d_spectrum.png)
+![3-dimensional balance: sphere](/../public/images/ideas/3d_spectrum.png)
 
 
 The final complication I can even imagine visualizing here is a fourth dimension: these balances don’t only interact with each other, they evolve and change over time. Business needs and user needs are constantly evolving, after all. Now, instead of visualizing “balance” as coordinates on a sphere, we are also considering how those balances change over time:
@@ -46,7 +46,7 @@ The final complication I can even imagine visualizing here is a fourth dimension
 
 
 
-![4-dimensional balance: spheres throught time](../../images/ideas/4d_spectrum.png)
+![4-dimensional balance: spheres throught time](/../public/images/ideas/4d_spectrum.png)
 
 
 Balance is important. Recognizing what you are balancing is important. And in my opinion, a linear spectrum doesn’t always paint a complete picture when trying to describe what you are balancing.
@@ -94,7 +94,7 @@ Instead of speed, we should think about velocity. Velocity has speed _and_ direc
 
 
 
-![Speed vs Velocity](../../images/ideas/speed_vs_velocity.png)
+![Speed vs Velocity](/../public/images/ideas/speed_vs_velocity.png)
 
 
 In the plot above, each of the vectors represents a project or feature. The magnitude of the vectors could be considered “speed”: it is how quickly / how much progress was made towards that particular feature’s goals and KPIs. Even though the plot on the right has smaller magnitudes (i.e. less “speed”), the net effect is much closer to the goal. Direction matters. It shouldn’t be surprising that shipping features willy-nilly without a clear product direction won’t result in success, but even so, it seems pretty common for teams to obsess about speed.
@@ -113,7 +113,7 @@ For a given project, we often assume that there is a linear relationship between
 
 
 
-![Impact vs Effort: Linear](../../images/ideas/linear_impact_vs_effort.png)
+![Impact vs Effort: Linear](/../public/images/ideas/linear_impact_vs_effort.png)
 
 
 But this is rarely—if ever— the case. Many projects follow the [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle): 80% of the impact comes from 20% of the effort. This is often the case in the earlier stages of product maturity: just _having_ a feature is the most impactful thing you can do; polishing and tuning that feature will only have small incremental effects.
@@ -123,7 +123,7 @@ But this is rarely—if ever— the case. Many projects follow the [Pareto princ
 
 
 
-![Impact vs Effort: Logarithmic](../../images/ideas/logarithmic_impact_vs_effort.png)
+![Impact vs Effort: Logarithmic](/../public/images/ideas/logarithmic_impact_vs_effort.png)
 
 
 But there is another case: the inverse Pareto principle, where there is an exponential relationship between impact and effort. Some examples where this can happen are:
@@ -138,7 +138,7 @@ But there is another case: the inverse Pareto principle, where there is an expon
 
 
 
-![Impact vs Effort: Exponential](../../images/ideas/exponential_impact_vs_effort.png)
+![Impact vs Effort: Exponential](/../public/images/ideas/exponential_impact_vs_effort.png)
 
 
 If you are exclusively focused on speed, projects that have this type of curve can be dangerous. If you only build features that are easy to implement, you might be skipping the most impactful work.
@@ -169,7 +169,7 @@ This is what the cycle looks like:
 
 
 
-![The Product Death Cycle](../../images/ideas/product-death-cycle-1.jpeg)
+![The Product Death Cycle](/../public/images/ideas/product-death-cycle-1.jpeg)
 
 
 If you zoom in on the lifecycle of a single feature, here is what the cycle looks like. The X axis is time and the Y axis is whichever KPI was chosen for the particular feature:
@@ -179,7 +179,7 @@ If you zoom in on the lifecycle of a single feature, here is what the cycle look
 
 
 
-![The Product Death Cycle for a feature](../../images/ideas/product-death-cycle-2.jpeg)
+![The Product Death Cycle for a feature](/../public/images/ideas/product-death-cycle-2.jpeg)
 
 
 This is closely related to [the speed vs velocity concept](https://anthonywbaker.com/ideas#speed-vs-velocity): often, the most dangerous thing a product team can do is head in the wrong direction or build the wrong thing.
@@ -257,7 +257,7 @@ I came across this idea from [Brian Balfour’s](https://brianbalfour.com/) [Ref
 
 
 
-![SaaS Retention Curve](../../images/ideas/pm+fit+3.png)
+![SaaS Retention Curve](/../public/images/ideas/pm+fit+3.png)
 
 
 _Inspired by [this post](https://brianbalfour.com/essays/product-market-fit)_
@@ -277,7 +277,7 @@ But it goes on: do you have a monetization model that makes sense for your produ
 
 
 
-![P/M/M/C Fit](../../images/ideas/whatsneededtobuild100M-Reforge.jpg)
+![P/M/M/C Fit](/../public/images/ideas/whatsneededtobuild100M-Reforge.jpg)
 
 
 

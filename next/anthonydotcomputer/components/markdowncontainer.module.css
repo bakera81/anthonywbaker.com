@@ -6,3 +6,12 @@
     padding-top: 1em;
     padding-bottom: 1em;
 }
+
+.mdContainer > ul {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+.mdContainer > ol {
+    margin-left: 20px;
+}
