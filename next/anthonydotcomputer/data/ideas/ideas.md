@@ -242,7 +242,7 @@ _Inspired by [this post](https://larahogan.me/blog/how-to-manage-up/)_
 
 “Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.”
 
-	—[Melvin Conway](https://en.wikipedia.org/wiki/Conway%27s_law)
+—[Melvin Conway](https://en.wikipedia.org/wiki/Conway%27s_law)
 
 
 # SaaS retention as an indicator of P/M fit

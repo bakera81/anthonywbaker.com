@@ -12,7 +12,7 @@ const fileContents = fs.readFileSync(fullPath, 'utf8');
 const matterResult = matter(fileContents);
 
 return {
-    content: fileContents,
+    content: matterResult.content,
     ...matterResult.data,
   };
 

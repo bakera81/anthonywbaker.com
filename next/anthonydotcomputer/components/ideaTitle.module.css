@@ -3,6 +3,7 @@
     font-family: "Microsoft Sans Serif";
     font-smooth: never;
     -webkit-font-smoothing: none;
+    padding-top: 3rem;
 }
 
 .heading:hover {

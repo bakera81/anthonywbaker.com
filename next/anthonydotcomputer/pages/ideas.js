@@ -1,6 +1,5 @@
 import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
-import Idea from "../components/idea"
 import IdeaTitle from "../components/ideaTitle"
 import P from "../components/paragraph"
 import Hr from "../components/hr"
@@ -28,7 +27,7 @@ export default function Ideas({ ideasData }) {
           <PageTitle>Ideas</PageTitle>
           <div className="columns">
             <div className="column is-6 is-offset-6">
-              <P style={{textAlign: `left`}}>
+              <P>
                 Inspired by "Today I Learned" blogs, these are ideas I've come across that seemed worth writing down.
               </P>
               <Hr />
@@ -38,12 +37,15 @@ export default function Ideas({ ideasData }) {
             <div className="column is-1-desktop is-hidden-touch"></div>
             <div className={`column is-two-thirds-desktop ${style.mdContainer}`}>
                 <ReactMarkdown
+                    // Exclude dates which are always h4's
+                    disallowedElements={["h4"]}
                     components={{
                         // Use custom components
                         // h1: ({node, ...props}) => <PageTitle {...props} />,
                         h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                        h4: "",
                         hr: ({node, ...props}) => <Hr {...props} />,
-                        p: ({node, ...props}) => <P {...props} />,
+                        p: ({node, ...props}) => <P leftAlign {...props} />,
                         // TODO: use markdown to set the height per image
                         img: ({node, ...props}) => <MarkdownImage {...props} />
                     }}
