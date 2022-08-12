@@ -2,12 +2,17 @@ import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
 import Idea from "../components/idea"
 import P from "../components/paragraph"
+import A from '../components/anchor'
 import Hr from "../components/hr"
 import { getIdeasData } from '../helpers/ideas.js'
 
-import unified from 'unified';
-import parse from 'remark-parse';
-import remark2react from 'remark-react';
+import fs from 'fs';
+import { path } from 'path';
+import matter from 'gray-matter';
+import { unified } from 'unified';
+import rehypeParse from 'rehype-parse';
+import rehypeReact from 'rehype-react';
+import { createElement, Fragment } from 'react'
 
 import visit from "unist-util-visit"
 import toString from "mdast-util-to-string"
@@ -27,9 +32,38 @@ import toString from "mdast-util-to-string"
 
 // https://github.com/vercel/next.js/blob/8b721227cf82a0af3be07663dc8d218430c80514/examples/blog-starter/lib/api.ts#L7
 
+function generateComponents({ fileContents }) {
+  console.log('generateComponents')
+  const test = unified()
+    .use(rehypeParse, { fragment: true })
+    .use(rehypeReact, {
+      createElement, Fragment,
+      components: {
+          a: A,
+          p: P,
+        }
+    })
+    .processSync(fileContents).result;
+  console.log(test)
+
+  const content = unified()
+        .use(rehypeParse, { fragment: true })
+        .use(rehypeReact, {
+            createElement, Fragment,
+            components: {
+                a: A,
+                p: P,
+              }
+        })
+        .processSync(fileContents).result;
+  // TODO: This is creating undefined
+  // console.log(content)
+  return content;
+}
+
 export default function Ideas ({ ideasData }) {
-  console.log("IDEAS DATA")
-  console.log(ideasData)
+  // console.log("IDEAS DATA")
+  // console.log(ideasData)
 
   // Walk through the hast and create a data structure to pass to a custom component
   /*
@@ -73,6 +107,8 @@ export default function Ideas ({ ideasData }) {
   return (
     <Layout>
       <PageTitle>Ideas</PageTitle>
+      {/* {console.log(ideasData.ideasFileContents)} */}
+      {/* {generateComponents(ideasData.ideasFileContents)} */}
       {/* <div className="columns">
         <div className="column is-6 is-offset-6">
           <P style={{textAlign: `left`}}>
