@@ -31,7 +31,7 @@ hr_pat = re.compile(r'\n---\n.*', re.DOTALL)
 raw_md = re.sub(hr_pat, '', raw_md)
 
 for i, img in enumerate(img_map):
-    new_img = '![' + img['alt'] + '](../../images/ideas/' + img['file'] + ')'
+    new_img = '![' + img['alt'] + '](/../public/images/ideas/' + img['file'] + ')'
     # old = '!\[alt_text\]\(images/image{}.* "image_tooltip"\)'.format(i + 1)
     # pat = re.compile(old)
     pat = re.compile('!\[alt_text\]\(images/image\d.* "image_tooltip"\)')
