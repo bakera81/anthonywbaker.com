@@ -1,6 +1,7 @@
 import Layout from "../components/layout"
 import PageTitle from "../components/pagetitle"
 import Idea from "../components/idea"
+import IdeaTitle from "../components/ideaTitle"
 import P from "../components/paragraph"
 import Hr from "../components/hr"
 import MarkdownImage from '../components/markdownImage'
@@ -39,7 +40,8 @@ export default function Ideas({ ideasData }) {
                 <ReactMarkdown
                     components={{
                         // Use custom components
-                        h1: ({node, ...props}) => <PageTitle {...props} />,
+                        // h1: ({node, ...props}) => <PageTitle {...props} />,
+                        h1: ({node, ...props}) => <IdeaTitle {...props} />,
                         hr: ({node, ...props}) => <Hr {...props} />,
                         p: ({node, ...props}) => <P {...props} />,
                         // TODO: use markdown to set the height per image

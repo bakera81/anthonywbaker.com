@@ -1,0 +1,10 @@
+.heading {
+    margin-bottom: 0 !important;
+    font-family: "Microsoft Sans Serif";
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+}
+
+.heading:hover {
+    color: #3273dc;
+}
