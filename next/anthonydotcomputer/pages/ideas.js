@@ -3,7 +3,9 @@ import PageTitle from "../components/pagetitle"
 import Idea from "../components/idea"
 import P from "../components/paragraph"
 import Hr from "../components/hr"
-import Image from 'next/image'
+import MarkdownImage from '../components/markdownImage'
+
+import style from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -33,14 +35,15 @@ export default function Ideas({ ideasData }) {
           </div>
           <div className="columns">
             <div className="column is-1-desktop is-hidden-touch"></div>
-            <div className="column is-two-thirds-desktop">
+            <div className={`column is-two-thirds-desktop ${style.mdContainer}`}>
                 <ReactMarkdown
                     components={{
                         // Use custom components
                         h1: ({node, ...props}) => <PageTitle {...props} />,
                         hr: ({node, ...props}) => <Hr {...props} />,
                         p: ({node, ...props}) => <P {...props} />,
-                        img: ({node, ...props}) => <Image width={200} height={200} {...props} />
+                        // TODO: use markdown to set the height per image
+                        img: ({node, ...props}) => <MarkdownImage {...props} />
                     }}
                 >
                     {ideasData.content}
