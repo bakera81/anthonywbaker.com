@@ -23,6 +23,8 @@ export async function getStaticProps() {
 
 export default function Ideas({ ideasData }) {
     return (
+      <>
+        <Header>Ideas</Header>
         <Layout>
           <PageTitle>Ideas</PageTitle>
           <div className="columns">
@@ -55,5 +57,6 @@ export default function Ideas({ ideasData }) {
             </div>
           </div>
         </Layout>
+        </>
     )
 }

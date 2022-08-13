@@ -11,11 +11,6 @@ import style from './markdownImage.module.css'
 // }
 
 export default function MarkdownImage({ src }) { 
-    
-    console.log("SRC")
-    console.log(src)
-    // console.log("SIZE")
-    // console.log(size)
     return (
         <div className={style.imgContainer}>
             <Image
