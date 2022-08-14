@@ -1,7 +1,7 @@
 import styles from './paragraph.module.css'
 
-export default function P ({ children, leftAlign }) {
+export default function P ({ children, style }) {
     return (
-        <p className={leftAlign ? `${styles.paragraph} ${styles.leftAlign}` : styles.paragraph}>{children}</p>
+        <p className={styles.paragraph} style={style}>{children}</p>
     )
 }

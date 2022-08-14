@@ -48,7 +48,7 @@ export default function Ideas({ ideasData }) {
                         h1: ({node, ...props}) => <IdeaTitle {...props} />,
                         h4: "",
                         hr: ({node, ...props}) => <Hr {...props} />,
-                        p: ({node, ...props}) => <P leftAlign {...props} />,
+                        p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
                         // TODO: use markdown to set the height per image
                         img: ({node, ...props}) => <MarkdownImage {...props} />
                     }}
