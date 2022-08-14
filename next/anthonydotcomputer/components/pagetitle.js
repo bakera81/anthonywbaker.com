@@ -1,5 +1,5 @@
 // import Image from "next/image"
-import allImages from '../helpers/images'
+import allImages from '../utils/images'
 
 import style from './pagetitle.module.css'
 

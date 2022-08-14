@@ -6,7 +6,7 @@ import RecipeList from '../components/recipeList'
 
 import styles from './recipes.module.css'
 
-import { getRecipesData } from '../helpers/recipes'
+import { getRecipesData } from '../utils/recipes'
 
 
 export async function getStaticProps() {

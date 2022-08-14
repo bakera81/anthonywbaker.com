@@ -1,15 +1,16 @@
-import Layout from "../components/layout"
-import PageTitle from "../components/pagetitle"
-import IdeaTitle from "../components/ideaTitle"
-import P from "../components/paragraph"
-import Hr from "../components/hr"
+import Layout from '../components/layout'
+import PageTitle from '../components/pagetitle'
+import IdeaTitle from '../components/ideaTitle'
+import P from '../components/paragraph'
+import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
+import Header from '../components/header'
 
 import style from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
 
-import { getIdeasData } from '../helpers/ideas'
+import { getIdeasData } from '../utils/ideas'
 
 
 export async function getStaticProps() {

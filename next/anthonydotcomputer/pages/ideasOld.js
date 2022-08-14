@@ -4,7 +4,7 @@ import Idea from "../components/idea"
 import P from "../components/paragraph"
 import A from '../components/anchor'
 import Hr from "../components/hr"
-import { getIdeasData } from '../helpers/ideas.js'
+import { getIdeasData } from '../utils/ideas.js'
 
 import fs from 'fs';
 import { path } from 'path';

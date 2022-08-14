@@ -4,7 +4,7 @@ import PageTitle from  '../components/pagetitle'
 import P from '../components/paragraph'
 import Hr from '../components/hr'
 import Header from '../components/header'
-import shuffle from '../helpers/shuffle'
+import shuffle from '../utils/shuffle'
 
 
 import React from 'react'

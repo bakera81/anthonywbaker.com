@@ -2,7 +2,7 @@ import styles from './footer.module.css'
 import P from './paragraph'
 import A from './anchor'
 import Image from 'next/image';
-import allImages from '../helpers/images'
+import allImages from '../utils/images'
 
 export default function Footer({ home }) {
     //TODO: Fix this
