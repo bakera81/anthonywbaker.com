@@ -9,9 +9,8 @@ export const frontmatter = {
   title: 'Literacy Data Research Tool',
   description: 'Literacy data research tool.',
   slug: 'digital-humanities-literacy-narratives',
-  previewImage: previewImage,
+  preview: previewImage,
   themeColor: '#b1cb73', // #83dedd
-  backgroundColor: '#b1cb73', // #83dedd
   updatedAt: '2015-05-01',
   completed: true,
 }

@@ -21,9 +21,9 @@ export default function Projects() {
                   alignRight={i % 2 === 0}
                   description={project.description}
                   slug={`projects/${project.slug}`}
-                  img={project.previewImage}
+                  img={project.preview}
                   themeColor={project.themeColor}
-                  backgroundColor={project.backgroundColor}
+                  backgroundColor={project.themeColor}
                 />
               ))}
             </div>

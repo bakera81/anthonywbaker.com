@@ -9,10 +9,8 @@ export const frontmatter = {
   title: 'Anthony.Computer',
   description: 'This website.',
   slug: 'anthonywbaker',
-  preview: 'projects/awb-2020.jpg',
-  previewImage: previewImage,
+  preview: previewImage,
   themeColor: '#828cb8',
-  backgroundColor: '#828cb8',
   updatedAt: '2020-01-01',
   completed: true,
 }

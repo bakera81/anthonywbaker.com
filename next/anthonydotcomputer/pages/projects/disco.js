@@ -8,9 +8,8 @@ export const frontmatter = {
   title: 'Email Server and Ambient Display',
   description: 'Internet-connected disco ball.',
   slug: 'disco',
-  previewImage: projectImage,
+  preview: projectImage,
   themeColor: 'rgb(211, 198, 166)',
-  backgroundColor: 'rgb(211, 198, 166)',
   updatedAt: '2015-11-01',
   completed: true,
 }
