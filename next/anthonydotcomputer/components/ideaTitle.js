@@ -1,4 +1,4 @@
-import style from './ideaTitle.module.css'
+import styles from './ideaTitle.module.css'
 // import Link from 'next/link'
 var GithubSlugger = require('github-slugger')
 var slugger = new GithubSlugger()
@@ -10,10 +10,10 @@ export default function IdeaTitle({ children }) {
     
     return(
         <a id={ideaId} href={`/ideas#${ideaId}`}>
-            <h4 className={`title is-4 ${style.heading}`}>{children}</h4>
+            <h4 className={`title is-4 ${styles.heading}`}>{children}</h4>
         </a>    
         // <Link id={ideaId} href={`/ideas#${ideaId}`} scroll={false}>
-        //     <h4 className={`title is-4 ${style.heading}`}>{children}</h4>
+        //     <h4 className={`title is-4 ${styles.heading}`}>{children}</h4>
         // </Link>
     )
 }

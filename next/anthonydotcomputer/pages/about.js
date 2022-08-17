@@ -9,7 +9,7 @@ import shuffle from '../utils/shuffle'
 
 import React from 'react'
 
-import style from './about.module.css'
+import styles from './about.module.css'
 // import resume from "../public/BakerResume_v18_Heap.pdf"
 
 
@@ -55,7 +55,7 @@ export default function About() {
     <Header>About</Header>
     <Layout>
       <PageTitle>Anthony W. Baker</PageTitle>
-        <P>{aboutMe} <span className={style.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
+        <P>{aboutMe} <span className={styles.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
         <Hr />
         <P>Creative writing & computer science (bachelor's) @ <A href="https://www.lafayette.edu/" target="_blank">Lafayette College</A>: 2011-2015.</P>
         <P>Technology, innovation, and education (master's) @ <A href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</A>: 2015-2016.</P>

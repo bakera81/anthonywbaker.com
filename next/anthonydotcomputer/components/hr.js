@@ -1,8 +1,8 @@
-import style from './hr.module.css'
+import styles from './hr.module.css'
 
 export default function() {
     return(
-        <hr className={`has-background-grey-lighter ${style.horizontalRule}`}/>
+        <hr className={`has-background-grey-lighter ${styles.horizontalRule}`}/>
     )
 
 }

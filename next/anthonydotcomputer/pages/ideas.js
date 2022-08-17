@@ -6,7 +6,7 @@ import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
 import Header from '../components/header'
 
-import style from './ideas.module.css'
+import styles from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -38,7 +38,7 @@ export default function Ideas({ ideasData }) {
           </div>
           <div className="columns">
             <div className="column is-1-desktop is-hidden-touch"></div>
-            <div className={`column is-two-thirds-desktop ${style.mdContainer}`}>
+            <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
                 <ReactMarkdown
                     // Exclude dates which are always h4's
                     disallowedElements={["h4"]}

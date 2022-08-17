@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import style from './listlink.module.css'
+import styles from './listlink.module.css'
 
 export default function ListLink({ href, children }) {
     return(
-        <div className={`level-item ${style.levelItemStyle}`}>
+        <div className={`level-item ${styles.levelItemStyle}`}>
             <Link href={ href }>
-                <h1 className={`title is-2 ${style.listLinkStyle}`}>{children}</h1>
+                <h1 className={`title is-2 ${styles.listLinkStyle}`}>{children}</h1>
             </Link>
         </div>
     )
