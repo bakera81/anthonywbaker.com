@@ -16,15 +16,17 @@ export const frontmatter = {
   completed: true,
 }
 
-export default ({ data }) => (
-  <Layout title={frontmatter.title}>
-    <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
-      <P style={{textAlign: `left`}}>
-        Whereas muscles convey information about the immediate physical world through kinesthetic feedback, ExoMuscle can convey information about the non-physical (digital) world beyond the reach of your immediate space. I was a member of the team that developed the concept, created a prototype, and proposed three applications: sensing driving mistakes, syncing with a calender to let users feel the "pressure" of time, and giving wearers a sixth sense by letting users feel radiofrequencies.
-      </P>
-      <P style={{textAlign: `left`}}>
-        <a href="../../images/projects/exomuscle.pdf" target="_blank">slides</a>
-      </P>
-    </Project>
-  </Layout>
-)
+export default function Exomuscle() {
+    return ( 
+        <Layout title={frontmatter.title}>
+            <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
+                <P style={{textAlign: `left`}}>
+                Whereas muscles convey information about the immediate physical world through kinesthetic feedback, ExoMuscle can convey information about the non-physical (digital) world beyond the reach of your immediate space. I was a member of the team that developed the concept, created a prototype, and proposed three applications: sensing driving mistakes, syncing with a calender to let users feel the "pressure" of time, and giving wearers a sixth sense by letting users feel radiofrequencies.
+                </P>
+                <P style={{textAlign: `left`}}>
+                <a href="../../images/projects/exomuscle.pdf" target="_blank">slides</a>
+                </P>
+            </Project>
+        </Layout>
+    )
+}
