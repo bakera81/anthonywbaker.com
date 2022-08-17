@@ -1,3 +1,8 @@
+import Header from '../../components/header'
+import Layout from '../../components/layout'
+import Project from '../../components/project'
+import P from '../../components/paragraph'
+
 
 import projectImage from '../../public/images/projects/2048.png'
 
@@ -14,5 +19,16 @@ export const frontmatter = {
 };
 
 export default function ReinforcementLearning() {
-  return(<div>TEST</div>)
+  return(
+    <>
+    <Header>2048 Reinforcement Learning</Header>
+    <Layout>
+    <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
+      <P style={{textAlign: `left`}}>
+        Created an "environment" for the game <a href="https://play2048.co/">2048</a> using <a href="https://gym.openai.com/">Open AI Gym</a> to train various reinforcement learning algorithms to play the game.
+      </P>
+    </Project>
+  </Layout>
+  </>
+  )
 }

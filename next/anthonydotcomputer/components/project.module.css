@@ -1,0 +1,11 @@
+.projectColumnContainer {
+    align-items: center;
+}
+
+.projectColumn1 {
+    order: 1;
+}
+
+.projectColumn0 {
+    order: 0;
+}
