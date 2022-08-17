@@ -19,7 +19,7 @@ export function getRecipesData() {
         var recipesCategoryData = fileNames.reduce((recipesCategoryData, fileName) => {
 
             if (path.extname(fileName) === '.md') {
-                console.log('processing...')
+                // console.log('processing...')
                 // Read markdown file as string
                 const fullPath = path.join(recipesDirectory, dirName, fileName)
                 const fileContents = fs.readFileSync(fullPath, 'utf8');    
@@ -45,7 +45,7 @@ export function getRecipesData() {
         
     });
 
-    console.log('ALL RECIPES DATA')
-    console.log(allRecipesData)
+    // console.log('ALL RECIPES DATA')
+    // console.log(allRecipesData)
     return allRecipesData;
 }
