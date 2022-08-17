@@ -1,8 +1,9 @@
 import { frontmatter as proj1} from '../pages/projects/2048-reinforcement-learning'
 import { frontmatter as proj2 } from '../pages/projects/anthonywbaker'
+import { frontmatter as proj3 } from '../pages/projects/digital-humanities-literacy-narratives'
 
 const allProjectMetadata = [
-    {...proj1}, {...proj2},
+    {...proj1}, {...proj2}, {...proj3},
 ];
 
 export default allProjectMetadata;
