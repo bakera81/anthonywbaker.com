@@ -1,4 +1,3 @@
-import Header from '../components/header'
 import Layout from '../components/layout'
 import PageTitle from '../components/pagetitle'
 import ProjectPreview from '../components/projectPreview'
@@ -13,9 +12,7 @@ import allProjectMetadata from '../utils/projects'
 export default function Projects() {
 
     return (
-        <>
-        <Header>Projects</Header>
-        <Layout>
+        <Layout title="Projects">
           <PageTitle>Projects</PageTitle>
           <section className={`section ${styles.projectSection}`}>
             <div className="columns is-multiline">
@@ -46,6 +43,5 @@ export default function Projects() {
             </div>
           </section> */}
         </Layout>
-        </>
       )
 }

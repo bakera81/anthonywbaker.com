@@ -3,7 +3,6 @@ import A from '../components/anchor'
 import PageTitle from  '../components/pagetitle'
 import P from '../components/paragraph'
 import Hr from '../components/hr'
-import Header from '../components/header'
 import shuffle from '../utils/shuffle'
 
 
@@ -51,9 +50,7 @@ export default function About() {
   }
 
   return (
-    <>
-    <Header>About</Header>
-    <Layout>
+    <Layout title="About">
       <PageTitle>Anthony W. Baker</PageTitle>
         <P>{aboutMe} <span className={styles.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
         <Hr />
@@ -64,6 +61,5 @@ export default function About() {
         <Hr />
         <P><A href="/contact">Contact</A></P>
     </Layout>
-    </>
   );
 }

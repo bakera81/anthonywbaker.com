@@ -1,5 +1,4 @@
 import Layout from '../../components/layout'
-import Header from '../../components/header'
 import Project from '../../components/project'
 import P from '../../components/paragraph'
 
@@ -19,9 +18,7 @@ export const frontmatter = {
 
 export default function LiteracyNarratives(){
     return(
-        <>
-        <Header>{frontmatter.title}</Header>
-        <Layout>
+        <Layout title={frontmatter.title}>
         <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
           <P style={{textAlign: `left`}}>
             Since 1987, Lafayette's <a href="https://cwp.lafayette.edu/" target="_blank">College Writing Program</a> has required every writing tutor to write a personal essay about their history as a writer.
@@ -32,6 +29,5 @@ export default function LiteracyNarratives(){
           </P>
         </Project>
       </Layout>
-      </>
     )
 }

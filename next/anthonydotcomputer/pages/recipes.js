@@ -1,4 +1,3 @@
-import Header from '../components/header'
 import Layout from  '../components/layout'
 import PageTitle from '../components/pagetitle'
 import P from '../components/paragraph'
@@ -21,9 +20,7 @@ export async function getStaticProps() {
 export default function Recipes ({ recipesData }) {
 
   return (
-    <>
-    <Header>Recipes</Header>
-    <Layout>
+    <Layout title="Recipes">
       <PageTitle>Recipes</PageTitle>
         <div className="section">
             <div className="columns">
@@ -46,6 +43,5 @@ export default function Recipes ({ recipesData }) {
             </div>
         </div>                    
     </Layout>
-    </>
   )
 }

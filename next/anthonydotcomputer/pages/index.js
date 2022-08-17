@@ -1,14 +1,10 @@
-import Header from '../components/header'
-
-import styles from './index.module.css'
-
 import Layout from '../components/layout'
 import ListLink from '../components/listlink'
 
+import styles from './index.module.css'
+
 export default function Home() {
   return (
-    <>
-      <Header />
       <Layout>
         <div className={`level ${styles.listLinkLevel}`}>
           <ListLink href="/about">About</ListLink>
@@ -219,6 +215,5 @@ export default function Home() {
           */}
         </div>
       </Layout> 
-    </>
   )
 }
