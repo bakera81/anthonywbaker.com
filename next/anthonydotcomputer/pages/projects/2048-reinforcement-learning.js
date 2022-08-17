@@ -7,7 +7,7 @@ import P from '../../components/paragraph'
 import projectImage from '../../public/images/projects/2048.png'
 
 export const frontmatter = {
-    title: `Playing 2048 with Reinforcement Learning`,
+    title: `Reinforcement Learning`,
     description: `Playing 2048 with reinforcement learning.`,
     slug: '2048-reinforcement-learning',
     preview: `projects/2048.png`,

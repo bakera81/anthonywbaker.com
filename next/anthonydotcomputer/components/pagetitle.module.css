@@ -17,9 +17,15 @@
     /* object-fit: contain; */
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     .pageTitle {
         font-size: 3rem !important;
+    }
+  }
+
+@media screen and (max-width: 400px) {
+    .pageTitle {
+        font-size: 2.5rem !important;
     }
   }
 
