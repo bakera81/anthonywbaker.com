@@ -5,10 +5,11 @@ import { frontmatter as proj4 } from '../pages/projects/disco'
 import { frontmatter as proj5 } from '../pages/projects/exomuscle'
 import { frontmatter as proj6 } from '../pages/projects/googhole'
 import { frontmatter as proj7 } from '../pages/projects/itunes-scripting'
+import { frontmatter as proj8 } from '../pages/projects/judiths-reading-room'
 
 const allProjectMetadata = [
     {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
-    {...proj6}, {...proj7},
+    {...proj6}, {...proj7}, {...proj8},
     
 ];
 
