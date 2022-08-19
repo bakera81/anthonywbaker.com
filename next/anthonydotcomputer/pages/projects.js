@@ -10,7 +10,6 @@ import allProjectMetadata from '../utils/projects'
 // console.log(frontmatter)
 
 export default function Projects() {
-
     return (
         <Layout title="Projects">
           <PageTitle>Projects</PageTitle>

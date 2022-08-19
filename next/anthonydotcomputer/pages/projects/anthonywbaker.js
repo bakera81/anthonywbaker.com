@@ -11,7 +11,7 @@ export const frontmatter = {
   slug: 'anthonywbaker',
   preview: previewImage,
   themeColor: '#828cb8',
-  updatedAt: '2020-01-01',
+  updatedAt: '2022-08-01',
   completed: true,
 }
 
