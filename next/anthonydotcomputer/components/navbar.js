@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <A href="/" className={`navbar-item ${styles.logo}`}>Anthony W. Baker</A>
-        <Back className={`navbar-item ${styles.logo}`} />
+        <Back className={styles.logo} />
       </div>
     </nav>
   );

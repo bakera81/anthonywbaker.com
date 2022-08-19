@@ -5,7 +5,7 @@ import styles from './index.module.css'
 
 export default function Home() {
   return (
-      <Layout>
+      <Layout home>
         <div className={`level ${styles.listLinkLevel}`}>
           <ListLink href="/about">About</ListLink>
           <ListLink href="/projects">Projects</ListLink>
