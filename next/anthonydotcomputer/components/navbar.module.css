@@ -5,7 +5,10 @@
   font-weight: 300;
   color: #000;
   /* :hover{
-    color: #000;
+    
   } */
 }
 
+.logo:hover {
+  color: #000;
+}
