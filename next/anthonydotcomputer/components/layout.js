@@ -2,7 +2,7 @@ import Header from './header'
 import Navbar from './navbar'
 import Footer from './footer'
 
-export default function Layout({ children, home, title }) {
+export default function Layout({ children, home, hideFooter, title }) {
 
   return (
     <>
@@ -13,7 +13,7 @@ export default function Layout({ children, home, title }) {
         {children}
       </div>
     </section>
-    {home ? <Footer home /> : <Footer />}
+    {hideFooter ? <></> : (home ? <Footer home /> : <Footer />)}
     </>
   );
 }

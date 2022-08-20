@@ -1,0 +1,14 @@
+.container404 {
+    max-width: 500;
+    /* margin: auto auto; */
+    display: flex;
+    justify-content: center;
+}
+
+.returnHomeContainer {
+    padding-top: 0;
+}
+
+.returnHome {
+    font-size: .7rem;
+}
