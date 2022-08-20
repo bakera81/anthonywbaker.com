@@ -4,10 +4,8 @@ import ProjectPreview from '../components/projectPreview'
 
 import styles from './projects.module.css'
 
+//TODO: Maybe move this to getStaticProps
 import allProjectMetadata from '../utils/projects'
-// console.log(allProjectMetadata)
-// import { frontmatter } from './projects/2048-reinforcement-learning'
-// console.log(frontmatter)
 
 export default function Projects() {
     return (
@@ -17,6 +15,7 @@ export default function Projects() {
             <div className="columns is-multiline">
               {allProjectMetadata.map((project , i) => (
                 <ProjectPreview
+                  // TODO: fix alignRight
                   alignRight={i % 2 === 0}
                   description={project.description}
                   slug={`projects/${project.slug}`}
@@ -27,20 +26,6 @@ export default function Projects() {
               ))}
             </div>
           </section>
-          {/* <PageTitle>In Progress</PageTitle>
-          <section className="section" css={{paddingLeft: `0`, paddingRight: `0`}}>
-            <div className="columns is-multiline">
-              {inProgressProjects.map(({ node }, i) => (
-                <ProjectPreview
-                  alignRight={i % 2 === 0}
-                  description={node.frontmatter.description}
-                  slug={`projects/${sluggify(node.fileAbsolutePath)}`}
-                  imgSrc={findPreviewImage(node.frontmatter.preview)}
-                  themeColor={node.frontmatter.themeColor}
-                />
-              ))}
-            </div>
-          </section> */}
         </Layout>
       )
 }
