@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "Chomsky";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/Chomsky-399c.woff") format("woff"), url("../fonts/Chomsky-8MOa2.otf") format("otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Microsoft Sans Serif";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/micross.ttf") format("ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pixel Arial 11";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/pixearg.ttf") format("ttf");
+  font-display: swap;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+/* Customize Bulma variables */
+$size-1: 5rem;
+$size-2: 3rem;
+
+@import "bulma/bulma.sass";

@@ -1,0 +1,21 @@
+.projectPreviewWrapper {
+    text-align: center; 
+    padding-bottom: 6em;
+}
+
+.projectDescription {
+    font-size: .7em; 
+    text-align: center;
+}
+
+.previewImage { 
+    border: 33px solid !important;
+}
+
+.previewLink {
+    color: black;
+}
+
+.previewLink:hover {
+    color: black;
+}

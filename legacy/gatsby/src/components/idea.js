@@ -27,7 +27,7 @@ const Heading = styled.h4`
   }
 `
 // https://www.gatsbyjs.org/packages/gatsby-plugin-anchor-links/
-export default props => (
+const Idea = ({ props }) => (
   <section className="section">
     {/* <AnchorLink to={`/ideas#${slugger(props.heading)}`} title={props.heading} /> */}
     <a id={slugger(props.heading)} href={`/ideas#${slugger(props.heading)}`}>
@@ -41,3 +41,5 @@ export default props => (
     </MdContainer>
   </section>
 )
+
+export default Idea;

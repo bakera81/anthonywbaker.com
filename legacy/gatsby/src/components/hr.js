@@ -8,4 +8,9 @@ import styled from "@emotion/styled"
   height: 1px;
 `
 
-export default props => <Hr className="has-background-grey-lighter"/>
+const HorizontalRule = () =>{
+  return (
+    <Hr className="has-background-grey-lighter"/>
+  )
+}
+export default HorizontalRule;
