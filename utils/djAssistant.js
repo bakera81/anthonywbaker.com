@@ -1,5 +1,4 @@
 var Airtable = require('airtable');
-// var base = new Airtable({apiKey: 'keyTWbvu6jcNa7mI6'}).base('appAnc9ynUzG3TMAd');
 var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('appAnc9ynUzG3TMAd');
 
 export async function getAirtableData() {
