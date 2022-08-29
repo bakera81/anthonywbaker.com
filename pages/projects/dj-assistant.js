@@ -8,14 +8,14 @@ import styles from './dj-assistant.module.css'
 
 import { getAirtableData } from '../../utils/djAssistant'
 
-import projectImage from '../../public/images/projects/spinewectator.jpg'
+import projectImage from '../../public/images/projects/black_square.png'
 
 export const frontmatter = {
   title: 'DJ Assistant',
   description: 'Song recommendations for obscure situations.',
   slug: 'dj-assistant',
   preview: projectImage,
-  themeColor: '#74080b', // '#f5f403',
+  themeColor: '#000', // '#f5f403',
   updatedAt: '2022-08-28',
   completed: true,
 }
@@ -64,13 +64,14 @@ export default function SongsForPeople({ songData }) {
                     <SongTitle subtitle={`by ${selectedSong.Artist}`}>{selectedSong.Title}</SongTitle>
                 </section>    
                 <section className="section">
-                    
-                    <div className={`container ${styles.playerContainer}`}>
+                    <div className={`container ${styles.playerContainer}`} dangerouslySetInnerHTML={{ __html:  selectedSong.AppleMusicEmbed}} />
+                    <div className={`container ${styles.playerContainer}`} dangerouslySetInnerHTML={{ __html:  selectedSong.SpotifyEmbed}} />
+                    {/* <div className={`container ${styles.playerContainer}`}>
                         <div dangerouslySetInnerHTML={{ __html:  selectedSong.AppleMusicEmbed}} />
-                    </div>
+                    </div> 
                     <div className={`container ${styles.playerContainer}`}>
                         <div dangerouslySetInnerHTML={{ __html:  selectedSong.SpotifyEmbed}} />
-                    </div>
+                    </div>*/}
                 </section>
                 </>
             ) : (<></>)}
