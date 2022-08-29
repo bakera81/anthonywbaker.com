@@ -1,6 +1,10 @@
 .playerContainer {
-    max-width: 660px;
+    max-width: 660px !important;
     padding-bottom: 20px;
+}
+
+.playerContainer > div {
+    max-width: 660px;
 }
 
 .options {
