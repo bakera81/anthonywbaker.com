@@ -23,3 +23,13 @@ const allProjectMetadata = [
 ].sort((a,b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
 
 export default allProjectMetadata;
+
+export function fetchAllProjectMetadata() {
+    const allProjectMetadata = [
+        {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
+        {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
+        {...proj11}, {...proj12}, {...proj13}, {...proj14}, {...proj15},
+    ];
+
+    return allProjectMetadata;
+}
