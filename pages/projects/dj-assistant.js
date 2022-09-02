@@ -11,13 +11,14 @@ import { getAirtableData } from '../../utils/djAssistant'
 import projectImage from '../../public/images/projects/black_square.png'
 
 export const frontmatter = {
-  title: 'DJ Assistant',
-  description: 'Song recommendations for obscure situations.',
-  slug: 'dj-assistant',
-  preview: projectImage,
-  themeColor: '#000', // '#f5f403',
-  updatedAt: '2022-08-28',
-  completed: true,
+    title: 'DJ Assistant',
+    description: 'Song recommendations for obscure situations.',
+    slug: 'dj-assistant',
+    //   preview: projectImage,
+    preview: '/public/images/projects/black_square.png',
+    themeColor: '#000', // '#f5f403',
+    updatedAt: '2022-08-28',
+    completed: true,
 }
 
 export async function getStaticProps() {
