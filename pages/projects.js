@@ -4,10 +4,19 @@ import ProjectPreview from '../components/projectPreview'
 
 import styles from './projects.module.css'
 
-//TODO: Maybe move this to getStaticProps
-import allProjectMetadata from '../utils/projects'
+import { fetchAllProjectMetadata } from '../utils/projects'
 
-export default function Projects() {
+export async function getStaticProps() {
+  const allProjectMetadata = await fetchAllProjectMetadata();
+
+  return {
+    props: {
+      allProjectMetadata,
+    },
+  };
+}
+
+export default function Projects({ allProjectMetadata }) {
     return (
         <Layout title="Projects">
           <PageTitle>Projects</PageTitle>

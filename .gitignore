@@ -100,3 +100,4 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 netlify.toml
+next.config.js
