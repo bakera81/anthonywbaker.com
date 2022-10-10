@@ -1,21 +1,78 @@
 // const { Client } = require("@notionhq/client")
-import { Client, collectPaginatedAPI } from '@notionhq/client'
-
+import { Client, collectPaginatedAPI, iteratePaginatedAPI } from '@notionhq/client'
+import { NotionToMarkdown } from 'notion-to-md'
 
 // Initializing a client
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
+const n2m = new NotionToMarkdown({ notionClient: notion });
+
+export function getAllRecipeIds() {
+    const parentBlockId = 'c373d6b64c0340d1b5a0e622711870d6';
+    const recipeIds = collectPaginatedAPI(notion.blocks.children.list, {
+        block_id: parentBlockId,
+    }).then(blocks => {
+        return blocks.map((block) => {
+            return {
+                params: {
+                    id: block.id,
+                    // title: block.child_page.title,
+                }
+            }
+        })
+    });
+
+    return recipeIds;
+    // return blocks.map((block) => {
+    //     return {
+    //         params: {
+    //             id: block.id,
+    //             title: block.child_page.title,
+    //         }
+    //     }
+    // })
+
+    // console.log("OH YEAH")
+    // console.log(blocks)
+
+    // Must return an array that looks like this:
+    // [
+    //   {
+    //     params: {
+    //       id: 'ssg-ssr'
+    //     }
+    //   },
+    //   {
+    //     params: {
+    //       id: 'pre-rendering'
+    //     }
+    //   }
+    // ]
+
+}
+
+export async function getRecipeData(id) {
+    const mdblocks = await n2m.pageToMarkdown(id);
+    const mdString = n2m.toMarkdownString(mdblocks);
+
+    return {
+        id: id,
+        markdown: mdString,
+    }
+}
+
 export async function getRecipeBlocks() { 
+    // TODO: get blocks for each top level category
     const blockId = '9c55f35c31644f748c7a11c5081ef810';
     const allBlocks = await notion.blocks.children.list({
         block_id: blockId,
         page_size: 50,
     })
-    // console.log(allBlocks.results)
 
     return allBlocks.results;
+};
 
     // const blockId = '9c55f35c31644f748c7a11c5081ef810';
     // const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
@@ -59,7 +116,7 @@ export async function getRecipeBlocks() {
     //     return response;
     //   })();
 
-};
+// };
 
 
 

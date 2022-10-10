@@ -24,7 +24,7 @@ export default function Recipes({ recipesData }) {
     <>
       {console.log(recipesData)}
       {recipesData.map((recipe) => (
-        <p>{recipe.child_page.title}</p>
+        <p>{recipe.child_page.title} - {recipe.id}</p>
       ))}
     </>
   )
