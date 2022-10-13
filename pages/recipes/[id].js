@@ -30,8 +30,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const recipeData = await getRecipeData(params.id);
-    console.log('RECIPE DATA')
-    console.log(recipeData)
+    // console.log('RECIPE DATA')
+    // console.log(recipeData)
     return {
         props: {
             recipeData,
@@ -40,10 +40,13 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Recipe({ recipeData }) {
-    console.log(recipeData)
     return(
         <Layout title={recipeData.title}>
-        <ReactMarkdown>
+        <ReactMarkdown
+            components={{
+                p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+            }}
+        >
             {recipeData.markdown}
         </ReactMarkdown>
         

@@ -9,22 +9,75 @@ const notion = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export function getAllRecipeIds() {
-    const parentBlockId = 'c373d6b64c0340d1b5a0e622711870d6';
-    const recipeIds = collectPaginatedAPI(notion.blocks.children.list, {
-        block_id: parentBlockId,
-    }).then(blocks => {
-        return blocks.map((block) => {
-            return {
-                params: {
+export async function getRecipeMarkdown(id) {
+    const mdblocks = await n2m.pageToMarkdown(id);
+    const mdString = n2m.toMarkdownString(mdblocks);
+    return mdString;
+}
+
+export async function getAllRecipesAndCategories() {
+    // Use this function to get all the data I care about
+    
+    function filterForPages(obj) {
+        return Object.keys(obj).includes('child_page')
+    }
+
+    async function fetchRecipes(categoryId) {
+        return await collectPaginatedAPI(notion.blocks.children.list, {
+            block_id: categoryId,
+        }).then(blocks => {
+            return blocks.filter(filterForPages).map((block) => {
+                const markdown = getRecipeMarkdown(block.id);
+                return {
                     id: block.id,
-                    // title: block.child_page.title,
+                    parentId: block.parent.page_id,
+                    title: block.child_page.title,
+                    markdown: markdown,
                 }
+            })
+        });
+    }
+
+    // Get top level categories from the root page
+    const categories = await collectPaginatedAPI(notion.blocks.children.list, {
+        block_id: 'c373d6b64c0340d1b5a0e622711870d6',
+    }).then(blocks => {
+        return blocks.filter(filterForPages).map((block) => {
+            return {
+                id: block.id,
+                // pageId: block.parent.page_id,
+                // keys: Object.keys(block).toString(),
+                category: block.child_page.title,
+                // object: JSON.stringify(block.object),
+                // title: block.child_page.title,
             }
         })
     });
 
-    return recipeIds;
+    return categories.map((category) => {
+        const recipes = fetchRecipes(category.id);
+        return {
+            category: category.category,
+            recipes: recipes,
+        }
+    });
+}
+
+export function getAllRecipeIds() {
+    
+    // Flatten the data structure and format it properly for Nextjs
+    const allRecipes = getAllRecipesAndCategories();
+
+    // const allRecipes = categories.map((category) => {
+    //     return {
+    //         params: {
+
+    //         }
+    //     } 
+    // });
+    
+    return allRecipes;
+
     // return blocks.map((block) => {
     //     return {
     //         params: {
@@ -53,8 +106,11 @@ export function getAllRecipeIds() {
 
 }
 
+
+
 export async function getRecipeData(id) {
-    const mdblocks = await n2m.pageToMarkdown(id);
+    const mdblocks = await n2m.pageToMarkdown('cba2b4d00b6d49c8b7d78f418f07828b');
+    // const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
     return {
@@ -64,7 +120,8 @@ export async function getRecipeData(id) {
 }
 
 export async function getRecipeBlocks() { 
-    // TODO: get blocks for each top level category
+    // TODO: use this function to get all the nice metadata for the /recipes page
+    // TODO: Format it so that it'll be easy to categorize
     const blockId = '9c55f35c31644f748c7a11c5081ef810';
     const allBlocks = await notion.blocks.children.list({
         block_id: blockId,

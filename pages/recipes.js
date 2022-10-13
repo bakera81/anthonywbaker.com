@@ -5,13 +5,13 @@ import RecipeList from '../components/recipeList'
 
 import styles from './recipes.module.css'
 
-import { getRecipeBlocks } from '../utils/recipes'
+import { getAllRecipesAndCategories, getRecipeBlocks } from '../utils/recipes'
 
 // import { getRecipesData } from '../utils/recipes'
 
 
 export async function getStaticProps() {
-    const recipesData = await getRecipeBlocks();
+    const recipesData = await getAllRecipesAndCategories();
     return {
       props: {
         recipesData,
@@ -23,9 +23,9 @@ export default function Recipes({ recipesData }) {
   return (
     <>
       {console.log(recipesData)}
-      {recipesData.map((recipe) => (
+      {/* {recipesData.map((recipe) => (
         <p>{recipe.child_page.title} - {recipe.id}</p>
-      ))}
+      ))} */}
     </>
   )
 }
