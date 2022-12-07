@@ -10,37 +10,98 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getRecipeMarkdown(id) {
+    console.log('IN getRecipeMarkdown')
+    console.log(`id: ${id}`)
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
+    const { results } = await notion.blocks.children.list({
+        block_id: id,
+      });
+    // return results;
     return mdString;
+}
+
+export function getBlocks(id) {
+    console.log(`id: ${id}`)
+    const blocks = collectPaginatedAPI(notion.blocks.children.list, {
+        block_id: id,
+      })
+    return blocks;
+}
+
+export async function getRecipesDatabase() {
+    const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
+    const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
+        return getBlocks(recipe.id).then((md) => {
+            return {
+                id: recipe.id,
+                properties: recipe.properties,
+                markdown: md,
+            }
+        })
+    }))
+    return recipesWithMarkdown;
+}
+
+
+
+
+// EVERYTHING BELOW IS DEPRECATED
+
+
+function filterForPages(obj) {
+    return Object.keys(obj).includes('child_page')
+}
+
+
+async function fetchRecipes(categoryId) {
+    const subRecipes = await collectPaginatedAPI(notion.blocks.children.list, {
+        block_id: categoryId,
+    }).then((blocks) => {
+        return blocks.filter(filterForPages).map((block) => {
+            const subRecipe = {
+                id: block.id,
+                parentId: block.parent.page_id,
+                title: block.child_page.title,
+            }
+            const markdown = getRecipeMarkdown(block.id).then((markdown) => {
+                return markdown
+            })
+            return {
+                ...subRecipe,
+                markdown: markdown,
+            }
+        })
+    });
+    return subRecipes
+}
+
+export async function getRecipeCategories() {
+    // Get top level categories from the root page
+    const categories = await collectPaginatedAPI(notion.blocks.children.list, {
+        block_id: BLOCK_ID,
+    }).then(blocks => {
+        return blocks.filter(filterForPages).map((block) => {
+            return {
+                id: block.id,
+                // pageId: block.parent.page_id,
+                // keys: Object.keys(block).toString(),
+                category: block.child_page.title,
+                // object: JSON.stringify(block.object),
+                // title: block.child_page.title,
+            }
+        })
+    });
+
+    return categories;
 }
 
 export async function getAllRecipesAndCategories() {
     // Use this function to get all the data I care about
-    
-    function filterForPages(obj) {
-        return Object.keys(obj).includes('child_page')
-    }
-
-    async function fetchRecipes(categoryId) {
-        return await collectPaginatedAPI(notion.blocks.children.list, {
-            block_id: categoryId,
-        }).then(blocks => {
-            return blocks.filter(filterForPages).map((block) => {
-                const markdown = getRecipeMarkdown(block.id);
-                return {
-                    id: block.id,
-                    parentId: block.parent.page_id,
-                    title: block.child_page.title,
-                    markdown: markdown,
-                }
-            })
-        });
-    }
 
     // Get top level categories from the root page
     const categories = await collectPaginatedAPI(notion.blocks.children.list, {
-        block_id: 'c373d6b64c0340d1b5a0e622711870d6',
+        block_id: BLOCK_ID,
     }).then(blocks => {
         return blocks.filter(filterForPages).map((block) => {
             return {
@@ -55,11 +116,30 @@ export async function getAllRecipesAndCategories() {
     });
 
     return categories.map((category) => {
-        const recipes = fetchRecipes(category.id);
-        return {
+        const recipesWithCategory = {
             category: category.category,
-            recipes: recipes,
-        }
+            categoryId: category.id,
+        };
+        console.log(`Fetching recipes for ${category.category}...`)
+        const subRecipes = fetchRecipes(category.id);
+        console.log('subRecipes:');
+        console.log(subRecipes);
+        recipesWithCategory.recipes = subRecipes;
+        // fetchRecipes(category.id).then((recipes) => {
+        //     recipesWithCategory.recipes = recipes;
+        // });
+        // const recipes = fetchRecipes(category.id).then((recipes) => {
+        //     return {
+        //         recipes: recipes,
+        //     }
+        // });
+        console.log('recipesWithCategories')
+        console.log(recipesWithCategory)
+        return recipesWithCategory; 
+        // return {
+        //     category: category.category,
+        //     ...recipes,
+        // }
     });
 }
 
@@ -131,7 +211,7 @@ export async function getRecipeBlocks() {
     return allBlocks.results;
 };
 
-    // const blockId = '9c55f35c31644f748c7a11c5081ef810';
+    // const blockId = 'BLOCK_ID';
     // const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
     //     block_id: blockId,
     //   }).then(blocks => {
@@ -143,11 +223,11 @@ export async function getRecipeBlocks() {
     //   })
     // console.log(blocks)
     
-    // const pageId = 'c373d6b64c0340d1b5a0e622711870d6';
+    // const pageId = 'PAGE_ID';
     // const response = await notion.pages.retrieve({ page_id: pageId });
 
 
-    // const blockId = '9c55f35c31644f748c7a11c5081ef810';
+    // const blockId = BLOCK_ID;
     // const allBlocks = await notion.blocks.children.list({
     //     block_id: blockId,
     //     page_size: 50,
@@ -158,7 +238,7 @@ export async function getRecipeBlocks() {
     // return allBlocks;
 
     // (async () => {
-    //     const blockId = '9c55f35c31644f748c7a11c5081ef810';
+    //     const blockId = BLOCK_ID;
     //     const response = await notion.blocks.children.list({
     //       block_id: blockId,
     //       page_size: 50,
@@ -166,7 +246,7 @@ export async function getRecipeBlocks() {
     //     console.log(response);
     //   })();
     // (async () => {
-    //     const pageId = 'c373d6b64c0340d1b5a0e622711870d6';
+    //     const pageId = PAGE_ID;
     //     const response = await notion.pages.retrieve({ page_id: pageId });
     //     console.log("RESPONSE:")
     //     console.log(response);

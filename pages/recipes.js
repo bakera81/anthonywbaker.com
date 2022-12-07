@@ -5,18 +5,25 @@ import RecipeList from '../components/recipeList'
 
 import styles from './recipes.module.css'
 
-import { getAllRecipesAndCategories, getRecipeBlocks } from '../utils/recipes'
+import { getRecipeMarkdown, getBlocks, getRecipesDatabase, getRecipeCategories, getAllRecipesAndCategories, getRecipeBlocks } from '../utils/recipes'
 
 // import { getRecipesData } from '../utils/recipes'
 
 
 export async function getStaticProps() {
-    const recipesData = await getAllRecipesAndCategories();
-    return {
-      props: {
-        recipesData,
-      },
-    };
+  // Interestingly this returns data...
+  // const recipesData = await getBlocks(PAGE_ID);
+  // ... but this does not...
+  // const recipesData = await getRecipeMarkdown(PAGE_ID);
+  // ... and neither does this (for 'markdown')...
+  const recipesData = await getRecipesDatabase();
+  console.log('IN GET STATIC PROPS')
+  console.log(recipesData)
+  return {
+    props: {
+      recipesData,
+    },
+  };
 }
 
 export default function Recipes({ recipesData }) { 
@@ -24,7 +31,7 @@ export default function Recipes({ recipesData }) {
     <>
       {console.log(recipesData)}
       {/* {recipesData.map((recipe) => (
-        <p>{recipe.child_page.title} - {recipe.id}</p>
+        <p>{recipe.category}</p>
       ))} */}
     </>
   )
