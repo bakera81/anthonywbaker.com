@@ -10,5 +10,5 @@ This site is powered by NextJS.
 
 ## Env vars
 - For local development, set environment variables in `.env.local` in the root. You can access them using `process.env.VARIABLE`.
-- For production, use the Netlify UI.
+- For production, use the Netlify UI (Build & Deploy -> Environment). You may also need to update `next.config.js`.
 
