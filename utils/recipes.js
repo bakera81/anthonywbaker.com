@@ -14,9 +14,9 @@ export async function getRecipeMarkdown(id) {
     console.log(`id: ${id}`)
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
-    const { results } = await notion.blocks.children.list({
-        block_id: id,
-      });
+    // const { results } = await notion.blocks.children.list({
+    //     block_id: id,
+    //   });
     // return results;
     return mdString;
 }
@@ -29,13 +29,38 @@ export function getBlocks(id) {
     return blocks;
 }
 
+function getPageIdFromDatabasePage(recipe) {
+    // console.log({
+    //     step: 'in getPageIdFromDatabasePageId', 
+    //     recipe: JSON.stringify(recipe)
+    // })
+    return recipe.properties.Name.title.find((obj) => {
+        return obj.type === "mention"
+    }).mention.page.id
+}
+
+function getCategoryFromDatabasePage(recipe) {
+    return recipe.properties.Category.select.name
+}
+
+function getSlugFromDatabasePage(recipe) {
+    return recipe.properties.Slug.rich_text.find((obj) => {
+        return obj.type === "text"
+    }).plain_text
+}
+
 export async function getRecipesDatabase() {
     const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
+    console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
-        return getBlocks(recipe.id).then((md) => {
+        const pageId = getPageIdFromDatabasePage(recipe)
+        const category = getCategoryFromDatabasePage(recipe)
+        const slug = getSlugFromDatabasePage(recipe)
+        return getRecipeMarkdown(pageId).then((md) => {
             return {
-                id: recipe.id,
-                properties: recipe.properties,
+                id: pageId,
+                category: category,
+                slug: slug,
                 markdown: md,
             }
         })

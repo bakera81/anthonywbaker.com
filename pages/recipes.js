@@ -15,6 +15,7 @@ export async function getStaticProps() {
   // const recipesData = await getBlocks(PAGE_ID);
   // ... but this does not...
   // const recipesData = await getRecipeMarkdown(PAGE_ID);
+  // const recipesData = await getRecipeMarkdown(PAGE_ID)
   // ... and neither does this (for 'markdown')...
   const recipesData = await getRecipesDatabase();
   console.log('IN GET STATIC PROPS')
