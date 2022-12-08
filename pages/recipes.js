@@ -11,58 +11,45 @@ import { getRecipeMarkdown, getBlocks, getRecipesDatabase, getRecipeCategories, 
 
 
 export async function getStaticProps() {
-  // Interestingly this returns data...
-  // const recipesData = await getBlocks(PAGE_ID);
-  // ... but this does not...
-  // const recipesData = await getRecipeMarkdown(PAGE_ID);
-  // const recipesData = await getRecipeMarkdown(PAGE_ID)
-  // ... and neither does this (for 'markdown')...
   const recipesData = await getRecipesDatabase();
-  console.log('IN GET STATIC PROPS')
-  console.log(recipesData)
+  const recipeCategories = [...new Set(recipesData.map(recipe => recipe.category))]
+  console.log(recipeCategories)
   return {
     props: {
       recipesData,
+      recipeCategories,
     },
   };
 }
 
-export default function Recipes({ recipesData }) { 
+
+export default function Recipes({ recipesData, recipeCategories }) {
   return (
-    <>
-      {console.log(recipesData)}
-      {/* {recipesData.map((recipe) => (
-        <p>{recipe.category}</p>
-      ))} */}
-    </>
+    <Layout title="Recipes">
+      <PageTitle>Recipes</PageTitle>
+      {recipeCategories.map((category, i) => {
+        if (i % 2 == 0) {
+          return (
+            <div className="section">
+              <div className="columns">
+                <div className="column is-6">
+                  <h2 className={styles.recipeSection}>{recipeCategories[i]}</h2>
+                  <RecipeList recipeData={
+                    recipesData.filter((recipe) => {return recipe.category == recipeCategories[i]})
+                  } />
+                </div>
+                {/* TODO Don't render this column if there are no more categories */}
+                <div className="column is-6">
+                  <h2 className={styles.recipeSection}>{recipeCategories[i + 1]}</h2>
+                  <RecipeList recipeData={
+                    recipesData.filter((recipe) => {return recipe.category == recipeCategories[i + 1]})
+                  } />
+                </div>
+              </div>
+            </div>
+          )
+        }
+      })}
+    </Layout>
   )
 }
-
-// export default function Recipes ({ recipesData }) {
-
-//   return (
-//     <Layout title="Recipes">
-//       <PageTitle>Recipes</PageTitle>
-//         <div className="section">
-//             <div className="columns">
-//                 {recipesData.slice(0,2).map((category) => (
-//                     <div className="column is-6">
-//                         <h2 className={styles.recipeSection}>{category.category}</h2>
-//                         <RecipeList recipeData={category.data} />
-//                     </div>
-//                 ))}
-//             </div>
-//         </div>
-//         <div className="section">
-//             <div className="columns">
-//                 {recipesData.slice(2,4).map((category) => (
-//                     <div className="column is-6">
-//                         <h2 className={styles.recipeSection}>{category.category}</h2>
-//                         <RecipeList recipeData={category.data} />
-//                     </div>
-//                 ))}
-//             </div>
-//         </div>                    
-//     </Layout>
-//   )
-// }

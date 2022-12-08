@@ -49,6 +49,12 @@ function getSlugFromDatabasePage(recipe) {
     }).plain_text
 }
 
+function getTitleFromDatabasePage(recipe) {
+    return recipe.properties.Name.title.find((obj) => {
+        return obj.type === "mention"
+    }).plain_text
+}
+
 export async function getRecipesDatabase() {
     const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
     console.log({step: 'response', response: JSON.stringify(response.results)})
@@ -56,11 +62,13 @@ export async function getRecipesDatabase() {
         const pageId = getPageIdFromDatabasePage(recipe)
         const category = getCategoryFromDatabasePage(recipe)
         const slug = getSlugFromDatabasePage(recipe)
+        const title = getTitleFromDatabasePage(recipe)
         return getRecipeMarkdown(pageId).then((md) => {
             return {
                 id: pageId,
                 category: category,
                 slug: slug,
+                title: title,
                 markdown: md,
             }
         })
