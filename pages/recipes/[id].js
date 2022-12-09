@@ -1,5 +1,7 @@
 import Layout from '../../components/layout'
+import IdeaTitle from '../../components/ideaTitle'
 import P from '../../components/paragraph'
+import List from '../../components/list'
 import ReactMarkdown from 'react-markdown'
 
 import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
@@ -12,32 +14,15 @@ export async function getStaticPaths() {
                 id: recipe.slug,
             }
         }
-    })
+    });
 
-    // const paths2 = [
-    //   {
-    //     params: {
-    //       id: 'ssg-ssr'
-    //     }
-    //   },
-    //   {
-    //     params: {
-    //       id: 'pre-rendering'
-    //     }
-    //   }
-    // ]
     return {
-    //   paths: paths,
         paths,
         fallback: false,
     };
   }
 
 export async function getStaticProps({ params }) {
-    // console.log({step: 'getStaticProps', params: JSON.stringify(params)})
-    // const recipeData = await getRecipeData(params.id);
-    // console.log('RECIPE DATA')
-    // console.log(recipeData)
     const recipe = await queryRecipesDatabase(params.id)
     // console.log({step: 'getStaticProps', recipe: recipe})
     return {
@@ -48,17 +33,19 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Recipe({ recipeData }) {
-    // return (<>{console.log(recipeData)}</>)
     return(
         <Layout title={recipeData.title}>
-        <ReactMarkdown
-            components={{
-                p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
-            }}
-        >
-            {recipeData.markdown}
-        </ReactMarkdown>
-        
+            {console.log(recipeData)}
+            <ReactMarkdown
+                components={{
+                    h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                    p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                    ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                    ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+                }}
+            >
+                {recipeData.markdown}
+            </ReactMarkdown>
         </Layout>
     )
 }

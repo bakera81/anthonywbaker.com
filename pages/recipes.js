@@ -5,7 +5,7 @@ import RecipeList from '../components/recipeList'
 
 import styles from './recipes.module.css'
 
-import { getRecipeMarkdown, getBlocks, getRecipesDatabase, getRecipeCategories, getAllRecipesAndCategories, getRecipeBlocks } from '../utils/recipes'
+import { getRecipesDatabase } from '../utils/recipes'
 
 // import { getRecipesData } from '../utils/recipes'
 
