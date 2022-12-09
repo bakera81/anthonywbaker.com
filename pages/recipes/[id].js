@@ -2,13 +2,18 @@ import Layout from '../../components/layout'
 import P from '../../components/paragraph'
 import ReactMarkdown from 'react-markdown'
 
-import { getAllRecipeIds, getRecipeData } from '../../utils/recipes'
-import { NotionToMarkdown } from 'notion-to-md'
+import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
 
 export async function getStaticPaths() {
-    const paths = await getAllRecipeIds();
-    console.log('get Paths:')
-    console.log(paths)
+    const recipesData = await getRecipesDatabase();
+    const paths = recipesData.map((recipe) => {
+        return {
+            params: {
+                id: recipe.slug,
+            }
+        }
+    })
+
     // const paths2 = [
     //   {
     //     params: {
@@ -29,17 +34,21 @@ export async function getStaticPaths() {
   }
 
 export async function getStaticProps({ params }) {
-    const recipeData = await getRecipeData(params.id);
+    // console.log({step: 'getStaticProps', params: JSON.stringify(params)})
+    // const recipeData = await getRecipeData(params.id);
     // console.log('RECIPE DATA')
     // console.log(recipeData)
+    const recipe = await queryRecipesDatabase(params.id)
+    // console.log({step: 'getStaticProps', recipe: recipe})
     return {
         props: {
-            recipeData,
+            recipeData: recipe
         },
     };
 }
 
 export default function Recipe({ recipeData }) {
+    // return (<>{console.log(recipeData)}</>)
     return(
         <Layout title={recipeData.title}>
         <ReactMarkdown

@@ -13,7 +13,6 @@ import { getRecipeMarkdown, getBlocks, getRecipesDatabase, getRecipeCategories, 
 export async function getStaticProps() {
   const recipesData = await getRecipesDatabase();
   const recipeCategories = [...new Set(recipesData.map(recipe => recipe.category))]
-  console.log(recipeCategories)
   return {
     props: {
       recipesData,
