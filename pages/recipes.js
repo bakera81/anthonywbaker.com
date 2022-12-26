@@ -12,7 +12,8 @@ import { getRecipesDatabase } from '../utils/recipes'
 
 export async function getStaticProps() {
   const recipesData = await getRecipesDatabase();
-  const recipeCategories = [...new Set(recipesData.map(recipe => recipe.category))]
+  const recipeCategoryNestedArray = recipesData.map(recipe => recipe.category)
+  const recipeCategories = [...new Set(recipeCategoryNestedArray.flat())]
   return {
     props: {
       recipesData,
@@ -34,14 +35,14 @@ export default function Recipes({ recipesData, recipeCategories }) {
                 <div className="column is-6">
                   <h2 className={styles.recipeSection}>{recipeCategories[i]}</h2>
                   <RecipeList recipeData={
-                    recipesData.filter((recipe) => {return recipe.category == recipeCategories[i]})
+                    recipesData.filter((recipe) => {return recipe.category.includes(recipeCategories[i])})
                   } />
                 </div>
                 {/* TODO Don't render this column if there are no more categories */}
                 <div className="column is-6">
                   <h2 className={styles.recipeSection}>{recipeCategories[i + 1]}</h2>
                   <RecipeList recipeData={
-                    recipesData.filter((recipe) => {return recipe.category == recipeCategories[i + 1]})
+                    recipesData.filter((recipe) => {return recipe.category.includes(recipeCategories[i + 1])})
                   } />
                 </div>
               </div>

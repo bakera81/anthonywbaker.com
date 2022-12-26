@@ -32,8 +32,11 @@ function getPageIdFromDatabasePage(recipe) {
     }).mention.page.id
 }
 
+// returns an array
 function getCategoryFromDatabasePage(recipe) {
-    return recipe.properties.Category.select.name
+    return recipe.properties.Category.multi_select.map((category) => {
+        return category.name
+    })
 }
 
 function getSlugFromDatabasePage(recipe) {
@@ -79,7 +82,7 @@ export async function getRecipesDatabase() {
     // console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
         const pageId = getPageIdFromDatabasePage(recipe)
-        const category = getCategoryFromDatabasePage(recipe)
+        const category = getCategoryFromDatabasePage(recipe) // returns an array
         const slug = getSlugFromDatabasePage(recipe)
         const title = getTitleFromDatabasePage(recipe)
         return getRecipeMarkdown(pageId).then((md) => {
