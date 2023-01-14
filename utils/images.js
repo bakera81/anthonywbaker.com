@@ -28,12 +28,13 @@ import img27 from '../public/images/renaissance/Tiziano_-_Amor_Sacro_y_Amor_Prof
 import img28 from '../public/images/renaissance/Tondo_Doni,_por_Miguel_Ángel.jpg'
 import img29 from '../public/images/renaissance/Transfigurazione_(Raffaello)_September_2015-1a.jpg'
 import img30 from '../public/images/renaissance/Van_Eyck_-_Arnolfini_Portrait.jpg'
+import img31 from '../public/images/renaissance/1880_Pierre_Auguste_Cot_-_The_Storm.jpg'
 
 const allImages = [
     img1, img2, img3, img4, img5, img6, img7, img8, img9, 
     img10, img11, img12, img13, img14, img15, img16, img17, 
     img18, img19, img20, img21, img22, img23, img24, img25, 
-    img26, img27, img28, img29, img30,
+    img26, img27, img28, img29, img30, img31,
 ]
 
 export default allImages
