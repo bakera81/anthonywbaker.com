@@ -1,9 +1,10 @@
 import Layout from  '../components/layout'
 import PageTitle from '../components/pagetitle'
 import P from '../components/paragraph'
+import Link from 'next/link'
 import RecipeList from '../components/recipeList'
 
-import styles from './recipes.module.css'
+// import styles from './recipes.module.css'
 
 import { getRecipesDatabase } from '../utils/recipes'
 
@@ -27,29 +28,7 @@ export default function Recipes({ recipesData, recipeCategories }) {
   return (
     <Layout title="Recipes">
       <PageTitle>Recipes</PageTitle>
-      {recipeCategories.map((category, i) => {
-        if (i % 2 == 0) {
-          return (
-            <div className="section">
-              <div className="columns">
-                <div className="column is-6">
-                  <h2 className={styles.recipeSection}>{recipeCategories[i]}</h2>
-                  <RecipeList recipeData={
-                    recipesData.filter((recipe) => {return recipe.category.includes(recipeCategories[i])})
-                  } />
-                </div>
-                {/* TODO Don't render this column if there are no more categories */}
-                <div className="column is-6">
-                  <h2 className={styles.recipeSection}>{recipeCategories[i + 1]}</h2>
-                  <RecipeList recipeData={
-                    recipesData.filter((recipe) => {return recipe.category.includes(recipeCategories[i + 1])})
-                  } />
-                </div>
-              </div>
-            </div>
-          )
-        }
-      })}
+      <P> or <Link href="/recipes/categories">browse by category</Link></P>
     </Layout>
   )
 }
