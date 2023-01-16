@@ -27,9 +27,10 @@ function getPageIdFromDatabasePage(recipe) {
     //     step: 'getPageIdFromDatabasePageId', 
     //     recipe: JSON.stringify(recipe)
     // })
-    return recipe.properties.Name.title.find((obj) => {
-        return obj.type === "mention"
-    }).mention.page.id
+    // return recipe.properties.Name.title.find((obj) => {
+    //     return obj.type === "mention"
+    // }).mention.page.id
+    return recipe.id
 }
 
 // returns an array
@@ -46,8 +47,11 @@ function getSlugFromDatabasePage(recipe) {
 }
 
 function getTitleFromDatabasePage(recipe) {
+    // return recipe.properties.Name.title.find((obj) => {
+    //     return obj.type === "mention"
+    // }).plain_text
     return recipe.properties.Name.title.find((obj) => {
-        return obj.type === "mention"
+        return obj.type === "mention" || obj.type === "text"
     }).plain_text
 }
 
@@ -79,7 +83,7 @@ export async function queryRecipesDatabase(slug) {
 
 export async function getRecipesDatabase() {
     const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
-    // console.log({step: 'response', response: JSON.stringify(response.results)})
+    console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
         const pageId = getPageIdFromDatabasePage(recipe)
         const category = getCategoryFromDatabasePage(recipe) // returns an array
