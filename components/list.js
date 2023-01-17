@@ -1,11 +1,13 @@
+import styles from './list.module.css'
+
 export default function List({ ordered, children }) {
     console.log(children)
     return ordered ? (
-        <ol className="TEST">
+        <ol className={styles.orderedList}>
             {children}
         </ol>
     ) : (
-        <ul className="TEST">
+        <ul className={styles.unorderedList}>
             {children}
         </ul>
     )

@@ -83,7 +83,7 @@ export async function queryRecipesDatabase(slug) {
 
 export async function getRecipesDatabase() {
     const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
-    console.log({step: 'response', response: JSON.stringify(response.results)})
+    // console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
         const pageId = getPageIdFromDatabasePage(recipe)
         const category = getCategoryFromDatabasePage(recipe) // returns an array

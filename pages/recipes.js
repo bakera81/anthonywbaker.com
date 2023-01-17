@@ -28,6 +28,9 @@ export default function Recipes({ recipesData, recipeCategories }) {
   return (
     <Layout title="Recipes">
       <PageTitle>Recipes</PageTitle>
+      {recipesData.map((recipe) => (
+        <P><Link href={`recipes/${recipe.slug}`}>{recipe.title}</Link></P>
+      ))}
       <P> or <Link href="/recipes/categories">browse by category</Link></P>
     </Layout>
   )
