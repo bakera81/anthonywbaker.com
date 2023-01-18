@@ -35,7 +35,6 @@ export default function SongsForPeople({ songData }) {
 
     function handleFormChange(event) {
         const song = songData.find((song) => song.Description == event.target.value)
-        // console.log(song)
         setSong(song)
             
     }
