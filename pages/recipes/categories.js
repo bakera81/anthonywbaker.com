@@ -7,8 +7,6 @@ import styles from './categories.module.css'
 
 import { getRecipesDatabase } from '../../utils/recipes'
 
-// import { getRecipesData } from '../utils/recipes'
-
 
 export async function getStaticProps() {
   const recipesData = await getRecipesDatabase();
