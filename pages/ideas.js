@@ -28,7 +28,7 @@ export default function Ideas({ ideasData }) {
         <div className="columns">
           <div className="column is-6 is-offset-6">
             <P>
-              Inspired by "Today I Learned" blogs, these are ideas I've come across that seemed worth writing down.
+              Inspired by "Today I Learned" blogs, these are ideas that seemed worth writing down.
             </P>
             <Hr />
           </div>

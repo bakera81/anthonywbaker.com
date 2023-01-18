@@ -1,47 +1,37 @@
 import Layout from  '../components/layout'
 import PageTitle from '../components/pagetitle'
 import P from '../components/paragraph'
+import Link from 'next/link'
 import RecipeList from '../components/recipeList'
 
-import styles from './recipes.module.css'
+// import styles from './recipes.module.css'
 
-import { getRecipesData } from '../utils/recipes'
+import { getRecipesDatabase } from '../utils/recipes'
+
+// import { getRecipesData } from '../utils/recipes'
 
 
 export async function getStaticProps() {
-    const recipesData = getRecipesData();
-    return {
-      props: {
-        recipesData,
-      },
-    };
+  const recipesData = await getRecipesDatabase();
+  const recipeCategoryNestedArray = recipesData.map(recipe => recipe.category)
+  const recipeCategories = [...new Set(recipeCategoryNestedArray.flat())]
+  return {
+    props: {
+      recipesData,
+      recipeCategories,
+    },
+  };
 }
 
-export default function Recipes ({ recipesData }) {
 
+export default function Recipes({ recipesData, recipeCategories }) {
   return (
     <Layout title="Recipes">
       <PageTitle>Recipes</PageTitle>
-        <div className="section">
-            <div className="columns">
-                {recipesData.slice(0,2).map((category) => (
-                    <div className="column is-6">
-                        <h2 className={styles.recipeSection}>{category.category}</h2>
-                        <RecipeList recipeData={category.data} />
-                    </div>
-                ))}
-            </div>
-        </div>
-        <div className="section">
-            <div className="columns">
-                {recipesData.slice(2,4).map((category) => (
-                    <div className="column is-6">
-                        <h2 className={styles.recipeSection}>{category.category}</h2>
-                        <RecipeList recipeData={category.data} />
-                    </div>
-                ))}
-            </div>
-        </div>                    
+      {recipesData.map((recipe) => (
+        <P><Link href={`recipes/${recipe.slug}`}>{recipe.title}</Link></P>
+      ))}
+      <P> or <Link href="/recipes/categories">browse by category</Link></P>
     </Layout>
   )
 }
