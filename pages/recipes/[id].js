@@ -1,40 +1,41 @@
 import Layout from '../../components/layout'
+import IdeaTitle from '../../components/ideaTitle'
 import P from '../../components/paragraph'
+import H2 from '../../components/h2'
+import List from '../../components/list'
+import TickerTitle from '../../components/tickerTitle'
+import HR from '../../components/hr'
 import ReactMarkdown from 'react-markdown'
 
-import { getAllRecipeIds, getRecipeData } from '../../utils/recipes'
-import { NotionToMarkdown } from 'notion-to-md'
+import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
 
 export async function getStaticPaths() {
-    const paths = await getAllRecipeIds();
-    console.log('get Paths:')
-    console.log(paths)
-    // const paths2 = [
-    //   {
-    //     params: {
-    //       id: 'ssg-ssr'
-    //     }
-    //   },
-    //   {
-    //     params: {
-    //       id: 'pre-rendering'
-    //     }
-    //   }
-    // ]
+    const recipesData = await getRecipesDatabase();
+    const paths = recipesData.map((recipe) => {
+        return {
+            params: {
+                id: recipe.slug,
+            }
+        }
+    });
+
     return {
-    //   paths: paths,
         paths,
         fallback: false,
     };
   }
 
 export async function getStaticProps({ params }) {
-    const recipeData = await getRecipeData(params.id);
-    // console.log('RECIPE DATA')
-    // console.log(recipeData)
+    const recipe = await queryRecipesDatabase(params.id)
+    const titleArray = recipe.title.split('/')
+    titleArray.splice(1, 0, '/') // re-add the deliminiter.
+    // console.log({step: 'getStaticProps', recipe: recipe})
     return {
         props: {
-            recipeData,
+            recipeData: {
+                ...recipe,
+                titleArray: titleArray
+            }
         },
     };
 }
@@ -42,14 +43,29 @@ export async function getStaticProps({ params }) {
 export default function Recipe({ recipeData }) {
     return(
         <Layout title={recipeData.title}>
-        <ReactMarkdown
-            components={{
-                p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
-            }}
-        >
-            {recipeData.markdown}
-        </ReactMarkdown>
-        
+            {/* {console.log("RECIPE DATA")}
+            {console.log(recipeData)} */}
+            {/* wrap all MD content in another section to provide more margin on the edgs of the page*/}
+            <div className="section"> 
+                <div className="content">
+                    <TickerTitle>
+                        {recipeData.titleArray.map((title) => (
+                            <H2>{title}</H2>
+                        ))}
+                    </TickerTitle>
+                    <hr/>
+                    <ReactMarkdown
+                        components={{
+                            h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                            p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                            ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                            ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+                        }}
+                    >
+                        {recipeData.markdown}
+                    </ReactMarkdown>
+                </div>
+            </div>
         </Layout>
     )
 }
