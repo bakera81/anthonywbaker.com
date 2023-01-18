@@ -1,4 +1,5 @@
 import P from './paragraph'
+import A from './anchor'
 import Link from 'next/link'
 
 import styles from './recipeList.module.css'
@@ -8,9 +9,9 @@ export default function RecipeList({ recipeData }) {
         <ul>
             {recipeData.map((recipe) => (
                 <li>
-                    <Link href={recipe.slug}> 
-                        <P leftAlign>{recipe.title} <span className={styles.comingSoon}>[coming soon]</span></P>
-                    </Link>
+                    <A href={recipe.slug}> 
+                        <P leftAlign>{recipe.title}</P>
+                    </A>
                 </li>
             ))}
         </ul>
