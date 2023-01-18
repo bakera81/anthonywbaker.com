@@ -25,8 +25,8 @@ export async function getStaticProps() {
 
 export default function Recipes({ recipesData, recipeCategories }) {
   return (
-    <Layout title="Recipes">
-      <PageTitle>Recipes - Catgories</PageTitle>
+    <Layout title="Recipes - Categories">
+      <PageTitle>Recipes</PageTitle>
       {recipeCategories.map((category, i) => {
         if (i % 2 == 0) {
           return (

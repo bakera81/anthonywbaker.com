@@ -4,6 +4,7 @@ import P from '../../components/paragraph'
 import H2 from '../../components/h2'
 import List from '../../components/list'
 import TickerTitle from '../../components/tickerTitle'
+import HR from '../../components/hr'
 import ReactMarkdown from 'react-markdown'
 
 import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
@@ -42,8 +43,8 @@ export async function getStaticProps({ params }) {
 export default function Recipe({ recipeData }) {
     return(
         <Layout title={recipeData.title}>
-            {console.log("RECIPE DATA")}
-            {console.log(recipeData)}
+            {/* {console.log("RECIPE DATA")}
+            {console.log(recipeData)} */}
             {/* wrap all MD content in another section to provide more margin on the edgs of the page*/}
             <div className="section"> 
                 <div className="content">
@@ -52,6 +53,7 @@ export default function Recipe({ recipeData }) {
                             <H2>{title}</H2>
                         ))}
                     </TickerTitle>
+                    <hr/>
                     <ReactMarkdown
                         components={{
                             h1: ({node, ...props}) => <IdeaTitle {...props} />,
