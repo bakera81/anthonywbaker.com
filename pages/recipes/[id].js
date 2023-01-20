@@ -44,7 +44,7 @@ export default function Recipe({ recipeData }) {
     return(
         <Layout title={recipeData.title}>
             {/* {console.log("RECIPE DATA")}
-            {console.log(recipeData)} */}
+            {   (recipeData)} */}
             {/* wrap all MD content in another section to provide more margin on the edgs of the page*/}
             <div className="section"> 
                 <div className="content">
