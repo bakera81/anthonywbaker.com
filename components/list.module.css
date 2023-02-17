@@ -1,7 +1,14 @@
+.listFont {
+    font-smooth: never;
+    -webkit-font-smoothing : none;
+    font-weight: normal;
+    font-family: "Microsoft Sans Serif";
+}
 /* .orderedList {
 
 } */
 
 .unorderedList {
     list-style: outside;
+  
 }

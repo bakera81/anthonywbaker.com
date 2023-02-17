@@ -9,7 +9,6 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getRecipeMarkdown(id) {
-
     const mdblocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(mdblocks);
     return mdString;
