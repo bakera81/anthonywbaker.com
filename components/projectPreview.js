@@ -30,7 +30,7 @@ export default function ProjectPreview({ slug, description, img, themeColor, bac
           style={{borderColor: `${backgroundColor} !important`, backgroundColor: `${backgroundColor} !important`}}
           /> 
       </Link>
-      <P className={styles.projectDescription} style={{fontSize: `.7em`, textAlign: `center`}}>
+      <P className={styles.projectDescription} style={{textAlign: `center`}}>
         <Link href={slug} >
           <a className={styles.previewLink}>{description}</a>
         </Link>
