@@ -14,13 +14,6 @@ export async function getRecipeMarkdown(id) {
     return mdString;
 }
 
-function getBlocks(id) {
-    const blocks = collectPaginatedAPI(notion.blocks.children.list, {
-        block_id: id,
-      })
-    return blocks;
-}
-
 function getPageIdFromDatabasePage(recipe) {
     // console.log({
     //     step: 'getPageIdFromDatabasePageId', 

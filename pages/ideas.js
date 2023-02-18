@@ -3,6 +3,7 @@ import PageTitle from '../components/pagetitle'
 import IdeaTitle from '../components/ideaTitle'
 import P from '../components/paragraph'
 import List from '../components/list'
+import Image from 'next/image'
 import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
 
@@ -10,10 +11,11 @@ import styles from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
 
-import { getIdeasFromDatabase } from '../utils/ideas'
+import { getIdeasFromDatabase, downloadAllIdeasImages } from '../utils/ideas'
 
 
 export async function getStaticProps() {
+  const test = await downloadAllIdeasImages();
   const ideasData = await getIdeasFromDatabase();
   const ideasCategoryNestedArray = ideasData.map(idea => idea.category)
   const ideaCategories = [...new Set(ideasCategoryNestedArray.flat())]
@@ -31,16 +33,20 @@ export default function Ideas({ ideasData, ideaCategories}) {
       {console.log(ideasData)}
       <div className="section"> 
         <div className="content">
-          <ReactMarkdown
-            components={{
-                // h1: ({node, ...props}) => <IdeaTitle {...props} />,
-                p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
-                ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
-                ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
-            }}
-          >
-            {ideasData.markdown}
-          </ReactMarkdown>
+          {ideasData.map((idea) => (
+            // <ReactMarkdown>{idea.markdown}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                  // h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                  p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                  ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                  ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+                  img: ({node, ...props}) => <Image {...props} />,
+              }}
+            >
+              {idea.markdown}
+            </ReactMarkdown>
+          ))}
         </div>
       </div>
     </Layout>
