@@ -14,7 +14,6 @@ import { frontmatter as proj13 } from '../pages/projects/transform-tangible-codi
 import { frontmatter as proj14 } from '../pages/projects/follower-farming'
 import { frontmatter as proj15 } from '../pages/projects/dj-assistant'
 
-//TODO: Sort by date
 const allProjectMetadata = [
     {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
     {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
