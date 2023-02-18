@@ -2,6 +2,7 @@ import Layout from '../components/layout'
 import PageTitle from '../components/pagetitle'
 import IdeaTitle from '../components/ideaTitle'
 import P from '../components/paragraph'
+import List from '../components/list'
 import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
 
@@ -9,19 +10,45 @@ import styles from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
 
-import { getIdeasData } from '../utils/ideas'
+import { getIdeasFromDatabase } from '../utils/ideas'
 
 
 export async function getStaticProps() {
-    const ideasData = getIdeasData();
-    return {
-      props: {
-        ideasData,
-      },
-    };
+  const ideasData = await getIdeasFromDatabase();
+  const ideasCategoryNestedArray = ideasData.map(idea => idea.category)
+  const ideaCategories = [...new Set(ideasCategoryNestedArray.flat())]
+  return {
+    props: {
+      ideasData,
+      ideaCategories,
+    },
+  };
 }
 
-export default function Ideas({ ideasData }) {
+export default function Ideas({ ideasData, ideaCategories}) {
+  return (
+    <Layout title="Ideas">
+      {console.log(ideasData)}
+      <div className="section"> 
+        <div className="content">
+          <ReactMarkdown
+            components={{
+                // h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+            }}
+          >
+            {ideasData.markdown}
+          </ReactMarkdown>
+        </div>
+      </div>
+    </Layout>
+  )
+}
+
+
+function IdeasOld({ ideasData }) {
     return (
       <Layout title="Ideas">
         <PageTitle>Ideas</PageTitle>
