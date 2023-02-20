@@ -6,10 +6,11 @@ import {
   getTitleFromDatabasePage, 
   getMarkdown, 
   getBlocks,
-  download 
+  download ,
+  extractFilenameFromPath
 } from './notionHelpers'
 
-import { collectPaginatedAPI } from '@notionhq/client'
+import path from 'path'
 
 export async function getIdeasFromDatabase() {
   const response = await notion.databases.query({ database_id: process.env.NOTION_IDEAS_DB });
@@ -19,7 +20,7 @@ export async function getIdeasFromDatabase() {
       const category = getCategoryFromDatabasePage(idea) // returns an array
       const slug = getSlugFromDatabasePage(idea)
       const title = getTitleFromDatabasePage(idea)
-      return getMarkdown(pageId).then((md) => {
+      return getMarkdown(pageId, true).then((md) => {
           return {
               id: pageId,
               category: category,
@@ -32,23 +33,28 @@ export async function getIdeasFromDatabase() {
   return ideasWithMarkdown;
 }
 
+// TODO:  Does this occur at build time?
 export async function downloadAllIdeasImages() {
   // 1. Map over all records in the database
   const ideasFromDatabase = await getIdeasFromDatabase()
   // 2. For each record, retrieve all blocks of the page ID
   await Promise.all(ideasFromDatabase.map((record) => {
-    console.log({step: "record", obj: record})
+    // console.log({step: "record", obj: record})
     const allBlocks = getBlocks(record.id).then((blocks) =>{
-      console.log({step: "allBlocks", obj: blocks})
+      // console.log({step: "allBlocks", obj: blocks})
       // 3. Map over all blocks on the page
-      blocks.map((block) => {
-        // 4. For each block, if it is an image, download the image
-        if (block.type == "image") {
-          console.log({step: "download", obj: block.image.file.url })
-          download('https://www.google.com/images/srpr/logo3w.png', 'public/images/google.png', function(){
-            console.log('Download complete');
-          });
-        }
+      // 4. For each block, if it is an image, download the image
+      blocks.filter((block) => {return block.type == "image"}).map((block) => {
+        const filename = extractFilenameFromPath(block.image.file.url)
+        console.log(`Downloading ${filename}...`)
+        // console.log({step: "download", obj: {
+        //   url: block.image.file.url,
+        //   path: filename,
+        //  }})
+        // in getStaticProps, we will replace the URL with the new path.
+        download(block.image.file.url, path.join('public', 'images', 'ideas', filename), function(){
+          console.log(`Download complete`);
+        });
       })
     })
   }))

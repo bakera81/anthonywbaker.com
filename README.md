@@ -12,3 +12,9 @@ This site is powered by NextJS.
 - For local development, set environment variables in `.env.local` in the root. You can access them using `process.env.VARIABLE`.
 - For production, use the Netlify UI (Build & Deploy -> Environment). You may also need to update `next.config.js`.
 
+## Recipes
+Recipes are pulled from a Notion database.
+
+## Ideas
+Ideas are pulled from a Notion database. Notion only gives a temporary public URL for images, so each image is downloaded to `public/images/ideas`. The markdown is then corrected in `notionHelpers.js::getMarkdown`).
+

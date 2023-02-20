@@ -2,6 +2,7 @@ import { Client, collectPaginatedAPI, iteratePaginatedAPI } from '@notionhq/clie
 import { NotionToMarkdown } from 'notion-to-md'
 import fs from 'fs'
 import request from 'request'
+import path from 'path'
 
 // Initializing a client
 export const notion = new Client({
@@ -10,9 +11,28 @@ export const notion = new Client({
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export async function getMarkdown(id) {
+export async function getMarkdown(id, useLocalImages = false) {
     // Get the markdown from a Notion page ID
-    const mdblocks = await n2m.pageToMarkdown(id);
+    var mdblocks = await n2m.pageToMarkdown(id);
+    // console.log({step: 'getMarkdown', obj: mdblocks})
+    if (useLocalImages) {
+        mdblocks = mdblocks.map((block) => {
+            if(block.type == 'image') { 
+                const imgPath = block.parent.replace('![](', '').replace(')', '')
+                const filename = extractFilenameFromPath(imgPath)
+                // TODO: Include alt text
+                const newParent = `![](/../public/images/ideas/${filename})`
+                return {
+                    type: 'image',
+                    parent: newParent,
+                    children: [],
+                }
+            } else {
+                return block
+            }
+        })
+        // console.log({step: 'getMarkdown:images', obj: mdblocks})
+    }
     const mdString = n2m.toMarkdownString(mdblocks);
     return mdString;
 }
@@ -32,6 +52,10 @@ export function download(uri, filename, callback) {
     request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
   });
 };
+
+export function extractFilenameFromPath(filePath) {
+    return path.parse(filePath).base.split('?')[0]
+}
 
 export function getPageIdFromDatabasePage(record) {
     // console.log({

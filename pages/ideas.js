@@ -3,7 +3,6 @@ import PageTitle from '../components/pagetitle'
 import IdeaTitle from '../components/ideaTitle'
 import P from '../components/paragraph'
 import List from '../components/list'
-import Image from 'next/image'
 import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
 
@@ -30,18 +29,27 @@ export async function getStaticProps() {
 export default function Ideas({ ideasData, ideaCategories}) {
   return (
     <Layout title="Ideas">
-      {console.log(ideasData)}
-      <div className="section"> 
-        <div className="content">
+      <PageTitle>Ideas</PageTitle>
+      <div className="columns">
+        <div className="column is-6 is-offset-6">
+          <P>
+            Inspired by "Today I Learned" blogs, these are ideas that seemed worth writing down.
+          </P>
+          <Hr />
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column is-1-desktop is-hidden-touch"></div>
+        <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
+          <MarkdownImage src= '/../public/images/ideas/4d_spectrum.png' />
           {ideasData.map((idea) => (
-            // <ReactMarkdown>{idea.markdown}</ReactMarkdown>
             <ReactMarkdown
               components={{
-                  // h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                  h1: ({node, ...props}) => <IdeaTitle {...props} />,
                   p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
                   ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
                   ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
-                  img: ({node, ...props}) => <Image {...props} />,
+                  img: ({node, ...props}) => <MarkdownImage {...props} />,
               }}
             >
               {idea.markdown}
