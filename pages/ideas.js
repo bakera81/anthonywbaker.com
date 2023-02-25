@@ -6,6 +6,8 @@ import List from '../components/list'
 import Hr from '../components/hr'
 import MarkdownImage from '../components/markdownImage'
 
+import markdownImgMap from '../utils/markdownImages'
+
 import styles from './ideas.module.css'
 
 import ReactMarkdown from 'react-markdown'
@@ -26,7 +28,13 @@ export async function getStaticProps() {
   };
 }
 
+
 export default function Ideas({ ideasData, ideaCategories}) {
+  function getImportedImage(key) {
+    return  markdownImgMap.find((obj) => {
+        obj.key == key
+    })
+  }
   return (
     <Layout title="Ideas">
       <PageTitle>Ideas</PageTitle>
@@ -41,7 +49,7 @@ export default function Ideas({ ideasData, ideaCategories}) {
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
-          <MarkdownImage src= '/../public/images/ideas/4d_spectrum.png' />
+          <MarkdownImage src='/../public/images/ideas/4d_spectrum.png' />
           {ideasData.map((idea) => (
             <ReactMarkdown
               components={{
@@ -49,7 +57,7 @@ export default function Ideas({ ideasData, ideaCategories}) {
                   p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
                   ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
                   ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
-                  img: ({node, ...props}) => <MarkdownImage {...props} />,
+                  img: ({node, ...props}) => <MarkdownImage src={getImportedImage(props.src)} {...props} />,
               }}
             >
               {idea.markdown}
