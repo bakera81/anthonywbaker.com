@@ -48,7 +48,7 @@ export async function downloadAllIdeasImages() {
       // 4. For each block, if it is an image, download the image
       blocks.filter((block) => {return block.type == "image"}).map((block) => {
         const filename = extractFilenameFromPath(block.image.file.url)
-        console.log(`Downloading ${filename}...`)
+        // console.log(`Downloading ${filename}...`)
         // console.log({step: "download", obj: {
         //   url: block.image.file.url,
         //   path: filename,
