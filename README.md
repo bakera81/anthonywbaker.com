@@ -18,3 +18,5 @@ Recipes are pulled from a Notion database.
 ## Ideas
 Ideas are pulled from a Notion database. Notion only gives a temporary public URL for images, so each image is downloaded to `public/images/ideas`. The markdown is then corrected in `notionHelpers.js::getMarkdown`).
 
+Currently, images are not downloaded at build time. Ensure that the image in Notion also exists with the same filename in `public/images/ideas`.
+

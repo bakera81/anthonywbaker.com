@@ -78,6 +78,10 @@ export function getSlugFromDatabasePage(record) {
     }).plain_text
 }
 
+export function getDateFromDatabasePage(record) {
+    return record.properties.Date.date.start
+}
+
 export function getTitleFromDatabasePage(record) {
     return record.properties.Name.title.find((obj) => {
         return obj.type === "mention" || obj.type === "text"
