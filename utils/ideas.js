@@ -52,9 +52,9 @@ export async function downloadAllIdeasImages() {
         //   path: filename,
         //  }})
         // in getStaticProps, we will replace the URL with the new path.
-        download(block.image.file.url, path.join('public', 'images', 'ideas', filename), function(){
-          console.log(`Download complete`);
-        });
+        // download(block.image.file.url, path.join('public', 'images', 'ideas', filename), function(){
+        //   console.log(`Download complete`);
+        // });
       })
     })
   }))

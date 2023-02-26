@@ -21,7 +21,7 @@ export async function getMarkdown(id, useLocalImages = false) {
                 const imgPath = block.parent.replace('![](', '').replace(')', '')
                 const filename = extractFilenameFromPath(imgPath)
                 // TODO: Include alt text
-                const newParent = `![](/../public/images/ideas/${filename})`
+                const newParent = `![](/images/ideas/${filename})`
                 return {
                     type: 'image',
                     parent: newParent,
