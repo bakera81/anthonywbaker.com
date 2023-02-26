@@ -4,7 +4,7 @@ var GithubSlugger = require('github-slugger')
 var slugger = new GithubSlugger()
 
 
-export default function IdeaTitle({ children }) {
+export default function IdeaTitle({ children, slug }) {
     
     const ideaId = slugger.slug(children[0])
     

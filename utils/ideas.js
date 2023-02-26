@@ -4,6 +4,7 @@ import {
   getCategoryFromDatabasePage, 
   getSlugFromDatabasePage, 
   getTitleFromDatabasePage, 
+  getDateFromDatabasePage,
   getMarkdown, 
   getBlocks,
   download ,
@@ -20,20 +21,21 @@ export async function getIdeasFromDatabase() {
       const category = getCategoryFromDatabasePage(idea) // returns an array
       const slug = getSlugFromDatabasePage(idea)
       const title = getTitleFromDatabasePage(idea)
+      const date = getDateFromDatabasePage(idea)
       return getMarkdown(pageId, true).then((md) => {
           return {
               id: pageId,
               category: category,
               slug: slug,
               title: title,
+              date: date,
               markdown: md,
           }
       })
   }))
-  return ideasWithMarkdown;
+  return ideasWithMarkdown.sort((a,b) => Date.parse(b.date) - Date.parse(a.date));
 }
 
-// TODO:  Does this occur at build time?
 export async function downloadAllIdeasImages() {
   // 1. Map over all records in the database
   const ideasFromDatabase = await getIdeasFromDatabase()
@@ -52,9 +54,9 @@ export async function downloadAllIdeasImages() {
         //   path: filename,
         //  }})
         // in getStaticProps, we will replace the URL with the new path.
-        download(block.image.file.url, path.join('public', 'images', 'ideas', filename), function(){
-          console.log(`Download complete`);
-        });
+        // download(block.image.file.url, path.join('public', 'images', 'ideas', filename), function(){
+        //   console.log(`Download complete`);
+        // });
       })
     })
   }))
