@@ -16,5 +16,9 @@ This site is powered by NextJS.
 Recipes are pulled from a Notion database.
 
 ## Ideas
-Ideas are pulled from a Notion database. Notion only gives a temporary public URL for images, so each image is downloaded to `public/images/ideas`. The markdown is then corrected in `notionHelpers.js::getMarkdown`).
+Ideas are pulled from a Notion database. For each image uploaded in a Notion page, be sure to include an exact copy (with matching filename) in `public/images/ideas`.
+
+Notion only gives a temporary public URL for images, so there is a WIP script to download each image at build time in `utils/ideas.js::downloadAllIdeasImages`.
+
+
 

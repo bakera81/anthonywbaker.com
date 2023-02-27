@@ -41,7 +41,6 @@ export default function Ideas({ ideasData, ideaCategories}) {
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
-          <MarkdownImage src= '/../public/images/ideas/4d_spectrum.png' />
           {ideasData.map((idea) => (
             <ReactMarkdown
               components={{
