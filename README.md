@@ -20,7 +20,11 @@ Locally, run `npm run build` then `npm run start` to test a built version of the
 Recipes are pulled from a Notion database.
 
 ## Ideas
-Ideas are pulled from a Notion database. Notion only gives a temporary public URL for images, so each image is downloaded to `public/images/ideas`. The markdown is then corrected in `notionHelpers.js::getMarkdown`).
+Ideas are pulled from a Notion database. For each image uploaded in a Notion page, be sure to include an exact copy (with matching filename) in `public/images/ideas`.
+
+Notion only gives a temporary public URL for images, so there is a WIP script to download each image at build time in `utils/ideas.js::downloadAllIdeasImages`.
+
+
 
 Currently, images are not downloaded at build time. Ensure that the image in Notion also exists with the same filename in `public/images/ideas`.
 

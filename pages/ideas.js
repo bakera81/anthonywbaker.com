@@ -43,7 +43,6 @@ export default function Ideas({ ideasData, ideaCategories}) {
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
-          {console.log({step: "ideas", obj: ideasData})}
           {ideasData.map((idea) => (
             <>
               <IdeaTitle slug={idea.slug}>{idea.title}</IdeaTitle>
