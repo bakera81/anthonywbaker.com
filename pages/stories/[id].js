@@ -1,10 +1,11 @@
 import Layout from "../../components/layout"
 import StoryTitle from "../../components/storyTitle"
 import P from "../../components/paragraph"
-import H2 from "../../components/h2"
 import List from "../../components/list"
 import HR from "../../components/hr"
+
 import ReactMarkdown from "react-markdown"
+import Link from "next/link"
 
 import {
   getStoriesFromDatabase,
@@ -37,8 +38,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       storyData: {
-          ...story
-      }
+        ...story,
+      },
     },
   }
 }
@@ -70,6 +71,13 @@ export default function IndividualStory({ storyData }) {
             {storyData.markdown}
           </ReactMarkdown>
         </div>
+      </div>
+      <div className="columns">
+        <div className="column is-6 is-offset-6">
+          <HR />
+          <P><Link href="/stories/table-of-contents">← Table of contents</Link></P>
+          <P><Link href="/stories">← All stories</Link></P>
+        </div> 
       </div>
     </Layout>
   )

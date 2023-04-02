@@ -29,7 +29,7 @@ export default function Stories({ storiesData }) {
       <div className="columns">
         <div className="column is-6 is-offset-6">
           <P>
-            <Link href="/stories/all">Table of contents</Link>
+            <Link href="/stories/table-of-contents">Table of contents</Link>
           </P>
           <HR />
         </div> 

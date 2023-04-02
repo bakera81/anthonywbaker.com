@@ -23,7 +23,7 @@ export async function getStaticProps() {
 }
 
 
-export default function AllStories({ storiesData }) {
+export default function TableOfContents({ storiesData }) {
   return (
     <Layout title="All Stories">
       <PageTitle>All Stories</PageTitle>
