@@ -36,6 +36,9 @@ export default function Footer({ home }) {
                         <P><A href="/about">about</A></P>
                     </div>
                     <div className="level-item">
+                        <P><A href="/stories" target="_blank">stories</A></P>
+                    </div>
+                    <div className="level-item">
                         <P><A href="/projects">projects</A></P>
                     </div>
                     <div className="level-item">
@@ -43,9 +46,6 @@ export default function Footer({ home }) {
                     </div>
                     <div className="level-item">
                         <P><A href="/recipes">recipes</A></P>
-                    </div>
-                    <div className="level-item">
-                        <P><a href="https://medium.com/@addiebundren" target="_blank">writing</a></P>
                     </div>
                     <div className="level-item">
                         <P><A href="/contact">contact</A></P>

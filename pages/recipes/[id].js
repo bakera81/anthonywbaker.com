@@ -6,6 +6,7 @@ import List from '../../components/list'
 import TickerTitle from '../../components/tickerTitle'
 import HR from '../../components/hr'
 import ReactMarkdown from 'react-markdown'
+import Link from 'next/link'
 
 import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
 
@@ -27,14 +28,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const recipe = await queryRecipesDatabase(params.id)
-    const titleArray = recipe.title.split('/')
-    titleArray.splice(1, 0, '/') // re-add the deliminiter.
     // console.log({step: 'getStaticProps', recipe: recipe})
     return {
         props: {
             recipeData: {
                 ...recipe,
-                titleArray: titleArray
             }
         },
     };
@@ -49,9 +47,9 @@ export default function Recipe({ recipeData }) {
             <div className="section"> 
                 <div className="content">
                     <TickerTitle>
-                        {recipeData.titleArray.map((title) => (
-                            <H2>{title}</H2>
-                        ))}
+                        <H2>{recipeData.introTitle}</H2>
+                        <H2> / </H2>
+                        <H2>{recipeData.title}</H2>
                     </TickerTitle>
                     <hr/>
                     <ReactMarkdown
@@ -62,9 +60,25 @@ export default function Recipe({ recipeData }) {
                             ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
                         }}
                     >
-                        {recipeData.markdown}
+                        {recipeData.introMarkdown}
+                    </ReactMarkdown>
+                    <ReactMarkdown
+                        components={{
+                            h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                            p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                            ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                            ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+                        }}
+                    >
+                        {recipeData.recipeMarkdown}
                     </ReactMarkdown>
                 </div>
+            </div>
+            <div className="columns">
+                <div className="column is-6 is-offset-6">
+                    <HR />
+                    <P><Link href="/recipes">← All recipes</Link></P>
+                </div> 
             </div>
         </Layout>
     )
