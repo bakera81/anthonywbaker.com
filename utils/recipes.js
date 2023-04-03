@@ -1,3 +1,4 @@
+import { getMarkdown } from './notionHelpers'
 import { Client, collectPaginatedAPI, iteratePaginatedAPI } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
 
@@ -8,10 +9,14 @@ const notion = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export async function getRecipeMarkdown(id) {
-    const mdblocks = await n2m.pageToMarkdown(id);
-    const mdString = n2m.toMarkdownString(mdblocks);
-    return mdString;
+export async function getRecipeMarkdown(id, introId) {
+    const recipeMdString = await getMarkdown(id);
+    const introMdString = await getMarkdown(introId);
+    // console.log({step: 'getRecipeMarkdown', introId: introId, introMdString: introMdString})
+    return {
+        recipeMd: recipeMdString,
+        introMd: introMdString,
+    }
 }
 
 function getPageIdFromDatabasePage(recipe) {
@@ -23,6 +28,16 @@ function getPageIdFromDatabasePage(recipe) {
     //     return obj.type === "mention"
     // }).mention.page.id
     return recipe.id
+}
+
+function getIntroPageIdFromDatabasePage(recipe) {
+    // console.log({
+    //     step: 'getIntroPageIdFromDatabasePageId', 
+    //     recipe: JSON.stringify(recipe)
+    // })
+    return recipe.properties.Intro.rich_text.find((obj) => {
+        return obj.type === "mention"
+    }).mention.page.id
 }
 
 // returns an array
@@ -47,6 +62,15 @@ function getTitleFromDatabasePage(recipe) {
     }).plain_text
 }
 
+function getIntroTitleFromDatabasePage(recipe) {
+    // return recipe.properties.Name.title.find((obj) => {
+    //     return obj.type === "mention"
+    // }).plain_text
+    return recipe.properties.Intro.rich_text.find((obj) => {
+        return obj.type === "mention"
+    }).plain_text
+}
+
 export async function queryRecipesDatabase(slug) {
     const response = await notion.databases.query({ 
         database_id: process.env.NOTION_RECIPES_DB,
@@ -59,15 +83,20 @@ export async function queryRecipesDatabase(slug) {
     });
     // console.log({step: 'queryRecipesDatabase', response: JSON.stringify(response.results[0])})
     const pageId = getPageIdFromDatabasePage(response.results[0])
+    const introPageId = getIntroPageIdFromDatabasePage(response.results[0])
     const category = getCategoryFromDatabasePage(response.results[0])
     const title = getTitleFromDatabasePage(response.results[0])
-    return getRecipeMarkdown(pageId).then((md) => {
+    const introTitle = getIntroTitleFromDatabasePage(response.results[0])
+    return getRecipeMarkdown(pageId, introPageId).then((md) => {
         return {
             id: pageId,
+            introId: introPageId,
             category: category,
             slug: slug,
             title: title,
-            markdown: md,
+            introTitle: introTitle,
+            introMarkdown: md.introMd,
+            recipeMarkdown: md.recipeMd,
         }
     })
     
@@ -78,16 +107,21 @@ export async function getRecipesDatabase() {
     // console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {
         const pageId = getPageIdFromDatabasePage(recipe)
+        const introPageId = getIntroPageIdFromDatabasePage(recipe)
         const category = getCategoryFromDatabasePage(recipe) // returns an array
         const slug = getSlugFromDatabasePage(recipe)
         const title = getTitleFromDatabasePage(recipe)
-        return getRecipeMarkdown(pageId).then((md) => {
+        const introTitle = getIntroTitleFromDatabasePage(recipe)
+        return getRecipeMarkdown(pageId, introPageId).then((md) => {
             return {
                 id: pageId,
+                introId: introPageId,
                 category: category,
                 slug: slug,
                 title: title,
-                markdown: md,
+                introTitle: introTitle,
+                recipeMarkdown: md.recipeMd,
+                introMarkdown: md.introMd,
             }
         })
     }))

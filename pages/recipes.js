@@ -13,6 +13,7 @@ import { getRecipesDatabase } from '../utils/recipes'
 
 export async function getStaticProps() {
   const recipesData = await getRecipesDatabase();
+  // console.log({step: 'recipes::getStaticProps', recipesData: JSON.stringify(recipesData)})
   const recipeCategoryNestedArray = recipesData.map(recipe => recipe.category)
   const recipeCategories = [...new Set(recipeCategoryNestedArray.flat())]
   return {
