@@ -9,7 +9,7 @@ export default function StoryTitle({ children, slug }) {
     // const ideaId = slugger.slug(children[0])
     
     return(
-        <Link href={`/stories/${slug}`}>
+        <Link href={slug}>
             <h4 className={`title is-4 ${styles.heading}`}>{children}</h4>
         </Link>
         //  <a href={`/stories/${slug}`}>

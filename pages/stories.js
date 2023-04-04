@@ -39,7 +39,7 @@ export default function Stories({ storiesData }) {
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
           {storiesData.map((story) => (
             <>
-              <StoryTitle slug={story.slug}>{story.title}</StoryTitle>
+              <StoryTitle slug={`/stories/${story.slug}`}>{story.title}</StoryTitle>
               <ReactMarkdown
                 components={{
                   // h1: ({node, ...props}) => <IdeaTitle {...props} />,

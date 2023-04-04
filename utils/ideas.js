@@ -7,11 +7,39 @@ import {
   getDateFromDatabasePage,
   getMarkdown, 
   getBlocks,
-  download ,
+  download,
   extractFilenameFromPath
 } from './notionHelpers'
 
 import path from 'path'
+
+export async function queryIdeasDatabase(slug) {
+  const response = await notion.databases.query({ 
+      database_id: process.env.NOTION_IDEAS_DB,
+      filter: {
+          property: "Slug",
+          rich_text: {
+              equals: slug
+          }
+      } 
+  });
+  // console.log({step: 'queryIdeasDatabase', response: JSON.stringify(response.results[0])})
+  const pageId = getPageIdFromDatabasePage(response.results[0])
+  const category = getCategoryFromDatabasePage(response.results[0]) // returns an array
+  const title = getTitleFromDatabasePage(response.results[0])
+  const date = getDateFromDatabasePage(response.results[0])
+  return getMarkdown(pageId, true).then((md) => {
+      return {
+        id: pageId,
+        category: category,
+        slug: slug,
+        title: title,
+        date: date,
+        markdown: md,
+      }
+  })
+}
+
 
 export async function getIdeasFromDatabase() {
   const response = await notion.databases.query({ database_id: process.env.NOTION_IDEAS_DB });

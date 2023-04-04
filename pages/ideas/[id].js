@@ -1,26 +1,25 @@
 import Layout from "../../components/layout"
 import StoryTitle from "../../components/storyTitle"
 import P from "../../components/paragraph"
+import H2 from "../../components/h2"
 import List from "../../components/list"
+import TickerTitle from "../../components/tickerTitle"
 import HR from "../../components/hr"
 import MarkdownImage from "../../components/markdownImage"
 
 import ReactMarkdown from "react-markdown"
 import Link from "next/link"
 
-import {
-  getStoriesFromDatabase,
-  queryStoriesDatabase,
-} from "../../utils/stories"
+import { getIdeasFromDatabase, queryIdeasDatabase } from "../../utils/ideas"
 
-import styles from "../stories.module.css"
+import styles from './ideas.module.css'
 
 export async function getStaticPaths() {
-  const storiesData = await getStoriesFromDatabase()
-  const paths = storiesData.map((story) => {
+  const ideasData = await getIdeasFromDatabase()
+  const paths = ideasData.map((idea) => {
     return {
       params: {
-        id: story.slug,
+        id: idea.slug,
       },
     }
   })
@@ -32,26 +31,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const story = await queryStoriesDatabase(params.id)
-  // const titleArray = recipe.title.split('/')
-  // titleArray.splice(1, 0, '/') // re-add the deliminiter.
+  const idea = await queryIdeasDatabase(params.id)
   // console.log({step: 'getStaticProps', recipe: recipe})
   return {
     props: {
-      storyData: {
-        ...story,
+      ideaData: {
+        ...idea,
       },
     },
   }
 }
 
-export default function IndividualStory({ storyData }) {
+export default function IndividualIdea({ ideaData }) {
   return (
-    <Layout title={storyData.title}>
+    <Layout title={ideaData.title}>
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
-          <StoryTitle slug={`/stories/${storyData.slug}`}>{storyData.title}</StoryTitle>
+          <StoryTitle slug={`/ideas/${ideaData.slug}`}>{ideaData.title}</StoryTitle>
           <ReactMarkdown
             components={{
               // h1: ({node, ...props}) => <IdeaTitle {...props} />,
@@ -69,16 +66,20 @@ export default function IndividualStory({ storyData }) {
               ),
             }}
           >
-            {storyData.markdown}
+            {ideaData.markdown}
           </ReactMarkdown>
         </div>
       </div>
       <div className="columns">
         <div className="column is-6 is-offset-6">
           <HR />
-          <P><Link href="/stories/table-of-contents">← Table of contents</Link></P>
-          <P><Link href="/stories">← All stories</Link></P>
-        </div> 
+          <P>
+            <Link href="/ideas">← All ideas</Link>
+          </P>
+          <P>
+            <Link href="/ideas/table-of-contents">← Table of contents</Link>
+          </P>
+        </div>
       </div>
     </Layout>
   )
