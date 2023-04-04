@@ -1,10 +1,10 @@
-import Layout from '../components/layout'
-import PageTitle from '../components/pagetitle'
-import ProjectPreview from '../components/projectPreview'
+import Layout from '../../components/layout'
+import PageTitle from '../../components/pagetitle'
+import ProjectPreview from '../../components/projectPreview'
 
 import styles from './projects.module.css'
 
-import { fetchAllProjectMetadata } from '../utils/projects'
+import { fetchAllProjectMetadata } from '../../utils/projects'
 
 export async function getStaticProps() {
   const allProjectMetadata = await fetchAllProjectMetadata();
