@@ -19,7 +19,7 @@ export default function ProjectPreview({ slug, description, img, themeColor, bac
 
   return (
     <div css={childImgStyle} className={`column is-one-quarter-desktop is-half-tablet ${styles.projectPreviewWrapper}`} >
-      <Link href={slug}>
+      <Link href={slug} legacyBehavior>
       {/* Instead of !important, use this to style next images: https://www.peterlunch.com/snippets/next-image-styling */}
         <Image 
           src={img}
@@ -31,10 +31,10 @@ export default function ProjectPreview({ slug, description, img, themeColor, bac
           /> 
       </Link>
       <P className={styles.projectDescription} style={{textAlign: `center`}}>
-        <Link href={slug} >
-          <a className={styles.previewLink}>{description}</a>
+        <Link href={slug} className={styles.previewLink}>
+          {description}
         </Link>
       </P>
     </div>
-  )
+  );
 }

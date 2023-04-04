@@ -21,12 +21,11 @@ export default function Customer404() {
       <div className={`section ${styles.returnHomeContainer}`}>
         <P style={{textAlign: `center`}}>Oh no...</P>
             <P style={{textAlign: `center`, paddingTop: 0}}>
-                <Link href="/" >
-                    <a className={styles.returnHome}> Return home.</a>
+                <Link href="/" className={styles.returnHome}>
+                     Return home.
                 </Link>
             </P>
       </div>
     </Layout>
-
-  )
+  );
 }

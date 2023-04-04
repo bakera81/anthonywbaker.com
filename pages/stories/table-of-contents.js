@@ -28,8 +28,8 @@ export default function TableOfContents({ storiesData }) {
     <Layout title="All Stories">
       <PageTitle>All Stories</PageTitle>
       {storiesData.map((story) => (
-        <P><Link href={story.slug}>{story.title}</Link></P>
+        <P><Link href={story.slug} legacyBehavior>{story.title}</Link></P>
       ))}
     </Layout>
-  )
+  );
 }
