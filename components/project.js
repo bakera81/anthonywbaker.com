@@ -1,5 +1,5 @@
 import PageTitle from "./pagetitle"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 import styles from './project.module.css'
 
