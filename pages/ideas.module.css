@@ -18,3 +18,11 @@
     padding-top: 1em;
     padding-bottom: 1em;
 }
+
+.mdContainer > blockquote {
+    color: #666;
+    margin: 0;
+    padding-left: 3em;
+    font-style: italic;
+    /* border-left: 0.5em #eee solid; */
+}
