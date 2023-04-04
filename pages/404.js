@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Link from 'next/link'
 
 import Layout from "../components/layout"
@@ -21,12 +21,11 @@ export default function Customer404() {
       <div className={`section ${styles.returnHomeContainer}`}>
         <P style={{textAlign: `center`}}>Oh no...</P>
             <P style={{textAlign: `center`, paddingTop: 0}}>
-                <Link href="/" >
-                    <a className={styles.returnHome}> Return home.</a>
+                <Link href="/" className={styles.returnHome}>
+                     Return home.
                 </Link>
             </P>
       </div>
     </Layout>
-
-  )
+  );
 }

@@ -5,30 +5,30 @@ import Link from 'next/link'
 
 // import styles from './recipes.module.css'
 
-import { getStoriesFromDatabase } from '../../utils/stories'
+import { getIdeasFromDatabase } from '../../utils/ideas'
 
 
 export async function getStaticProps() {
-    const storiesDataUnsorted = await getStoriesFromDatabase()
-    const storiesData = storiesDataUnsorted.sort(function(a, b) {
+    const ideasDataUnsorted = await getIdeasFromDatabase()
+    const ideasData = ideasDataUnsorted.sort(function(a, b) {
         var textA = a.title.toUpperCase();
         var textB = b.title.toUpperCase();
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
     return {
         props: {
-            storiesData,
+          ideasData,
         },
     };
 }
 
 
-export default function TableOfContents({ storiesData }) {
+export default function TableOfContents({ ideasData }) {
   return (
-    <Layout title="All Stories">
-      <PageTitle>All Stories</PageTitle>
-      {storiesData.map((story) => (
-        <P><Link href={story.slug} legacyBehavior>{story.title}</Link></P>
+    <Layout title="Ideas">
+      <PageTitle>Ideas</PageTitle>
+      {ideasData.map((idea) => (
+        <P><Link href={idea.slug} legacyBehavior>{idea.title}</Link></P>
       ))}
     </Layout>
   );

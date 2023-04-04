@@ -1,7 +1,7 @@
 import { Client, collectPaginatedAPI, iteratePaginatedAPI } from '@notionhq/client'
 import { NotionToMarkdown } from 'notion-to-md'
-import fs from 'fs'
-import request from 'request'
+// import fs from 'fs'
+// import request from 'request'
 import path from 'path'
 
 // Initializing a client
@@ -10,6 +10,10 @@ export const notion = new Client({
 })
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
+
+export function extractFilenameFromPath(filePath) {
+    return path.parse(filePath).base.split('?')[0]
+}
 
 export async function getMarkdown(id, useLocalImages = false) {
     // Get the markdown from a Notion page ID
@@ -44,18 +48,16 @@ export function getBlocks(id) {
     return blocks;
 }
 
-export function download(uri, filename, callback) {
-  request.head(uri, function(err, res, body){
-    // console.log('content-type:', res.headers['content-type']);
-    // console.log('content-length:', res.headers['content-length']);
+// export function download(uri, filename, callback) {
+//   request.head(uri, function(err, res, body){
+//     // console.log('content-type:', res.headers['content-type']);
+//     // console.log('content-length:', res.headers['content-length']);
 
-    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-  });
-};
+//     request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+//   });
+// };
 
-export function extractFilenameFromPath(filePath) {
-    return path.parse(filePath).base.split('?')[0]
-}
+
 
 export function getPageIdFromDatabasePage(record) {
     // console.log({

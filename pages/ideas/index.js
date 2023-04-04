@@ -1,20 +1,19 @@
-import Layout from '../components/layout'
-import PageTitle from '../components/pagetitle'
-import IdeaTitle from '../components/ideaTitle'
-import P from '../components/paragraph'
-import List from '../components/list'
-import Hr from '../components/hr'
-import MarkdownImage from '../components/markdownImage'
+import Layout from '../../components/layout'
+import PageTitle from '../../components/pagetitle'
+import StoryTitle from '../../components/storyTitle'
+import P from '../../components/paragraph'
+import List from '../../components/list'
+import Hr from '../../components/hr'
+import MarkdownImage from '../../components/markdownImage'
+
+import ReactMarkdown from 'react-markdown'
+import Link from 'next/link'
+
+import { getIdeasFromDatabase, downloadAllIdeasImages } from '../../utils/ideas'
 
 import styles from './ideas.module.css'
 
-import ReactMarkdown from 'react-markdown'
-
-import { getIdeasFromDatabase, downloadAllIdeasImages } from '../utils/ideas'
-
-
 export async function getStaticProps() {
-  const test = await downloadAllIdeasImages();
   const ideasData = await getIdeasFromDatabase();
   const ideasCategoryNestedArray = ideasData.map(idea => idea.category)
   const ideaCategories = [...new Set(ideasCategoryNestedArray.flat())]
@@ -28,7 +27,6 @@ export async function getStaticProps() {
 
 
 export default function Ideas({ ideasData, ideaCategories}) {
-
   return (
     <Layout title="Ideas">
       <PageTitle>Ideas</PageTitle>
@@ -37,6 +35,7 @@ export default function Ideas({ ideasData, ideaCategories}) {
           <P>
             Inspired by "Today I Learned" blogs, these are ideas that seemed worth writing down.
           </P>
+          <P><Link href="/ideas/table-of-contents">Table of contents</Link></P>
           <Hr />
         </div>
       </div>
@@ -45,7 +44,7 @@ export default function Ideas({ ideasData, ideaCategories}) {
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
           {ideasData.map((idea) => (
             <>
-              <IdeaTitle slug={idea.slug}>{idea.title}</IdeaTitle>
+              <StoryTitle slug={`/ideas/${idea.slug}`}>{idea.title}</StoryTitle>
               <ReactMarkdown
                 components={{
                     // h1: ({node, ...props}) => <IdeaTitle {...props} />,
