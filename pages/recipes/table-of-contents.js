@@ -2,7 +2,6 @@ import Layout from  '../../components/layout'
 import PageTitle from '../../components/pagetitle'
 import P from '../../components/paragraph'
 import Link from 'next/link'
-import RecipeList from '../../components/recipeList'
 
 // import styles from './recipes.module.css'
 

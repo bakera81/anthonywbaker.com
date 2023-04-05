@@ -9,7 +9,7 @@ export default function RecipeList({ recipeData }) {
         <ul>
             {recipeData.map((recipe) => (
                 <li>
-                    <A href={recipe.slug}> 
+                    <A href={`/recipes/${recipe.slug}`}> 
                         <P leftAlign>{recipe.title}</P>
                     </A>
                 </li>
