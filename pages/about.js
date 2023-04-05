@@ -39,7 +39,7 @@ import styles from './about.module.css'
 export default function About() {
 
   const aboutMeInit = [
-    "Product manager. ", "Data scientist. ", "Designer. ", "Growth marketer. ", "Educator. ", "Process enthusiast. ", "Coffee lover. "
+    "Product manager. ", "Data scientist. ", "Designer. ", "Growth marketer. ", "Educator. ", "Process enthusiast. ", "Coffee addict. ", "Music lover. "
   ];
 
   const [aboutMe, setShuffled] = React.useState(aboutMeInit);

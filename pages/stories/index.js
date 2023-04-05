@@ -1,17 +1,17 @@
-import Layout from "../components/layout"
-import PageTitle from "../components/pagetitle"
-import P from "../components/paragraph"
-import HR from "../components/hr"
-import StoryTitle from "../components/storyTitle"
-import List from "../components/list"
-import MarkdownImage from "../components/markdownImage"
+import Layout from "../../components/layout"
+import PageTitle from "../../components/pagetitle"
+import P from "../../components/paragraph"
+import HR from "../../components/hr"
+import StoryTitle from "../../components/storyTitle"
+import List from "../../components/list"
+import MarkdownImage from "../../components/markdownImage"
 
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
 
 import styles from "./stories.module.css"
 
-import { getStoriesFromDatabase } from "../utils/stories"
+import { getStoriesFromDatabase } from "../../utils/stories"
 
 export async function getStaticProps() {
   const storiesData = await getStoriesFromDatabase()

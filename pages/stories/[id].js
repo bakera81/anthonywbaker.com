@@ -13,7 +13,7 @@ import {
   queryStoriesDatabase,
 } from "../../utils/stories"
 
-import styles from "../stories.module.css"
+import styles from "./stories.module.css"
 
 export async function getStaticPaths() {
   const storiesData = await getStoriesFromDatabase()

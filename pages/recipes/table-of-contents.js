@@ -1,12 +1,12 @@
-import Layout from  '../components/layout'
-import PageTitle from '../components/pagetitle'
-import P from '../components/paragraph'
+import Layout from  '../../components/layout'
+import PageTitle from '../../components/pagetitle'
+import P from '../../components/paragraph'
 import Link from 'next/link'
-import RecipeList from '../components/recipeList'
+import RecipeList from '../../components/recipeList'
 
 // import styles from './recipes.module.css'
 
-import { getRecipesDatabase } from '../utils/recipes'
+import { getRecipesDatabase } from '../../utils/recipes'
 
 // import { getRecipesData } from '../utils/recipes'
 
@@ -27,7 +27,7 @@ export async function getStaticProps() {
 
 export default function Recipes({ recipesData, recipeCategories }) {
   return (
-    <Layout title="Recipes">
+    <Layout title="All Recipes">
       <PageTitle>Recipes</PageTitle>
       {recipesData.map((recipe) => (
         <P><Link href={`recipes/${recipe.slug}`} legacyBehavior>{recipe.title}</Link></P>

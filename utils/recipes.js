@@ -47,6 +47,13 @@ function getCategoryFromDatabasePage(recipe) {
     })
 }
 
+// returns an array
+function getTagsFromDatabasePage(recipe) {
+    return recipe.properties.Tags.multi_select.map((category) => {
+        return category.name
+    })
+}
+
 function getSlugFromDatabasePage(recipe) {
     return recipe.properties.Slug.rich_text.find((obj) => {
         return obj.type === "text"
@@ -85,6 +92,7 @@ export async function queryRecipesDatabase(slug) {
     const pageId = getPageIdFromDatabasePage(response.results[0])
     const introPageId = getIntroPageIdFromDatabasePage(response.results[0])
     const category = getCategoryFromDatabasePage(response.results[0])
+    const tags = getTagsFromDatabasePage(response.results[0])
     const title = getTitleFromDatabasePage(response.results[0])
     const introTitle = getIntroTitleFromDatabasePage(response.results[0])
     return getRecipeMarkdown(pageId, introPageId).then((md) => {
@@ -92,6 +100,7 @@ export async function queryRecipesDatabase(slug) {
             id: pageId,
             introId: introPageId,
             category: category,
+            tags: tags,
             slug: slug,
             title: title,
             introTitle: introTitle,
@@ -109,6 +118,7 @@ export async function getRecipesDatabase() {
         const pageId = getPageIdFromDatabasePage(recipe)
         const introPageId = getIntroPageIdFromDatabasePage(recipe)
         const category = getCategoryFromDatabasePage(recipe) // returns an array
+        const tags = getTagsFromDatabasePage(recipe)
         const slug = getSlugFromDatabasePage(recipe)
         const title = getTitleFromDatabasePage(recipe)
         const introTitle = getIntroTitleFromDatabasePage(recipe)
@@ -117,6 +127,7 @@ export async function getRecipesDatabase() {
                 id: pageId,
                 introId: introPageId,
                 category: category,
+                tags: tags,
                 slug: slug,
                 title: title,
                 introTitle: introTitle,
