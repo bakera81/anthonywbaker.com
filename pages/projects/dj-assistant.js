@@ -8,15 +8,15 @@ import styles from './dj-assistant.module.css'
 
 import { getAirtableData } from '../../utils/djAssistant'
 
-import projectImage from '../../public/images/projects/black_square.png'
+import projectImage from '../../public/images/projects/turntable.jpeg'
 
 export const frontmatter = {
-    title: 'DJ Assistant',
+    title: 'Songs for People',
     description: 'Song recommendations for obscure situations.',
     slug: 'dj-assistant',
-    //   preview: projectImage,
-    preview: '/public/images/projects/black_square.png',
-    themeColor: '#000', // '#f5f403',
+      preview: projectImage,
+    // preview: '/public/images/projects/turntable2.jpeg',
+    themeColor: '#6A6A6A', // '#f5f403',
     updatedAt: '2022-08-28',
     completed: true,
 }

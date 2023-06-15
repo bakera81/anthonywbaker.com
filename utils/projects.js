@@ -13,11 +13,13 @@ import { frontmatter as proj12 } from '../pages/projects/wine-reviews'
 import { frontmatter as proj13 } from '../pages/projects/transform-tangible-coding'
 import { frontmatter as proj14 } from '../pages/projects/follower-farming'
 import { frontmatter as proj15 } from '../pages/projects/dj-assistant'
+import { frontmatter as proj16 } from '../pages/projects/things-on-the-street'
 
 const allProjectMetadata = [
     {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
     {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
     {...proj11}, {...proj12}, {...proj13}, {...proj14}, {...proj15},
+    {...proj16},
     
 ].sort((a,b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
 
@@ -28,6 +30,7 @@ export function fetchAllProjectMetadata() {
         {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
         {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
         {...proj11}, {...proj12}, {...proj13}, {...proj14}, {...proj15},
+        {...proj16},
     ].sort((a,b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
 
     return allProjectMetadata;
