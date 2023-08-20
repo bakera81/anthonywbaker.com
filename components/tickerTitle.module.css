@@ -27,11 +27,15 @@
   }
 }
 
+.tickerParent { 
+  display: inline-block;
+}
+
 .tickerWrap {
   box-sizing: border-box;
   /* position: fixed; */
   bottom: 0;
-  /* width: 100%; */
+  width: 100%;
   overflow: hidden;
   height: 4rem;
   background-color: rgba(#000, 0.9); 
@@ -54,8 +58,8 @@
             animation-timing-function: linear;
     -webkit-animation-name: ticker;
             animation-name: ticker;
-    -webkit-animation-duration: 20s;
-            animation-duration: 20s;
+    -webkit-animation-duration: 10s;
+            animation-duration: 10s;
 
 }
 
