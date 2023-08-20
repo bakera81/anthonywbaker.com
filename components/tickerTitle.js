@@ -1,5 +1,6 @@
 import styles from './tickerTitle.module.css'
 
+//https://codepen.io/lewismcarey/pen/GJZVoG
 export default function TickerTitle({ children }) {
     return (
         <div className={styles.tickerWrap}>
