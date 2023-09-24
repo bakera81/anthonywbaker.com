@@ -60,6 +60,16 @@ export default function Recipe({ recipeData }) {
                             ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
                         }}
                     >
+                        ## Introduction   
+                    </ReactMarkdown>
+                    <ReactMarkdown
+                        components={{
+                            h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                            p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
+                            ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
+                            ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
+                        }}
+                    >
                         {recipeData.introMarkdown}
                     </ReactMarkdown>
                     <ReactMarkdown
