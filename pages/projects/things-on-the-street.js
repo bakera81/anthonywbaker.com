@@ -24,6 +24,16 @@ import turtle from '../../public/images/projects/things-on-the-street/turtle.jpg
 import lamb from '../../public/images/projects/things-on-the-street/lamb.jpg'
 import rat2 from '../../public/images/projects/things-on-the-street/rat2.jpg'
 import asteroid from '../../public/images/projects/things-on-the-street/asteroid.jpg'
+import carrot from '../../public/images/projects/things-on-the-street/carrot.jpg'
+import wineGlass from '../../public/images/projects/things-on-the-street/wine_glass.jpg'
+import wildOats from '../../public/images/projects/things-on-the-street/wild_oats.jpg'
+import tv from '../../public/images/projects/things-on-the-street/tv.jpg'
+import iceCream from '../../public/images/projects/things-on-the-street/ice_cream.jpg'
+import herb from '../../public/images/projects/things-on-the-street/herb.jpg'
+import hedgehog from '../../public/images/projects/things-on-the-street/hedgehog.jpg'
+import meatballs from '../../public/images/projects/things-on-the-street/meatballs.jpg'
+import reindeer from '../../public/images/projects/things-on-the-street/reindeer.jpg'
+import soySauce from '../../public/images/projects/things-on-the-street/soy_sauce.jpg'
 
 export const frontmatter = {
     title: 'Things on the Street',
@@ -69,7 +79,7 @@ export async function getStaticProps() {
             img: shades,
         },
         {
-            title: 'Unknown/sludge',
+            title: 'Unknown/Sludge',
             date: '2021',
             location: 'Chinatown, Manhattan',
             img: sludge,
@@ -149,7 +159,7 @@ export async function getStaticProps() {
         {
             title: 'Turtle',
             date: '2022',
-            location: 'Prospect Heights, Brooklyn',
+            location: 'Vanderbilt Avenue, Brooklyn',
             img: turtle,
         },
         {
@@ -167,9 +177,69 @@ export async function getStaticProps() {
         {
             title: 'Asteroid',
             date: '2023',
-            location: 'Prospect Heights, Brooklyn',
+            location: 'Mount Prospect Park, Brooklyn',
             img: asteroid,
-        }
+        },
+        {
+            title: 'Small Carrot (Locally Grown)',
+            date: '2023',
+            location: 'Grand Army Plaza, Brooklyn',
+            img: carrot,
+        },
+        {
+            title: 'Wine Glass',
+            date: '2023',
+            location: 'Prospect Heights, Brooklyn',
+            img: wineGlass,
+        },
+        {
+            title: 'Wild Oats',
+            date: '2023',
+            location: 'Flatbush Avenue, Brooklyn',
+            img: wildOats,
+        },
+        {
+            title: 'He Said She Said. War Edition',
+            date: '2023',
+            location: 'Prospect Heights, Brooklyn',
+            img: tv,
+        },
+        {
+            title: 'Ice Cream',
+            date: '2023',
+            location: 'Prospect Heights, Brooklyn',
+            img: iceCream,
+        },
+        {
+            title: 'Unknown/Herb',
+            date: '2023',
+            location: 'Two Bridges, Manhattan',
+            img: herb,
+        },
+        {
+            title: 'Hedgehog',
+            date: '2023',
+            location: 'Prospect Heights, Brooklyn',
+            img: hedgehog,
+        },
+        {
+            title: 'Spaghetti and Meatballs',
+            date: '2023',
+            location: 'Lower East Side, Manhattan',
+            img: meatballs,
+        },
+        {
+            title: 'Reindeer',
+            date: '2023',
+            location: 'Eastern Parkway, Brooklyn',
+            img: reindeer,
+        },
+        {
+            title: '5 Gallons of Soy Sauce',
+            date: '2023',
+            location: 'Two Bridges, Manhattan',
+            img: soySauce,
+        },
     ].sort((a,b) => Date.parse(b.date) - Date.parse(a.date))
 
     return {
