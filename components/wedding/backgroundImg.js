@@ -1,20 +1,37 @@
 import Image from "next/legacy/image"
+import Link from "next/link";
 
 import styles from './BackgroundImg.module.css'
 
-export default function BackgroundImg({ children, height, img }) {
+export default function BackgroundImg({ children, height, img, href}) {
   let imgHeight = height ? height : 250; 
   return (
+    
     <div className={styles.bgImgContainer}>
       <div className={styles.bgImgOverlay}>
-        {children}
+        {/* <Link href={href}> */}
+          {children}
+        {/* </Link> */}
       </div>
-      <Image 
-        src={img}
-        layout='fill'
-        objectFit='cover'
-        height={imgHeight}
-        />
+      {href ? (
+        <Link href={href}>
+        <Image 
+          src={img}
+          layout='fill'
+          objectFit='cover'
+          height={imgHeight}
+          style={{opacity: .6}}
+          />
+      </Link>
+      ) : (
+        <Image 
+          src={img}
+          layout='fill'
+          objectFit='cover'
+          height={imgHeight}
+          style={{opacity: .6}}
+          />
+      )}
     </div>
   )
 }

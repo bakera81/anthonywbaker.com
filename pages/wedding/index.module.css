@@ -3,9 +3,10 @@
 }
 
 .weddingLink {
-  font-family: 'Orsay', 'Arial Narrow', Arial, sans-serif;
-  font-size: 3rem;
-  font-style: bold;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 600;
   color:black;
   background-color: none;
 }
