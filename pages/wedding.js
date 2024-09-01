@@ -1,6 +1,7 @@
 import Layout from '../components/wedding/layout'
 import ListLink from '../components/listlink'
 import P from '../components/paragraph'
+import Link from 'next/link'
 import Image from "next/legacy/image"
 import BackgroundImg from '../components/wedding/backgroundImg'
 
@@ -17,7 +18,7 @@ export default function NYWedding() {
             <div className='grid is-col-min-12 is-gap-0'>
               <div className={`cell ${styles.weddingCell}`}>
                 <BackgroundImg img={img1}>
-                  WREN
+                  <Link href='/about' className={styles.weddingLink}>Wren</Link>
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>And</div>

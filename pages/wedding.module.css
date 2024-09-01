@@ -2,6 +2,14 @@
   min-height: 150px;
 }
 
+.weddingLink {
+  font-family: 'Orsay', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+  font-style: bold;
+  color:black;
+  background-color: none;
+}
+
 @media (max-width: 768px) {
   .isReverseMobile {
     display: flex;

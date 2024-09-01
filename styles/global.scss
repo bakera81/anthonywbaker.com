@@ -26,6 +26,14 @@
   -webkit-font-smoothing: none;
 }
 
+@font-face {
+  font-family: "Orsay";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/orsay.otf");
+  font-display: swap;
+}
+
 /* Customize Bulma variables */
 $size-1: 5rem;
 $size-2: 3rem;
