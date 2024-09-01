@@ -59,17 +59,17 @@ export default function NYWedding() {
             </div>
           </div>
           <div className='column'>
-            <div className='section'>
+            <div className='section' style={{paddingLeft: 0, paddingRight: 0, paddingBottom: 0}}>
               <div className='container'>
-                <h1 className={`title is-1 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>Wren</h1>
-            <h1 className={`title is-2 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>and</h1>
-                <h1 className={`title is-1 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>Anthony</h1>
+                <h1 className={`title is-1 is-size-3-tablet is-size-1-mobile ${styles.weddingTitle}`}>Wren</h1>
+            <h1 className={`title is-2 is-size-3-tablet  is-size-1-mobile ${styles.weddingTitle}`}>and</h1>
+                <h1 className={`title is-1 is-size-3-tablet  is-size-1-mobile ${styles.weddingTitle}`}>Anthony</h1>
               </div>
             </div>
             <div className='section'>
               <div className='container'>
-                <P style={{textAlign: 'center'}}>Thursday, October 31, 2024</P>
-                <P style={{textAlign: 'center'}}>9 Orchard Street, New York, New York</P>
+                <P style={{textAlign: 'center', paddingBottom: 0}}>Thursday, October 31, 2024</P>
+                <P style={{textAlign: 'center', paddingBottom: 0}}>9 Orchard Street, New York, New York</P>
               </div>
             </div>
           </div>
