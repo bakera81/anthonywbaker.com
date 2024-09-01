@@ -1,3 +1,10 @@
-.wedding-cell {
+.weddingCell {
   min-height: 150px;
+}
+
+@media (max-width: 768px) {
+  .isReverseMobile {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

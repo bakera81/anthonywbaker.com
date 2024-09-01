@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout from '../components/wedding/layout'
 import ListLink from '../components/listlink'
 import P from '../components/paragraph'
 import Image from "next/legacy/image"
@@ -9,26 +9,31 @@ import styles from './wedding.module.css'
 import img1 from '../public/images/wedding/candycorn.jpg'
 
 export default function NYWedding() {
+  // TODO: no-index
   return (
-      <Layout home>
-        <div className='columns'>
+      <Layout title={'Wren & Anthony\'s Spooky Wedding'}>
+        <div className={`columns ${styles.isReverseMobile}`}>
           <div className='column'>
-            <div className='grid'>
-              <div className='cell is-col-min-20' style={{minHeight: 150}}>
+            <div className='grid is-col-min-12 is-gap-0'>
+              <div className={`cell ${styles.weddingCell}`}>
                 <BackgroundImg img={img1}>
                   WREN
                 </BackgroundImg>
               </div>
-              <div className='cell'>And</div>
-              <div className='cell'>Anthony</div>
-              <div className='cell'>Wedding</div>
+              <div className={`cell ${styles.weddingCell}`}>And</div>
+              <div className={`cell ${styles.weddingCell}`}>Anthony</div>
+              <div className={`cell ${styles.weddingCell}`}>Wedding</div>
             </div>
           </div>
           <div className='column'>
-            <div className={`level ${styles.listLinkLevel}`}>
-              <ListLink href="/about">Wren</ListLink>
-              <ListLink href="/stories">and</ListLink>
-              <ListLink href="/projects">Anthony</ListLink>
+            <div className='section'>
+              <div className='container'>
+                <div className={`level ${styles.listLinkLevel}`}>
+                  <ListLink href="/about">Wren</ListLink>
+                  <ListLink href="/stories">and</ListLink>
+                  <ListLink href="/projects">Anthony</ListLink>
+                </div>
+              </div>
             </div>
           </div>
         </div>
