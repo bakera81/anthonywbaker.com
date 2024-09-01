@@ -4,6 +4,7 @@ import P from '../../components/paragraph'
 import Link from 'next/link'
 import Image from "next/legacy/image"
 import BackgroundImg from '../../components/wedding/backgroundImg'
+import PageTitle from '../../components/wedding/pagetitle'
 
 import styles from './index.module.css'
 
@@ -60,17 +61,15 @@ export default function NYWedding() {
           <div className='column'>
             <div className='section'>
               <div className='container'>
-                <div className={`level ${styles.listLinkLevel}`}>
-                  <ListLink href="/about">Wren</ListLink>
-                  <ListLink href="/stories">and</ListLink>
-                  <ListLink href="/projects">Anthony</ListLink>
-                </div>
+                <h1 className={`title is-1 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>Wren</h1>
+            <h1 className={`title is-2 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>and</h1>
+                <h1 className={`title is-1 is-size-3-tablet is-size-4-touch is-size-1-mobile ${styles.weddingTitle}`}>Anthony</h1>
               </div>
             </div>
             <div className='section'>
               <div className='container'>
-                <P>Thursday, October 31, 2024</P>
-                <P>9 Orchard Street, New York, New York</P>
+                <P style={{textAlign: 'center'}}>Thursday, October 31, 2024</P>
+                <P style={{textAlign: 'center'}}>9 Orchard Street, New York, New York</P>
               </div>
             </div>
           </div>

@@ -8,32 +8,21 @@
     /* width: 100%; */
 }
 
-/* .level > div {
-    position: unset !important;
-} */
-
-.img {
-    height: 85px;
-    /* object-fit: contain; */
-}
-
 @media screen and (max-width: 600px) {
-    .pageTitle {
-        font-size: 3rem !important;
-    }
-  }
-
-@media screen and (max-width: 400px) {
     .pageTitle {
         font-size: 2.5rem !important;
     }
   }
 
+@media screen and (max-width: 400px) {
+    .pageTitle {
+        font-size: 2rem !important;
+    }
+  }
+
 .pageTitle {
     font-family: "Orsay";
-    font-weight: normal;
-    text-align: right;
-
+    text-align: center;
     /* font-size: calc(3rem + 3vw); */
     /* font-size: 5rem !important; */
     /* Perf optimization for fitty: */

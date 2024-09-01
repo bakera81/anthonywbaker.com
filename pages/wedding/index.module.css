@@ -2,6 +2,13 @@
   min-height: 150px;
 }
 
+.weddingTitle {
+  font-family: 'Orsay', serif;
+  text-align: center;
+  font-weight: normal;
+  padding-bottom: 2rem;
+}
+
 .weddingLink {
   font-family: 'Didact Gothic', sans-serif;
   font-size: 2.5rem;
