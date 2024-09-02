@@ -29,6 +29,11 @@ export default function NYWedding() {
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
+                <BackgroundImg href='/wedding/lodging' img={threeWitchesImg}>
+                  <Link href='/wedding/lodging' className={styles.weddingLink}>lodging</Link>
+                </BackgroundImg>
+              </div>
+              <div className={`cell ${styles.weddingCell}`}>
                 <BackgroundImg img={eye1Img}></BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
@@ -62,7 +67,7 @@ export default function NYWedding() {
             <div className='section' style={{paddingLeft: 0, paddingRight: 0, paddingBottom: 0}}>
               <div className='container'>
                 <h1 className={`title is-1 is-size-3-tablet is-size-1-mobile ${styles.weddingTitle}`}>Wren</h1>
-            <h1 className={`title is-2 is-size-3-tablet  is-size-1-mobile ${styles.weddingTitle}`}>and</h1>
+                <h1 className={`title is-2 is-size-3-tablet  is-size-1-mobile ${styles.weddingTitle}`}>and</h1>
                 <h1 className={`title is-1 is-size-3-tablet  is-size-1-mobile ${styles.weddingTitle}`}>Anthony</h1>
               </div>
             </div>

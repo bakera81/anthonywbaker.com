@@ -1,5 +1,5 @@
 .weddingCell {
-  min-height: 150px;
+  min-height: 350px;
 }
 
 .weddingTitle {
@@ -15,7 +15,11 @@
   font-style: italic;
   font-weight: 600;
   color:black;
-  background-color: none;
+}
+
+.weddingLink:hover {
+  background-color: white;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

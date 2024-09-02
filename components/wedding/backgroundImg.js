@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from './BackgroundImg.module.css'
 
 export default function BackgroundImg({ children, height, img, href}) {
-  let imgHeight = height ? height : 250; 
+  let imgHeight = height ? height : 450; 
   return (
     
     <div className={styles.bgImgContainer}>
