@@ -4,6 +4,7 @@ import Script from 'next/script'
 export default function Header ({ children }) {
     return(
         <Head>
+            <html data-theme='light' />
             {/* <Script
                 id="heap"
                 strategy="afterInteractive"

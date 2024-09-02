@@ -4,6 +4,7 @@ import Script from 'next/script'
 export default function Header ({ children }) {
     return(
         <Head>
+            <html data-theme='light' />
             {/* <Script
                 id="heap"
                 strategy="afterInteractive"
@@ -14,7 +15,7 @@ export default function Header ({ children }) {
                 `,
                 }}
             /> */}
-            <title>{children ? children : `Wren & Anthony's Spooky Wedding`}</title>
+            <title>{children ? `${children} | Wren & Anthony` : `Wren & Anthony's Spooky Wedding`}</title>
             <link rel="icon" href="/favicon-512x512.png" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
