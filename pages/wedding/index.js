@@ -8,7 +8,7 @@ import PageTitle from '../../components/wedding/pagetitle'
 
 import styles from './index.module.css'
 
-import receptionImg from '../../public/images/wedding/lambs_room.jpg'
+import receptionImg from '../../public/images/wedding/lambs_room_2.jpg'
 import threeWitchesImg from '../../public/images/wedding/three_witches.jpg'
 import bat1Img from '../../public/images/wedding/bat1.jpg'
 import eye1Img from '../../public/images/wedding/eye1.jpg'
