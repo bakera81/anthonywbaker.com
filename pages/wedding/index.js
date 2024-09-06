@@ -13,7 +13,7 @@ import threeWitchesImg from '../../public/images/wedding/three_witches.jpg'
 import bat1Img from '../../public/images/wedding/bat1.jpg'
 import eye1Img from '../../public/images/wedding/eye1.jpg'
 import hairdresser from '../../public/images/wedding/hairdresser.jpg'
-import nineOrchardImg from '../../public/images/wedding/nine_orchard.jpg'
+import nineOrchardImg from '../../public/images/wedding/nine_orchard_4.jpg'
 import superiority1Img from '../../public/images/wedding/superiority1.jpg'
 
 export default function NYWedding() {
@@ -29,16 +29,16 @@ export default function NYWedding() {
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
-                <BackgroundImg href='/wedding/lodging' img={threeWitchesImg}>
-                  <Link href='/wedding/lodging' className={styles.weddingLink}>lodging</Link>
+                <BackgroundImg href='/wedding/9-orchard' img={nineOrchardImg}>
+                  <Link href='/wedding/9-orchard' className={styles.weddingLink}>Where to stay</Link>
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
                 <BackgroundImg img={eye1Img}></BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
-                <BackgroundImg href='/wedding/cocktailparty' img={superiority1Img}>
-                  <Link href='/wedding/cocktailparty' className={styles.weddingLink}>cocktail party</Link>
+                <BackgroundImg href='/wedding/superiority-burger' img={superiority1Img}>
+                  <Link href='/wedding/superiority-burger' className={styles.weddingLink}>"cocktail party"</Link>
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
@@ -57,8 +57,8 @@ export default function NYWedding() {
                 </BackgroundImg>
               </div>
               <div className={`cell ${styles.weddingCell}`}>
-                <BackgroundImg href='/wedding/questions' img={bat1Img}>
-                  <Link href='/wedding/questions' className={styles.weddingLink}>q+a</Link>
+                <BackgroundImg href='/wedding/faq' img={bat1Img}>
+                  <Link href='/wedding/faq' className={styles.weddingLink}>FAQs</Link>
                 </BackgroundImg>
               </div>
             </div>
@@ -73,6 +73,7 @@ export default function NYWedding() {
             </div>
             <div className='section'>
               <div className='container'>
+                <P style={{textAlign: 'center', fontStyle: 'italic', paddingBottom: 0}}>Halloween</P>
                 <P style={{textAlign: 'center', paddingBottom: 0}}>Thursday, October 31, 2024</P>
                 <P style={{textAlign: 'center', paddingBottom: 0}}>9 Orchard Street, New York, New York</P>
               </div>
