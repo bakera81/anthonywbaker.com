@@ -10,6 +10,9 @@ export default function Layout({ children, title }) {
         {children}
       {/* </div>
     </section> */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet" />
     </>
   );
 }
