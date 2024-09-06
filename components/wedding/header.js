@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Script from 'next/script'
 
-export default function Header ({ children }) {
+export default function Header ({ dataTheme, children }) {
+    let dataThemeDefault = dataTheme ? dataTheme : 'light'
     return(
         <Head>
-            <html data-theme='light' />
+            <html data-theme={dataThemeDefault} />
             {/* <Script
                 id="heap"
                 strategy="afterInteractive"

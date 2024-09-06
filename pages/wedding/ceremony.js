@@ -10,7 +10,7 @@ export default function() {
   return(
     <Layout title='Ceremony'>
       <PageTitle>Ceremony</PageTitle>
-      <P>Please join us on the balcony at 9 Orchard at 4:30 on Halloween.</P>
+      <P>Please join us on the balcony (Room 515) at 9 Orchard at 4:30 on Halloween.</P>
       <P>Details coming soon</P>
     </Layout>
   )

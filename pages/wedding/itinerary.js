@@ -17,7 +17,8 @@ export default function() {
           <h1 className='is-3 title has-text-centered'>Halloween, October 30, 2024</h1>
           <ul>
             <li>9:30 Breakfast @ The Swan Room in the hotel lobby.</li>
-            <li>5:00 Ceremony @ Room 515, 9 Orchard Street.</li>
+            <li>4:00 Ceremony @ Room 515, 9 Orchard Street.</li>
+            <li>5:00 Champagne toast in The Swan Room, 9 Orchard Street.</li>
             <li>6:30m Uptown F Train to 36th Street.</li>
             <li>7:00 Dinner at Kean's.</li>
           </ul>
