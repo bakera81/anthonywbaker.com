@@ -1,7 +1,7 @@
 import Image from "next/legacy/image"
 import Link from "next/link";
 
-import styles from './BackgroundImg.module.css'
+import styles from './backgroundImg.module.css'
 
 export default function BackgroundImg({ children, height, img, href}) {
   let imgHeight = height ? height : 450; 
