@@ -59,7 +59,7 @@ export default function About() {
         <P>Product, data science, and growth @ <A href="https://www.datacamp.com" target="_blank">DataCamp</A>: 2016-2022.</P>
         <P>Technology, innovation, and education (master's) @ <A href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</A>: 2015-2016.</P>
         <P>Creative writing & computer science (bachelor's) @ <A href="https://www.lafayette.edu/" target="_blank">Lafayette College</A>: 2011-2015.</P>
-        <P><a href="/BakerResume_v18_Heap.pdf" target="_blank"  rel="noopener noreferrer">Resume</a></P>
+        <P><a href="/BakerResume_v19.1.pdf" target="_blank"  rel="noopener noreferrer">Resume</a></P>
         <Hr />
         <P><A href="/contact">Contact</A></P>
     </Layout>
