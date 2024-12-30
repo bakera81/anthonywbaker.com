@@ -3,7 +3,7 @@ This site is powered by NextJS.
 ## Quick start
 
 1. `npm i`
-2. `npm run develop`
+2. `npm run dev`
 
 ## Deploy
 Commit to the `prod` branch to trigger a new build on [Netlify](https://app.netlify.com/teams/bakera81/overview).  
