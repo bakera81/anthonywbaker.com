@@ -70,7 +70,7 @@ export default function Recipe({ recipeData }) {
                             ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
                         }}
                     >
-                        {recipeData.introMarkdown}
+                        {recipeData.introMarkdown.parent}
                     </ReactMarkdown>
                     <ReactMarkdown
                         components={{
@@ -80,7 +80,7 @@ export default function Recipe({ recipeData }) {
                             ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
                         }}
                     >
-                        {recipeData.recipeMarkdown}
+                        {recipeData.recipeMarkdown.parent}
                     </ReactMarkdown>
                 </div>
             </div>

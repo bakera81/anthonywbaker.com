@@ -57,7 +57,7 @@ export default function Stories({ storiesData }) {
                   ),
                 }}
               >
-                {story.markdown}
+                {story.markdown.parent}
               </ReactMarkdown>
             </>
           ))}
