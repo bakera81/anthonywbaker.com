@@ -54,7 +54,7 @@ export default function Ideas({ ideasData, ideaCategories}) {
                     img: ({node, ...props}) => <MarkdownImage src={props.src} {...props} />,
                 }}
               >
-                {idea.markdown}
+                {idea.markdown.parent}
               </ReactMarkdown>
             </>
           ))}

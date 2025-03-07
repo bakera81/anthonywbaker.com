@@ -2,13 +2,16 @@ This site is powered by NextJS.
 
 ## Quick start
 
-1. `npm i`
-2. `npm run dev`
+1. `pnpm i`
+2. `pnpm run dev`
 
 ## Deploy
 Commit to the `prod` branch to trigger a new build on [Netlify](https://app.netlify.com/teams/bakera81/overview).  
 
-Locally, run `npm run build` then `npm run start` to test a built version of the site.
+Locally, run `pnpm run build` then `pnpm run start` to test a built version of the site.
+
+To more faithfully test the prod version locally, use the Netlify CLI: `netlify dev`, `netlify build`, or create a preview deployment with `netlify deploy --build --open` .
+
 
 
 

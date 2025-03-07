@@ -69,7 +69,7 @@ export default function IndividualStory({ storyData }) {
               ),
             }}
           >
-            {storyData.markdown}
+            {storyData.markdown.parent}
           </ReactMarkdown>
         </div>
       </div>

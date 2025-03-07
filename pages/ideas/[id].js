@@ -66,7 +66,7 @@ export default function IndividualIdea({ ideaData }) {
               ),
             }}
           >
-            {ideaData.markdown}
+            {ideaData.markdown.parent}
           </ReactMarkdown>
         </div>
       </div>
