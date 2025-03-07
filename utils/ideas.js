@@ -14,6 +14,7 @@ import {
 import path from 'path'
 
 export async function queryIdeasDatabase(slug) {
+  console.log(`Fetching ${slug} from Notion...`)
   const response = await notion.databases.query({ 
       database_id: process.env.NOTION_IDEAS_DB,
       filter: {
@@ -42,6 +43,7 @@ export async function queryIdeasDatabase(slug) {
 
 
 export async function getIdeasFromDatabase() {
+  console.log('Fetching all ideas from Notion...')
   const response = await notion.databases.query({ database_id: process.env.NOTION_IDEAS_DB });
   // console.log({step: 'response', response: JSON.stringify(response.results)})
   const ideasWithMarkdown = await Promise.all(response.results.map((idea) => {

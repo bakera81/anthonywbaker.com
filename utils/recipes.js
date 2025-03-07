@@ -79,6 +79,7 @@ function getIntroTitleFromDatabasePage(recipe) {
 }
 
 export async function queryRecipesDatabase(slug) {
+    console.log(`Fetching ${slug} from Notion...`);
     const response = await notion.databases.query({ 
         database_id: process.env.NOTION_RECIPES_DB,
         filter: {
@@ -112,6 +113,7 @@ export async function queryRecipesDatabase(slug) {
 }
 
 export async function getRecipesDatabase() {
+    console.log('Fetching all recipes from Notion...');
     const response = await notion.databases.query({ database_id: process.env.NOTION_RECIPES_DB });
     // console.log({step: 'response', response: JSON.stringify(response.results)})
     const recipesWithMarkdown = await Promise.all(response.results.map((recipe) => {

@@ -100,3 +100,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 netlify.toml
+
+# Local Netlify folder
+.netlify
