@@ -12,7 +12,9 @@ import { getRecipesDatabase, queryRecipesDatabase } from '../../utils/recipes'
 
 export async function getStaticPaths() {
     const recipesData = await getRecipesDatabase();
-    const paths = recipesData.map((recipe) => {
+    const paths = recipesData
+        .filter(recipe => recipe.slug)
+        .map((recipe) => {
         return {
             params: {
                 id: recipe.slug,

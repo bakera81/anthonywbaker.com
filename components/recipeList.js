@@ -9,9 +9,13 @@ export default function RecipeList({ recipeData }) {
         <ul>
             {recipeData.map((recipe) => (
                 <li>
-                    <A href={`/recipes/${recipe.slug}`}> 
-                        <P leftAlign>{recipe.title}</P>
-                    </A>
+                    {recipe.slug ? (
+                        <A href={`/recipes/${recipe.slug}`}> 
+                            <P leftAlign>{recipe.title}</P>
+                        </A>
+                    ) : (
+                        <P leftAlign>{recipe.title} [coming soon]</P>
+                    )}
                 </li>
             ))}
         </ul>
