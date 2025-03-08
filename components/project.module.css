@@ -9,3 +9,9 @@
 .projectColumn0 {
     order: 0;
 }
+
+.imageContainer {
+    position: relative;
+    width: 100% !important;
+    height: auto !important;
+  }
