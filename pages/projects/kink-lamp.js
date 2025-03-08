@@ -4,14 +4,14 @@ import P from "../../components/paragraph"
 import A from '../../components/anchor'
 
 import projectImage from "../../public/images/projects/kink-lamp-2.jpg";
-import previewImage from "../../public/images/projects/kink-lamp-1.png";
+import previewImage from "../../public/images/projects/kink-lamp-4.jpg";
 
 export const frontmatter = {
-  title: 'Lamp',
+  title: 'Kink Lamp',
   description: 'Kinky lighting solutions.',
   slug: 'kink-lamp',
   preview: previewImage,
-  themeColor: '#fff',
+  themeColor: '#323C45', //'#D9E2E0',
   updatedAt: '2023-12-01',
   completed: true,
 }
