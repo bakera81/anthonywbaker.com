@@ -25,6 +25,7 @@ export default function ProjectPreview({ slug, description, img, themeColor, bac
           src={img}
           width={100}
           height={100}
+          objectFit="contain"
           className={styles.previewImage}
           // This doesn't hydrate for some reason, using child selectors in emotion instead
           style={{borderColor: `${backgroundColor} !important`, backgroundColor: `${backgroundColor} !important`}}
