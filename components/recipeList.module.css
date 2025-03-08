@@ -1,4 +1,6 @@
 .comingSoon {
-    font-size: .7em;
+    font-size: .9em;
     font-style: italic;
+    padding-top: 0;
+    padding-bottom: 0;
 }
