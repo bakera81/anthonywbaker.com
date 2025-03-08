@@ -9,6 +9,7 @@ import { getRecipesDatabase } from '../../utils/recipes'
 
 
 export async function getStaticProps() {
+  debugger;
   const recipesData = await getRecipesDatabase();
   const recipeCategoryNestedArray = recipesData.map(recipe => recipe.category)
   const recipeCategories = [...new Set(recipeCategoryNestedArray.flat())]

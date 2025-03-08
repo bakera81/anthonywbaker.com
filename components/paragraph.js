@@ -1,8 +1,7 @@
 import styles from './paragraph.module.css'
 
-// TODO: Have this pass through className
-export default function P ({ children, style }) {
+export default function P ({ children, style, className }) {
     return (
-        <p className={styles.paragraph} style={style}>{children}</p>
+        <p className={`${styles.paragraph} ${className ? className : ''}`} style={style}>{children}</p>
     )
 }
