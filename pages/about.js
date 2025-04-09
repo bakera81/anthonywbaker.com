@@ -4,6 +4,7 @@ import PageTitle from  '../components/pagetitle'
 import P from '../components/paragraph'
 import Hr from '../components/hr'
 import shuffle from '../utils/shuffle'
+import Link from 'next/link'
 
 
 import React from 'react'
@@ -53,13 +54,14 @@ export default function About() {
     <Layout title="About">
       <PageTitle>Anthony W. Baker</PageTitle>
         <P>{aboutMe} <span className={styles.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
+        <P><Link href="/skills">My skills</Link></P>
         <Hr />
         <P>Product @ <A href="https://workera.ai" target="_blank">Workera</A>: 2023-present</P>
         <P>Product @ <A href="https://heap.io" target="_blank">Heap</A>: 2022-2023</P>
         <P>Product, data science, and growth @ <A href="https://www.datacamp.com" target="_blank">DataCamp</A>: 2016-2022.</P>
         <P>Technology, innovation, and education (master's) @ <A href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</A>: 2015-2016.</P>
         <P>Creative writing & computer science (bachelor's) @ <A href="https://www.lafayette.edu/" target="_blank">Lafayette College</A>: 2011-2015.</P>
-        <P><a href="/BakerResume_v19.3_data.pdf" target="_blank"  rel="noopener noreferrer">Resume</a></P>
+        <P><a href="/BakerResume_v19.4_data.pdf" target="_blank"  rel="noopener noreferrer">Resume</a></P>
         <Hr />
         <P><A href="/contact">Contact</A></P>
     </Layout>

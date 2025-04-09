@@ -8,12 +8,13 @@ export default function Home() {
       <Layout home>
         <div className={`level ${styles.listLinkLevel}`}>
           <ListLink href="/about">About</ListLink>
+          <ListLink target="_blank" href="https://data.anthony.computer/">Data</ListLink>
           <ListLink href="/stories">Stories</ListLink>
           <ListLink href="/projects">Projects</ListLink>
           <ListLink href="/ideas">Ideas</ListLink>
           <ListLink href="/recipes">Recipes</ListLink>
           {/* <ListLink href="https://medium.com/@addiebundren">Writing</ListLink> */}
-          <ListLink href="/contact">Contact</ListLink>
+          {/* <ListLink href="/contact">Contact</ListLink> */}
         </div>
         <div className="container">
 {/* 
