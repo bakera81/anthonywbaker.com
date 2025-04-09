@@ -11,7 +11,7 @@ import { getMarkdown } from '../utils/notionHelpers'
 
 
 export async function getStaticProps() {
-  const skillsMarkdown = await getMarkdown('1cdc4aa14327806d9fa5d995fedd7645');
+  const skillsMarkdown = await getMarkdown(process.env.NOTION_SKILLS_PAGE_ID);
   return {
     props: {
       skillsMarkdown
@@ -36,7 +36,7 @@ export default function Skills({ skillsMarkdown }) {
         {skillsMarkdown.parent}
       </ReactMarkdown>
       <div class="section">
-        <Link style={{fontStyle: `italic`}} href="/contact">Want to work together?</Link>
+        <P style={{fontStyle: `italic`}}>Want to work together? <Link style={{fontStyle: `italic`}} href="/contact">Let's collaborate.</Link></P>
       </div>
       {/* </div> */}
     </Layout>
