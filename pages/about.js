@@ -52,9 +52,10 @@ export default function About() {
     <Layout title="About">
       <PageTitle>Anthony W. Baker</PageTitle>
         <P>{aboutMe} <span className={styles.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
+        <P>I've spent the past decade becoming the best product manager I can, working at the intersection of data, education, and AI. <br />I'm on a mission to become a modern-day Renaissance Man. <br /><Link href="/contact">What's next?</Link></P>
         <P><Link href="/skills">My skills</Link></P>
         <Hr />
-        <P>Product @ <A href="https://workera.ai" target="_blank">Workera</A>: 2023-present</P>
+        <P>Product @ <A href="https://workera.ai" target="_blank">Workera</A>: 2023-2025</P>
         <P>Product @ <A href="https://heap.io" target="_blank">Heap</A>: 2022-2023</P>
         <P>Product, data science, and growth @ <A href="https://www.datacamp.com" target="_blank">DataCamp</A>: 2016-2022.</P>
         <P>Technology, innovation, and education (master's) @ <A href="https://www.gse.harvard.edu/masters/tie" target="_blank">Harvard Graduate School of Education</A>: 2015-2016.</P>
