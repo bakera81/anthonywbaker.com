@@ -1,5 +1,5 @@
 import { frontmatter as proj1} from '../pages/projects/2048-reinforcement-learning'
-import { frontmatter as proj2 } from '../pages/projects/anthonywbaker'
+import { frontmatter as proj2 } from '../pages/projects/this-site'
 import { frontmatter as proj3 } from '../pages/projects/digital-humanities-literacy-narratives'
 import { frontmatter as proj4 } from '../pages/projects/disco'
 import { frontmatter as proj5 } from '../pages/projects/exomuscle'
