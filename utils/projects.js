@@ -17,12 +17,13 @@ import { frontmatter as proj16 } from '../pages/projects/things-on-the-street'
 import { frontmatter as proj17 } from '../pages/projects/kink-lamp'
 import { frontmatter as proj18 } from '../pages/projects/maison-bieber'
 import { frontmatter as proj19 } from '../pages/projects/qtone'
+import { frontmatter as proj20 } from '../pages/projects/bleach-cal'
 
 const allProjectMetadata = [
     {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
     {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
     {...proj11}, {...proj12}, {...proj13}, {...proj14}, {...proj15},
-    {...proj16}, {...proj17}, {...proj18}, {...proj19}
+    {...proj16}, {...proj17}, {...proj18}, {...proj19}, {...proj20}
 ].sort((a,b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
 
 export default allProjectMetadata;
@@ -32,7 +33,7 @@ export function fetchAllProjectMetadata() {
         {...proj1}, {...proj2}, {...proj3}, {...proj4}, {...proj5},
         {...proj6}, {...proj7}, {...proj8}, {...proj9}, {...proj10},
         {...proj11}, {...proj12}, {...proj13}, {...proj14}, {...proj15},
-        {...proj16}, {...proj17}, {...proj18}, {...proj19}
+        {...proj16}, {...proj17}, {...proj18}, {...proj19}, {...proj20}
     ].sort((a,b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
 
     return allProjectMetadata;

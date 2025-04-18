@@ -24,7 +24,7 @@ export default function Qtone() {
           qtone is an AI tone-of-voice coach to help remote workers minimize frustration, communicate effectively, and be happier at work.
         </P>
         <P style={{textAlign: `left`}}>
-          Visit <A href="https://qtone.xyz">qtone.xyz</A> to join the waitlist.
+          Visit <A href="https://qtone.xyz" target="_blank">qtone.xyz</A> to join the waitlist.
         </P>
       </Project>
     </Layout>
