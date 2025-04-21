@@ -36,7 +36,10 @@ export default function Footer({ home }) {
                         <P><A href="/about">about</A></P>
                     </div>
                     <div className="level-item">
-                        <P><A href="/stories" target="_blank">stories</A></P>
+                        <P><A href="https://data.anthony.computer" target="_blank">data</A></P>
+                    </div>
+                    <div className="level-item">
+                        <P><A href="/stories">stories</A></P>
                     </div>
                     <div className="level-item">
                         <P><A href="/projects">projects</A></P>

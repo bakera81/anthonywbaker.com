@@ -10,35 +10,10 @@ import React from 'react'
 
 import styles from './about.module.css'
 
-
-
-// class AboutMe extends React.Component {
-
-// // constructor to set state and bind "this"
-//       constructor(props) {
-//           super(props);
-//           this.items = aboutMe;
-//           this.handleClick = this.handleClick.bind(this);
-//         }
-
-//       // function to handle the click
-//        handleClick() {
-//         this.setState({
-//           items: shuffle(aboutMe)
-//         });
-//       }
-
-//       render() {
-//         return(
-//           <P>{this.items.map(item => (item + " "))} <span css={{fontSize: `.7em`}}>[<a onClick={this.handleClick}>shuffle</a>]</span></P>
-//         )
-//       }
-// }
-
 export default function About() {
 
   const aboutMeInit = [
-    "Product manager. ", "Data scientist. ", "Designer. ", "Growth marketer. ", "Educator. ", "Process enthusiast. ", "Coffee addict. ", "Music lover. "
+    "Product manager. ", "Data scientist. ", "Entrepreneur. ", "Designer. ", "Growth marketer. ", "Educator. ", "Coffee addict. ", "Music lover. "
   ];
 
   const [aboutMe, setShuffled] = React.useState(aboutMeInit);
@@ -52,8 +27,15 @@ export default function About() {
     <Layout title="About">
       <PageTitle>Anthony W. Baker</PageTitle>
         <P>{aboutMe} <span className={styles.shuffleSpan}>[<a onClick={shuffleOnClick}>shuffle</a>]</span></P>
-        <P>I've spent the past decade becoming the best product manager I can, working at the intersection of data, education, and AI. <br />I'm on a mission to become a modern-day Renaissance Man. <br /><Link href="/contact">What's next?</Link></P>
-        <P><Link href="/skills">My skills</Link></P>
+        <P>I've spent the past decade becoming the best product manager I can be, working at the intersection of data, education, and AI. 
+          <br />
+          I'm on a mission to become a modern-day Renaissance Man.
+        </P>
+        <P>
+          <Link href="mailto:anthonywbaker1@gmail.com">Send me an email. | </Link>
+           <Link href="/projects/this-site">About this site. | </Link> 
+           <Link href="/skills">My skills.</Link>
+        </P>
         <Hr />
         <P>Product @ <A href="https://workera.ai" target="_blank">Workera</A>: 2023-2025</P>
         <P>Product @ <A href="https://heap.io" target="_blank">Heap</A>: 2022-2023</P>
