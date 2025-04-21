@@ -8,7 +8,7 @@ import previewImage from "../../public/images/projects/mux2.png";
 
 export const frontmatter = {
   title: 'MUX News',
-  description: 'AI to improve your media diet.',
+  description: 'Improve your media diet with AI.',
   slug: 'mux-news',
   preview: previewImage,
   themeColor: 'blue', 
@@ -33,6 +33,9 @@ export default function Mux() {
         </P>
         <P style={{textAlign: `left`}}>
           Get the full story, wherever you read your news. 
+        </P>
+        <P style={{textAlign: `left`, fontStyle: `italic`}}>
+          MUX News is no longer available due to API costs.
         </P>
       </Project>
     </Layout>

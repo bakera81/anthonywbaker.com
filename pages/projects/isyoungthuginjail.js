@@ -8,7 +8,7 @@ import previewImage from "../../public/images/projects/slime-season-3.jpg";
 
 export const frontmatter = {
   title: 'isyoungthuginjail.com',
-  description: 'Is Young Thug in jail.',
+  description: 'Is Young Thug in jail?',
   slug: 'isyoungthuginjail',
   preview: previewImage,
   themeColor:  '#510303', // '#6E3E35', // '#0D0505', 
@@ -21,7 +21,7 @@ export default function Thugger() {
     <Layout title="isyoungthuginjail.com">
       <Project imgRight title={frontmatter.title} imgSrc={projectImage}>
         <P style={{textAlign: `left`}}>
-        Young Thug is an iconoclast. <A href="https://www.wired.com/2015/10/young-thug-evolution-of-language/" target="_blank">Linguists study him.</A> <A href="https://isyoungthuginjail.com" target="_blank">But is he in jail?</A>
+        Young Thug is an iconoclast. <A href="https://www.wired.com/2015/10/young-thug-evolution-of-language/" target="_blank">Linguists study him.</A> <A href="https://isyoungthuginjail.com" target="_blank">Is he in jail?</A>
         </P>
       </Project>
     </Layout>
