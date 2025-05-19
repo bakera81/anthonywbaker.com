@@ -28,7 +28,7 @@ export async function getStaticProps() {
 
 export default function Ideas({ ideasData, ideaCategories}) {
   return (
-    <Layout title="Ideas">
+    <Layout canonicalHref={'https://anthony.computer/ideas'} title="Ideas">
       <PageTitle>Ideas</PageTitle>
       <div className="columns">
         <div className="column is-6 is-offset-6">

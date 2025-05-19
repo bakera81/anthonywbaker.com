@@ -27,9 +27,9 @@ export default function Awb() {
           I'm not on social media, so this is where I stash ideas I'm processing, recipes I'm iterating on, my stories, my dreams, my side hustles.
         </P>
         <P style={{textAlign: `left`}}>
-          I designed this site around on my love of dualities: 
+          I designed this site around my love of dualities: 
           black/white with big bursts of color, digital media alongside Renaissance art, 
-          Microsoft Sans Serif circa Windows 98 juxtaposed with an old newspaper typeface. 
+          Microsoft Sans Serif (circa Windows 98) juxtaposed with an old newspaper typeface. 
           I hope you find it a little silly, a little irreverent, and a bit off-kilter. 
         </P>
       </Project>
