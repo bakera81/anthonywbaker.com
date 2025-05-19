@@ -44,7 +44,7 @@ export async function getStaticProps({ params }) {
 
 export default function IndividualIdea({ ideaData }) {
   return (
-    <Layout title={ideaData.title}>
+    <Layout canonicalHref={`https://anthony.computer/ideas/${ideaData.slug}`} title={ideaData.title}>
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
         <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>

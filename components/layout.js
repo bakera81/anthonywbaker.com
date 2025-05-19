@@ -2,11 +2,11 @@ import Header from './header'
 import Navbar from './navbar'
 import Footer from './footer'
 
-export default function Layout({ children, home, hideFooter, title }) {
+export default function Layout({ children, home, hideFooter, title, canonicalHref }) {
 
   return (
     <>
-    <Header>{title}</Header>
+    <Header canonicalHref={canonicalHref}>{title}</Header>
     {home ? <></> : <Navbar />}
     <section className="section">
       <div className="container">
