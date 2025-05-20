@@ -21,8 +21,16 @@
 
 .mdContainer > blockquote {
     color: #666;
-    margin: 0;
-    padding-left: 3em;
+    margin: 1em 0;
+    border-left: 4px solid #eee;
+    padding: 0.5em 1em;
     font-style: italic;
     /* border-left: 0.5em #eee solid; */
+}
+
+/* Handle lists inside blockquotes */
+.mdContainer > blockquote ul,
+.mdContainer > blockquote ol {
+    margin: 1em 0;
+    padding: 0.5em 1em;
 }

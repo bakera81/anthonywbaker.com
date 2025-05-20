@@ -5,6 +5,7 @@ import H2 from "../../components/h2"
 import List from "../../components/list"
 import TickerTitle from "../../components/tickerTitle"
 import HR from "../../components/hr"
+// import IdeaTitle from "../../components/ideaTitle"
 import MarkdownImage from "../../components/markdownImage"
 
 import ReactMarkdown from "react-markdown"
@@ -51,7 +52,12 @@ export default function IndividualIdea({ ideaData }) {
           <StoryTitle slug={`/ideas/${ideaData.slug}`}>{ideaData.title}</StoryTitle>
           <ReactMarkdown
             components={{
-              // h1: ({node, ...props}) => <IdeaTitle {...props} />,
+              h1: ({node, ...props}) => ( 
+                <h1 className="title is-4" {...props} /> 
+              ),
+              h2: ({node, ...props}) => ( 
+                <h2 className="title is-5" {...props} /> 
+              ),
               p: ({ node, ...props }) => (
                 <P style={{ textAlign: `left` }} {...props} />
               ),
@@ -63,6 +69,9 @@ export default function IndividualIdea({ ideaData }) {
               ),
               img: ({ node, ...props }) => (
                 <MarkdownImage src={props.src} {...props} />
+              ),
+              blockquote: ({node, ...props}) => (
+                <blockquote className={styles.blockquote} {...props} />
               ),
             }}
           >

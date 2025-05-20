@@ -47,11 +47,13 @@ export default function Ideas({ ideasData, ideaCategories}) {
               <StoryTitle slug={`/ideas/${idea.slug}`}>{idea.title}</StoryTitle>
               <ReactMarkdown
                 components={{
-                    // h1: ({node, ...props}) => <IdeaTitle {...props} />,
+                    h1: ({node, ...props}) => ( <h1 className="title is-4" {...props} /> ),
+                    h2: ({node, ...props}) => ( <h2 className="title is-5" {...props} /> ),
                     p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
                     ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
                     ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
                     img: ({node, ...props}) => <MarkdownImage src={props.src} {...props} />,
+                    blockquote: ({node, ...props}) => ( <blockquote className={styles.blockquote} {...props} /> ),
                 }}
               >
                 {idea.markdown.parent}
