@@ -16,7 +16,7 @@ export default function StoryTitle({ children, slug }) {
         //     <h4 className={`title is-4 ${styles.heading}`}>{children}</h4>
         // </Link>
         <Link href={slug} legacyBehavior>
-            <h4 className={`title is-4 ${styles.heading}`}>{children}</h4>
+            <h4 className={`title is-3 ${styles.heading}`}>{children}</h4>
         </Link>
     );
 }
