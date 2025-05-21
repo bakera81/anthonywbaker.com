@@ -14,7 +14,7 @@ import Link from "next/link"
 import { getIdeasFromDatabase, queryIdeasDatabase } from "../../utils/ideas"
 
 // import styles from './ideas.module.css'
-import markdownStyles from '../../components/markdowncontainer.module.css'
+import markdownStyles from '../../components/markdown.module.css'
 
 export async function getStaticPaths() {
   const ideasData = await getIdeasFromDatabase()
