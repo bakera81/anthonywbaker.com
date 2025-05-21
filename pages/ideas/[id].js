@@ -5,15 +5,16 @@ import H2 from "../../components/h2"
 import List from "../../components/list"
 import TickerTitle from "../../components/tickerTitle"
 import HR from "../../components/hr"
-// import IdeaTitle from "../../components/ideaTitle"
 import MarkdownImage from "../../components/markdownImage"
+import Markdown from "../../components/markdown"
 
 import ReactMarkdown from "react-markdown"
 import Link from "next/link"
 
 import { getIdeasFromDatabase, queryIdeasDatabase } from "../../utils/ideas"
 
-import styles from './ideas.module.css'
+// import styles from './ideas.module.css'
+import markdownStyles from '../../components/markdowncontainer.module.css'
 
 export async function getStaticPaths() {
   const ideasData = await getIdeasFromDatabase()
@@ -48,35 +49,9 @@ export default function IndividualIdea({ ideaData }) {
     <Layout canonicalHref={`https://anthony.computer/ideas/${ideaData.slug}`} title={ideaData.title}>
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
-        <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
+        <div className={`column is-two-thirds-desktop ${markdownStyles.mdContainer}`}>
           <StoryTitle slug={`/ideas/${ideaData.slug}`}>{ideaData.title}</StoryTitle>
-          <ReactMarkdown
-            components={{
-              h1: ({node, ...props}) => ( 
-                <h1 className="title is-4" {...props} /> 
-              ),
-              h2: ({node, ...props}) => ( 
-                <h2 className="title is-5" {...props} /> 
-              ),
-              p: ({ node, ...props }) => (
-                <P style={{ textAlign: `left` }} {...props} />
-              ),
-              ul: ({ node, ...props }) => (
-                <List style={{ textAlign: `left` }} {...props} />
-              ),
-              ol: ({ node, ...props }) => (
-                <List ordered style={{ textAlign: `left` }} {...props} />
-              ),
-              img: ({ node, ...props }) => (
-                <MarkdownImage src={props.src} {...props} />
-              ),
-              blockquote: ({node, ...props}) => (
-                <blockquote className={styles.blockquote} {...props} />
-              ),
-            }}
-          >
-            {ideaData.markdown.parent}
-          </ReactMarkdown>
+          <Markdown>{ideaData.markdown.parent}</Markdown>
         </div>
       </div>
       <div className="columns">
