@@ -4,8 +4,8 @@ import P from "../../components/paragraph"
 import List from "../../components/list"
 import HR from "../../components/hr"
 import MarkdownImage from "../../components/markdownImage"
+import Markdown from "../../components/markdown"
 
-import ReactMarkdown from "react-markdown"
 import Link from "next/link"
 
 import {
@@ -13,7 +13,8 @@ import {
   queryStoriesDatabase,
 } from "../../utils/stories"
 
-import styles from "./stories.module.css"
+// import styles from "./stories.module.css"
+import markdownStyles from '../../components/markdown.module.css'
 
 export async function getStaticPaths() {
   const storiesData = await getStoriesFromDatabase()
@@ -50,27 +51,11 @@ export default function IndividualStory({ storyData }) {
     <Layout title={storyData.title}>
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
-        <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
+        <div className={`column is-two-thirds-desktop ${markdownStyles.mdContainer}`}>
           <StoryTitle slug={`/stories/${storyData.slug}`}>{storyData.title}</StoryTitle>
-          <ReactMarkdown
-            components={{
-              // h1: ({node, ...props}) => <IdeaTitle {...props} />,
-              p: ({ node, ...props }) => (
-                <P style={{ textAlign: `left` }} {...props} />
-              ),
-              ul: ({ node, ...props }) => (
-                <List style={{ textAlign: `left` }} {...props} />
-              ),
-              ol: ({ node, ...props }) => (
-                <List ordered style={{ textAlign: `left` }} {...props} />
-              ),
-              img: ({ node, ...props }) => (
-                <MarkdownImage src={props.src} {...props} />
-              ),
-            }}
-          >
+          <Markdown>
             {storyData.markdown.parent}
-          </ReactMarkdown>
+          </Markdown>
         </div>
       </div>
       <div className="columns">

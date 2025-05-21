@@ -5,13 +5,14 @@ import P from '../../components/paragraph'
 import List from '../../components/list'
 import Hr from '../../components/hr'
 import MarkdownImage from '../../components/markdownImage'
+import Markdown from '../../components/markdown'
 
-import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 
 import { getIdeasFromDatabase, downloadAllIdeasImages } from '../../utils/ideas'
 
-import styles from './ideas.module.css'
+// import styles from './ideas.module.css'
+import markdownStyles from '../../components/markdown.module.css'
 
 export async function getStaticProps() {
   const ideasData = await getIdeasFromDatabase();
@@ -41,21 +42,14 @@ export default function Ideas({ ideasData, ideaCategories}) {
       </div>
       <div className="columns">
         <div className="column is-1-desktop is-hidden-touch"></div>
-        <div className={`column is-two-thirds-desktop ${styles.mdContainer}`}>
+        <div className={`column is-two-thirds-desktop ${markdownStyles.mdContainer}`}>
           {ideasData.map((idea) => (
             <>
               <StoryTitle slug={`/ideas/${idea.slug}`}>{idea.title}</StoryTitle>
-              <ReactMarkdown
-                components={{
-                    // h1: ({node, ...props}) => <IdeaTitle {...props} />,
-                    p: ({node, ...props}) => <P style={{textAlign: `left`}} {...props} />,
-                    ul: ({node, ...props}) => <List style={{textAlign: `left`}} {...props} />,
-                    ol: ({node, ...props}) => <List ordered style={{textAlign: `left`}} {...props} />,
-                    img: ({node, ...props}) => <MarkdownImage src={props.src} {...props} />,
-                }}
-              >
+              <Markdown>
                 {idea.markdown.parent}
-              </ReactMarkdown>
+              </Markdown>
+              <Hr style={{marginLeft: 0, marginRight: 'auto'}}/> 
             </>
           ))}
         </div>
