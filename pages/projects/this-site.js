@@ -6,7 +6,7 @@ import projectImage from "../../public/images/projects/awb-2020-2.jpg";
 import previewImage from "../../public/images/projects/awb-2020.jpg";
 
 export const frontmatter = {
-  title: 'Anthony.Computer',
+  title: 'anthony.computer',
   description: 'This website.',
   slug: 'this-site',
   preview: previewImage,

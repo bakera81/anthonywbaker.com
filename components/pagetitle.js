@@ -9,10 +9,10 @@ export default function ({ children }) {
   const randomImg = allImages[Math.floor(Math.random() * allImages.length)]
 
   return (
-    <section className={`section ${styles.section}`}>
+    <div className={`section ${styles.section}`}>
       <div className="container">
-        <div className="level">
-          <div className={`level-right has-text-right is-hidden-mobile ${styles.level}`}>
+        <div className={`level ${styles.level}`}>
+          <div className={`level-right has-text-right is-hidden-mobile ${styles.levelItem}`}>
             <img 
               className={styles.img} 
               src={randomImg.src}
@@ -33,6 +33,6 @@ export default function ({ children }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

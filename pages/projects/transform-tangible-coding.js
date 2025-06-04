@@ -5,7 +5,7 @@ import P from '../../components/paragraph'
 import projectImage from '../../public/images/projects/tangible-programming-3.png'
 
 export const frontmatter = {
-  title: 'Tangible Programming Environment',
+  title: 'Tangible Programming',
   description: 'Tangible programming environment.',
   slug: 'transform-tangible-coding',
   preview: projectImage,
