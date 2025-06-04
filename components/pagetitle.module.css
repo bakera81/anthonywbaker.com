@@ -2,7 +2,9 @@
     padding: 3rem 0 3rem 0;
 }
 
-.level {
+
+
+.levelItem {
     margin-left: auto; 
     margin-right: 15px;
     /* width: 100%; */
@@ -16,6 +18,17 @@
     height: 85px;
     /* object-fit: contain; */
 }
+
+.level {
+    display: flex;
+}
+
+@media screen and (max-width: 1024px) {
+    .level {
+        display: block !important;   
+    }
+}
+
 
 @media screen and (max-width: 600px) {
     .pageTitle {
