@@ -80,7 +80,17 @@ export function getSlugFromDatabasePage(record) {
     }).plain_text
 }
 
+export function getCreatedAtFromDatabasePage(record) {
+    return record.created_time
+}
+
+export function getLastEditedAtFromDatabasePage(record) {
+    // console.log({step: 'getDateFromDatabasePage', record: JSON.stringify(record)})
+    return record.last_edited_time
+}
+
 export function getDateFromDatabasePage(record) {
+    // console.log({step: 'getDateFromDatabasePage', record: JSON.stringify(record)})
     return record.properties.Date.date.start
 }
 

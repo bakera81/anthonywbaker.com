@@ -11,9 +11,12 @@ import { getStoriesFromDatabase } from '../../utils/stories'
 export async function getStaticProps() {
     const storiesDataUnsorted = await getStoriesFromDatabase()
     const storiesData = storiesDataUnsorted.sort(function(a, b) {
-        var textA = a.title.toUpperCase();
-        var textB = b.title.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      const aTime = Date.parse(a.lastEditedAt || a.createdAt || 0) || 0
+      const bTime = Date.parse(b.lastEditedAt || b.createdAt || 0) || 0
+      return bTime - aTime // newest first
+        // var textA = a.title.toUpperCase();
+        // var textB = b.title.toUpperCase();
+        // return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
     return {
         props: {
