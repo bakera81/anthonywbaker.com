@@ -3,6 +3,8 @@ import {
   getPageIdFromDatabasePage,
   getSlugFromDatabasePage,
   getTitleFromDatabasePage,
+  getLastEditedAtFromDatabasePage,
+  getCreatedAtFromDatabasePage,
   getMarkdown,
 } from "./notionHelpers"
 
@@ -23,13 +25,16 @@ export async function getStoriesFromDatabase() {
       //   const category = getCategoryFromDatabasePage(story) // returns an array
       const slug = getSlugFromDatabasePage(story)
       const title = getTitleFromDatabasePage(story)
+      const lastEditedAt = getLastEditedAtFromDatabasePage(story)
+      const createdAt = getCreatedAtFromDatabasePage(story)
       return getMarkdown(pageId).then((md) => {
         return {
           id: pageId,
           //   category: category,
           slug: slug,
           title: title,
-          //   date: date,
+          lastEditedAt: lastEditedAt,
+          createdAt: createdAt,
           markdown: md,
         }
       })
