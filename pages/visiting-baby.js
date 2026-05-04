@@ -20,7 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       visitingBabyData: {
-        title: "Visiting Habibi",
+        title: "Visiting the Baby",
         markdown: markdown,
       },
     },
