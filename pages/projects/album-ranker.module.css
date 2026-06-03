@@ -114,3 +114,15 @@
   gap: 1rem;
   background: rgba(250, 255, 230, 0.9);
 }
+
+.resetLink {
+  color: #3273dc;
+  text-decoration: underline;
+  font-weight: 500;
+  align-self: center;
+}
+
+.resetLink:hover,
+.resetLink:focus {
+  color: #2759a5;
+}

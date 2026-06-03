@@ -56,32 +56,100 @@ function pickRandomInitialPair(unplayed, allAlbums) {
   return null
 }
 
-function buildInitialRanked(albums, scores) {
-  return [...albums].sort((a, b) => {
-    const scoreA = scores[a.id] || 0
-    const scoreB = scores[b.id] || 0
-    if (scoreB !== scoreA) return scoreB - scoreA
-    return a.id.localeCompare(b.id)
-  })
+function buildInitialPairs(albums) {
+  const shuffled = shuffle([...albums])
+  const pairs = []
+  for (let i = 0; i < shuffled.length - 1; i += 2) {
+    pairs.push([shuffled[i], shuffled[i + 1]])
+  }
+
+  if (shuffled.length % 2 === 1 && shuffled.length > 1) {
+    const last = shuffled[shuffled.length - 1]
+    const partner = shuffled[randomInt(0, shuffled.length - 2)]
+    if (partner.id !== last.id) {
+      pairs.push([last, partner])
+    }
+  }
+
+  return pairs
 }
 
-function pickRandomRefineIndex(rankings) {
-  if (rankings.length < 2) return -1
-  return randomInt(0, rankings.length - 2)
+function getBinarySortExpectedComparisons(count) {
+  let total = 0
+  for (let i = 1; i < count; i += 1) {
+    total += Math.floor(Math.log2(i + 1)) + 1
+  }
+  return total
+}
+
+function buildLiveRanked(albums, scores, order, seen) {
+  return [...albums]
+    .filter((album) => seen[album.id])
+    .sort((a, b) => {
+      const scoreA = scores[a.id] || 0
+      const scoreB = scores[b.id] || 0
+      if (scoreB !== scoreA) return scoreB - scoreA
+      return (order[a.id] ?? 0) - (order[b.id] ?? 0)
+    })
+}
+
+function isValidPair(pair) {
+  return Array.isArray(pair)
+    && pair.length === 2
+    && pair[0]
+    && pair[1]
+    && pair[0].id !== pair[1].id
+}
+
+function createBinaryState(initialRanking) {
+  if (initialRanking.length < 2) {
+    return {
+      sorted: initialRanking,
+      candidate: null,
+      target: null,
+      currentIndex: 0,
+    }
+  }
+  const currentIndex = randomInt(0, initialRanking.length - 2)
+  return {
+    sorted: initialRanking,
+    candidate: initialRanking[currentIndex],
+    target: initialRanking[currentIndex + 1],
+    currentIndex,
+  }
+}
+
+function advanceBinaryState(binary) {
+  if (binary.sorted.length < 2) {
+    return {
+      ...binary,
+      candidate: null,
+      target: null,
+    }
+  }
+  const currentIndex = randomInt(0, binary.sorted.length - 2)
+  return {
+    sorted: binary.sorted,
+    candidate: binary.sorted[currentIndex],
+    target: binary.sorted[currentIndex + 1],
+    currentIndex,
+  }
 }
 
 function buildInitialState(albums) {
-  const unplayed = shuffle([...albums])
-  const currentPair = pickRandomInitialPair(unplayed, albums)
+  const initialPairs = buildInitialPairs(albums)
+  const currentPair = initialPairs.length > 0 ? initialPairs[0] : null
+  const expectedBinaryComparisons = getBinarySortExpectedComparisons(albums.length)
   return {
     phase: 'initial',
-    unplayed,
+    initialPairs,
+    initialPairIndex: 0,
     scores: {},
-    currentPair,
-    currentPairIndex: -1,
+    seen: {},
+    binary: null,
     ranked: [],
-    checkedPairs: [],
     comparisons: 0,
+    totalExpectedComparisons: initialPairs.length + expectedBinaryComparisons,
     completed: currentPair === null,
     swapSides: Math.random() < 0.5,
   }
@@ -111,19 +179,29 @@ export async function getStaticProps() {
 
 export default function AlbumRanker({ albums }) {
   const [state, setState] = useState(() => buildInitialState(albums))
+  const originalOrder = Object.fromEntries(albums.map((album, index) => [album.id, index]))
+  const liveRanking = buildLiveRanked(albums, state.scores, originalOrder, state.seen)
 
+  const initialPair = state.initialPairs[state.initialPairIndex] ?? null
   const currentPair = state.phase === 'initial'
-    ? state.currentPair
-    : state.currentPairIndex >= 0 && state.ranked.length > 1
-      ? [state.ranked[state.currentPairIndex], state.ranked[state.currentPairIndex + 1]]
+    ? isValidPair(initialPair) ? initialPair : null
+    : state.phase === 'binary' && state.binary && state.binary.candidate
+      ? isValidPair([state.binary.candidate, state.binary.target])
+        ? [state.binary.candidate, state.binary.target]
+        : null
       : null
+
+  const percentComplete = Math.min(
+    100,
+    Math.round((state.comparisons / state.totalExpectedComparisons) * 100),
+  )
 
   const leftItem = currentPair ? (state.swapSides ? currentPair[1] : currentPair[0]) : null
   const rightItem = currentPair ? (state.swapSides ? currentPair[0] : currentPair[1]) : null
   const hasPair = !!currentPair && !state.completed
 
   function chooseWinner(leftWins) {
-    if (!hasPair || !leftItem || !rightItem) return
+    if (!hasPair || !leftItem || !rightItem || leftItem.id === rightItem.id) return
 
     const winner = leftWins ? leftItem : rightItem
     const loser = leftWins ? rightItem : leftItem
@@ -137,24 +215,28 @@ export default function AlbumRanker({ albums }) {
         nextScores[winner.id] = (nextScores[winner.id] || 0) + 1
         if (!(loser.id in nextScores)) nextScores[loser.id] = 0
 
-        const nextUnplayed = prev.unplayed.filter((item) => item.id !== winner.id && item.id !== loser.id)
-        const nextPair = pickRandomInitialPair(nextUnplayed, albums)
+        const nextSeen = {
+          ...prev.seen,
+          [winner.id]: true,
+          [loser.id]: true,
+        }
 
-        if (nextUnplayed.length === 0) {
-          const nextRanked = buildInitialRanked(albums, nextScores)
-          const nextCheckedPairs = nextRanked.length > 1 ? Array(nextRanked.length - 1).fill(false) : []
-          const nextIndex = pickRandomRefineIndex(nextRanked)
-          const completed = nextRanked.length < 2
+        const nextPairIndex = prev.initialPairIndex + 1
+        if (nextPairIndex >= prev.initialPairs.length) {
+          const initialRanking = buildLiveRanked(albums, nextScores, originalOrder, nextSeen)
+          const binary = createBinaryState(initialRanking)
+          const completed = !binary.candidate
 
           return {
-            phase: 'refine',
-            unplayed: nextUnplayed,
+            phase: 'binary',
+            initialPairs: prev.initialPairs,
+            initialPairIndex: nextPairIndex,
             scores: nextScores,
-            currentPair: null,
-            currentPairIndex: nextIndex,
-            ranked: nextRanked,
-            checkedPairs: nextCheckedPairs,
+            seen: nextSeen,
+            binary,
+            ranked: [],
             comparisons: nextComparisons,
+            totalExpectedComparisons: prev.totalExpectedComparisons,
             completed,
             swapSides: nextSwapSides,
           }
@@ -162,37 +244,27 @@ export default function AlbumRanker({ albums }) {
 
         return {
           ...prev,
-          unplayed: nextUnplayed,
+          initialPairs: prev.initialPairs,
+          initialPairIndex: nextPairIndex,
           scores: nextScores,
-          currentPair: nextPair,
+          seen: nextSeen,
           comparisons: nextComparisons,
-          completed: nextPair === null,
+          completed: false,
           swapSides: nextSwapSides,
         }
       }
 
-      const nextRanked = [...prev.ranked]
-      const currentIndex = prev.currentPairIndex
-      const higher = nextRanked[currentIndex]
-      const lower = nextRanked[currentIndex + 1]
-      const nextCheckedPairs = [...prev.checkedPairs]
-      let completed = false
+      const nextScores = { ...prev.scores }
+      nextScores[winner.id] = (nextScores[winner.id] || 0) + 1
+      if (!(loser.id in nextScores)) nextScores[loser.id] = 0
 
-      if (winner.id === higher.id) {
-        nextCheckedPairs[currentIndex] = true
-        completed = nextCheckedPairs.every(Boolean)
-      } else {
-        nextRanked[currentIndex] = lower
-        nextRanked[currentIndex + 1] = higher
-        for (let i = 0; i < nextCheckedPairs.length; i += 1) nextCheckedPairs[i] = false
-      }
+      const nextBinary = advanceBinaryState(prev.binary)
+      const completed = !nextBinary.candidate
 
-      const nextIndex = completed ? -1 : pickRandomRefineIndex(nextRanked)
       return {
         ...prev,
-        ranked: nextRanked,
-        checkedPairs: nextCheckedPairs,
-        currentPairIndex: nextIndex,
+        scores: nextScores,
+        binary: nextBinary,
         comparisons: nextComparisons,
         completed,
         swapSides: nextSwapSides,
@@ -204,7 +276,11 @@ export default function AlbumRanker({ albums }) {
     setState(buildInitialState(albums))
   }
 
-  const remainingCount = state.phase === 'initial' ? state.unplayed.length : state.checkedPairs.filter(Boolean).length
+  const remainingCount = state.phase === 'initial'
+    ? Math.max(0, state.initialPairs.length - state.initialPairIndex)
+    : state.binary && state.binary.candidate
+      ? Math.floor(state.binary.sorted.length / 2)
+      : 0
 
   return (
     <Layout title="Album Ranker">
@@ -219,11 +295,19 @@ export default function AlbumRanker({ albums }) {
                   <strong>Comparisons:</strong> {state.comparisons}
                 </div>
                 <div>
-                  <strong>Ranked:</strong> {state.phase === 'refine' ? state.ranked.length : 0}
+                  <strong>Ranked:</strong> {liveRanking.length}
                 </div>
                 <div>
                   <strong>Remaining:</strong> {remainingCount}
                 </div>
+                <div>
+                  <strong>Complete:</strong> {percentComplete}%
+                </div>
+                {state.comparisons > 0 && (
+                  <a href="#" className={styles.resetLink} onClick={(event) => { event.preventDefault(); restart() }}>
+                    Reset
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -289,7 +373,7 @@ export default function AlbumRanker({ albums }) {
               <div className={styles.rankingPanel}>
                 <h2 className="title is-4">Current ranking</h2>
                 <ol className={styles.rankingList}>
-                  {state.ranked.map((item, index) => (
+                  {liveRanking.map((item, index) => (
                     <li key={item.id} className={styles.rankingItem}>
                       <span className={styles.rankNumber}>{index + 1}</span>
                       <img className={styles.thumb} src={item.cover} alt={item.album} />
