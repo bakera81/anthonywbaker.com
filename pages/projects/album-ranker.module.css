@@ -99,6 +99,14 @@
   color: #888;
 }
 
+.eloScore {
+  font-variant-numeric: tabular-nums;
+  width: 4rem;
+  text-align: left;
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
 .thumb {
   width: 48px;
   height: 48px;
