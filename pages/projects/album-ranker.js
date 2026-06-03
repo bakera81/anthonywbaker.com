@@ -33,19 +33,57 @@ function parseAlbumFile(name) {
   return { artist, album, file: name }
 }
 
+function pickTwoRandom(items) {
+  const firstIndex = randomInt(0, items.length - 1)
+  let secondIndex = randomInt(0, items.length - 2)
+  if (secondIndex >= firstIndex) secondIndex += 1
+  return [items[firstIndex], items[secondIndex]]
+}
+
+function pickRandomInitialPair(unplayed, allAlbums) {
+  if (unplayed.length >= 2) {
+    return pickTwoRandom(unplayed)
+  }
+  if (unplayed.length === 1) {
+    const first = unplayed[0]
+    const otherOptions = allAlbums.filter((album) => album.id !== first.id)
+    if (otherOptions.length === 0) {
+      return [first, null]
+    }
+    const other = otherOptions[randomInt(0, otherOptions.length - 1)]
+    return [first, other]
+  }
+  return null
+}
+
+function buildInitialRanked(albums, scores) {
+  return [...albums].sort((a, b) => {
+    const scoreA = scores[a.id] || 0
+    const scoreB = scores[b.id] || 0
+    if (scoreB !== scoreA) return scoreB - scoreA
+    return a.id.localeCompare(b.id)
+  })
+}
+
+function pickRandomRefineIndex(rankings) {
+  if (rankings.length < 2) return -1
+  return randomInt(0, rankings.length - 2)
+}
+
 function buildInitialState(albums) {
-  const deck = shuffle([...albums])
-  const first = deck.shift()
-  const candidate = deck.shift() ?? null
+  const unplayed = shuffle([...albums])
+  const currentPair = pickRandomInitialPair(unplayed, albums)
   return {
-    ranked: first ? [first] : [],
-    remaining: deck,
-    candidate,
-    low: 0,
-    high: first ? 0 : -1,
-    target: first ? 0 : -1,
+    phase: 'initial',
+    unplayed,
+    scores: {},
+    currentPair,
+    currentPairIndex: -1,
+    ranked: [],
+    checkedPairs: [],
     comparisons: 0,
-    completed: candidate === null,
+    completed: currentPair === null,
+    swapSides: Math.random() < 0.5,
   }
 }
 
@@ -74,62 +112,90 @@ export async function getStaticProps() {
 export default function AlbumRanker({ albums }) {
   const [state, setState] = useState(() => buildInitialState(albums))
 
-  const currentOpponent = state.ranked[state.target]
-  const currentCandidate = state.candidate
+  const currentPair = state.phase === 'initial'
+    ? state.currentPair
+    : state.currentPairIndex >= 0 && state.ranked.length > 1
+      ? [state.ranked[state.currentPairIndex], state.ranked[state.currentPairIndex + 1]]
+      : null
 
-  const hasPair = currentOpponent && currentCandidate && !state.completed
+  const leftItem = currentPair ? (state.swapSides ? currentPair[1] : currentPair[0]) : null
+  const rightItem = currentPair ? (state.swapSides ? currentPair[0] : currentPair[1]) : null
+  const hasPair = !!currentPair && !state.completed
 
-  function chooseWinner(winnerIsCandidate) {
-    if (!currentOpponent || !currentCandidate) return
+  function chooseWinner(leftWins) {
+    if (!hasPair || !leftItem || !rightItem) return
+
+    const winner = leftWins ? leftItem : rightItem
+    const loser = leftWins ? rightItem : leftItem
 
     setState((prev) => {
       const nextComparisons = prev.comparisons + 1
-      const nextLow = winnerIsCandidate ? prev.target + 1 : prev.low
-      const nextHigh = winnerIsCandidate ? prev.high : prev.target - 1
+      const nextSwapSides = Math.random() < 0.5
 
-      if (nextLow > nextHigh) {
-        const insertionIndex = nextLow
-        const nextRanked = [
-          ...prev.ranked.slice(0, insertionIndex),
-          prev.candidate,
-          ...prev.ranked.slice(insertionIndex),
-        ]
+      if (prev.phase === 'initial') {
+        const nextScores = { ...prev.scores }
+        nextScores[winner.id] = (nextScores[winner.id] || 0) + 1
+        if (!(loser.id in nextScores)) nextScores[loser.id] = 0
 
-        if (prev.remaining.length === 0) {
+        const nextUnplayed = prev.unplayed.filter((item) => item.id !== winner.id && item.id !== loser.id)
+        const nextPair = pickRandomInitialPair(nextUnplayed, albums)
+
+        if (nextUnplayed.length === 0) {
+          const nextRanked = buildInitialRanked(albums, nextScores)
+          const nextCheckedPairs = nextRanked.length > 1 ? Array(nextRanked.length - 1).fill(false) : []
+          const nextIndex = pickRandomRefineIndex(nextRanked)
+          const completed = nextRanked.length < 2
+
           return {
+            phase: 'refine',
+            unplayed: nextUnplayed,
+            scores: nextScores,
+            currentPair: null,
+            currentPairIndex: nextIndex,
             ranked: nextRanked,
-            remaining: [],
-            candidate: null,
-            low: 0,
-            high: nextRanked.length - 1,
-            target: -1,
+            checkedPairs: nextCheckedPairs,
             comparisons: nextComparisons,
-            completed: true,
+            completed,
+            swapSides: nextSwapSides,
           }
         }
 
-        const nextCandidate = prev.remaining[0]
-        const nextRemaining = prev.remaining.slice(1)
-        const nextLow2 = 0
-        const nextHigh2 = nextRanked.length - 1
         return {
-          ranked: nextRanked,
-          remaining: nextRemaining,
-          candidate: nextCandidate,
-          low: nextLow2,
-          high: nextHigh2,
-          target: randomInt(nextLow2, nextHigh2),
+          ...prev,
+          unplayed: nextUnplayed,
+          scores: nextScores,
+          currentPair: nextPair,
           comparisons: nextComparisons,
-          completed: false,
+          completed: nextPair === null,
+          swapSides: nextSwapSides,
         }
       }
 
+      const nextRanked = [...prev.ranked]
+      const currentIndex = prev.currentPairIndex
+      const higher = nextRanked[currentIndex]
+      const lower = nextRanked[currentIndex + 1]
+      const nextCheckedPairs = [...prev.checkedPairs]
+      let completed = false
+
+      if (winner.id === higher.id) {
+        nextCheckedPairs[currentIndex] = true
+        completed = nextCheckedPairs.every(Boolean)
+      } else {
+        nextRanked[currentIndex] = lower
+        nextRanked[currentIndex + 1] = higher
+        for (let i = 0; i < nextCheckedPairs.length; i += 1) nextCheckedPairs[i] = false
+      }
+
+      const nextIndex = completed ? -1 : pickRandomRefineIndex(nextRanked)
       return {
         ...prev,
-        low: nextLow,
-        high: nextHigh,
-        target: randomInt(nextLow, nextHigh),
+        ranked: nextRanked,
+        checkedPairs: nextCheckedPairs,
+        currentPairIndex: nextIndex,
         comparisons: nextComparisons,
+        completed,
+        swapSides: nextSwapSides,
       }
     })
   }
@@ -138,26 +204,32 @@ export default function AlbumRanker({ albums }) {
     setState(buildInitialState(albums))
   }
 
+  const remainingCount = state.phase === 'initial' ? state.unplayed.length : state.checkedPairs.filter(Boolean).length
+
   return (
     <Layout title="Album Ranker">
       <PageTitle>Album Ranker</PageTitle>
 
       <section className="section">
         <div className="container">
-          <div className="columns is-variable is-8">
-            <div className="column is-two-thirds">
+          <div className="columns is-vcentered">
+            <div className="column">
               <div className={styles.statusBar}>
                 <div>
                   <strong>Comparisons:</strong> {state.comparisons}
                 </div>
                 <div>
-                  <strong>Ranked:</strong> {state.ranked.length}
+                  <strong>Ranked:</strong> {state.phase === 'refine' ? state.ranked.length : 0}
                 </div>
                 <div>
-                  <strong>Remaining:</strong> {state.remaining.length + (state.candidate ? 1 : 0)}
+                  <strong>Remaining:</strong> {remainingCount}
                 </div>
               </div>
+            </div>
+          </div>
 
+          <div className="columns">
+            <div className="column">
               {state.completed ? (
                 <div className={styles.finalizedBanner}>
                   <p>Ranking finalized.</p>
@@ -166,43 +238,51 @@ export default function AlbumRanker({ albums }) {
                   </button>
                 </div>
               ) : (
-                <>
+                <div className={styles.instructionsBox}>
                   <p className={styles.instructions}>
                     Compare these two albums and choose the better cover art. The ranking will update as you work.
                   </p>
-
-                  <div className="columns is-variable is-6">
-                    <div className="column">
-                      <button
-                        className={`button is-fullwidth ${styles.choiceButton}`}
-                        onClick={() => chooseWinner(false)}
-                      >
-                        <div className={styles.coverCard}>
-                          <img className={styles.coverImage} src={currentOpponent?.cover} alt={currentOpponent?.album} />
-                          <div className={styles.albumInfo}>
-                            <strong>{currentOpponent?.artist}</strong>
-                            <span>{currentOpponent?.album}</span>
-                          </div>
-                        </div>
-                      </button>
-                    </div>
-                    <div className="column">
-                      <button
-                        className={`button is-fullwidth ${styles.choiceButton}`}
-                        onClick={() => chooseWinner(true)}
-                      >
-                        <div className={styles.coverCard}>
-                          <img className={styles.coverImage} src={currentCandidate?.cover} alt={currentCandidate?.album} />
-                          <div className={styles.albumInfo}>
-                            <strong>{currentCandidate?.artist}</strong>
-                            <span>{currentCandidate?.album}</span>
-                          </div>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </>
+                </div>
               )}
+            </div>
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="columns is-variable is-8">
+            <div className="column is-two-thirds">
+              <div className="columns is-variable is-6 is-multiline">
+                <div className="column">
+                  <button
+                    className={styles.choiceButton}
+                    onClick={() => chooseWinner(true)}
+                    aria-label={`Choose ${leftItem?.artist} - ${leftItem?.album}`}
+                  >
+                    <div className={styles.coverCard}>
+                      <img className={styles.coverImage} src={leftItem?.cover} alt={leftItem?.album} />
+                      <div className={styles.albumInfo}>
+                        <strong>{leftItem?.artist}</strong>
+                        <span>{leftItem?.album}</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div className="column">
+                  <button
+                    className={styles.choiceButton}
+                    onClick={() => chooseWinner(false)}
+                    aria-label={`Choose ${rightItem?.artist} - ${rightItem?.album}`}
+                  >
+                    <div className={styles.coverCard}>
+                      <img className={styles.coverImage} src={rightItem?.cover} alt={rightItem?.album} />
+                      <div className={styles.albumInfo}>
+                        <strong>{rightItem?.artist}</strong>
+                        <span>{rightItem?.album}</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="column">
