@@ -79,27 +79,139 @@ function getBinarySortExpectedComparisons(count) {
 }
 
 function initializeELO(albums) {
-  const elo = {}
+  const trueskill = {}
   for (const album of albums) {
-    elo[album.id] = 1000
+    trueskill[album.id] = {
+      mu: 1000,
+      sigma: 333.33,
+    }
   }
-  return elo
+  return trueskill
 }
 
-function calculateNewELO(ratingA, ratingB, aWon) {
-  const K = 32
-  const expectedA = 1 / (1 + Math.pow(10, (ratingB - ratingA) / 400))
-  const expectedB = 1 / (1 + Math.pow(10, (ratingA - ratingB) / 400))
-  const resultA = aWon ? 1 : 0
-  const resultB = aWon ? 0 : 1
+function calculateWinProbability(muA, sigmaA, muB, sigmaB) {
+  const c = Math.sqrt(sigmaA * sigmaA + sigmaB * sigmaB)
+  const d = (muA - muB) / c
+  return 0.5 + 0.5 * erf(d / Math.sqrt(2))
+}
+
+function erf(x) {
+  const a1 = 0.254829592
+  const a2 = -0.284496736
+  const a3 = 1.421413741
+  const a4 = -1.453152027
+  const a5 = 1.061405429
+  const p = 0.3275911
+  const sign = x < 0 ? -1 : 1
+  x = Math.abs(x)
+  const t = 1 / (1 + p * x)
+  const y = 1 - ((((a5 * t + a4) * t + a3) * t + a2) * t + a1) * t * Math.exp(-x * x)
+  return sign * y
+}
+
+function updateTrueSkill(ratingA, ratingB, aWon) {
+  const beta = 200
+  const tau = 0
+  const drawMargin = 0
+
+  const c = Math.sqrt(
+    ratingA.sigma * ratingA.sigma +
+      ratingB.sigma * ratingB.sigma +
+      2 * beta * beta,
+  )
+  const t = (ratingA.mu - ratingB.mu) / c
+  const sqrt2 = Math.sqrt(2)
+  const sqrt2pi = Math.sqrt(2 * Math.PI)
+  const expNegT2Half = Math.exp(-(t * t) / 2)
+  const v =
+    ((t > 0 ? 1 : -1) * expNegT2Half) /
+    (sqrt2 * (0.5 + 0.5 * erf(t / sqrt2)))
+  const w =
+    1 /
+    (c * c) *
+    (expNegT2Half / (sqrt2pi * (0.5 + 0.5 * erf(t / sqrt2))) -
+      t / (c * c))
+
+  const newMuA = aWon
+    ? ratingA.mu + (ratingA.sigma * ratingA.sigma) / c * v
+    : ratingA.mu - (ratingA.sigma * ratingA.sigma) / c * v
+
+  const newMuB = aWon
+    ? ratingB.mu - (ratingB.sigma * ratingB.sigma) / c * v
+    : ratingB.mu + (ratingB.sigma * ratingB.sigma) / c * v
+
+  const newSigmaA = Math.sqrt(
+    Math.max(
+      0.0001,
+      ratingA.sigma * ratingA.sigma - (ratingA.sigma * ratingA.sigma) ** 2 / (c * c) * w,
+    ),
+  )
+  const newSigmaB = Math.sqrt(
+    Math.max(
+      0.0001,
+      ratingB.sigma * ratingB.sigma - (ratingB.sigma * ratingB.sigma) ** 2 / (c * c) * w,
+    ),
+  )
+
   return {
-    newRatingA: ratingA + K * (resultA - expectedA),
-    newRatingB: ratingB + K * (resultB - expectedB),
+    newRatingA: { mu: newMuA, sigma: newSigmaA },
+    newRatingB: { mu: newMuB, sigma: newSigmaB },
   }
 }
 
-function buildLiveRanked(albums, elo) {
-  return [...albums].sort((a, b) => (elo[b.id] || 1000) - (elo[a.id] || 1000))
+function getConfidenceInterval(rating, z = 1.96) {
+  return {
+    lower: rating.mu - z * rating.sigma,
+    upper: rating.mu + z * rating.sigma,
+  }
+}
+
+function calculateCompleteness(ratings) {
+  const sorted = Object.values(ratings).sort((a, b) => b.mu - a.mu)
+  if (sorted.length < 2) return 100
+  const intervals = sorted.map((r) => getConfidenceInterval(r, 1.96))
+  let totalOverlap = 0
+  for (let i = 0; i < intervals.length - 1; i += 1) {
+    const curr = intervals[i]
+    const next = intervals[i + 1]
+    const overlapStart = Math.max(curr.lower, next.lower)
+    const overlapEnd = Math.min(curr.upper, next.upper)
+    const overlap = Math.max(0, overlapEnd - overlapStart)
+    totalOverlap += overlap
+  }
+  const maxPossibleOverlap = intervals[0].upper - intervals[intervals.length - 1].lower
+  return maxPossibleOverlap > 0 ? Math.min(100, (totalOverlap / maxPossibleOverlap) * 100) : 100
+}
+
+function getBestOverlapPair(sortedAlbums, ratings) {
+  let bestI = 0
+  let bestJ = 1
+  let bestOverlap = -1
+
+  for (let i = 0; i < sortedAlbums.length; i += 1) {
+    for (let j = i + 1; j < sortedAlbums.length; j += 1) {
+      const ratingA = ratings[sortedAlbums[i].id]
+      const ratingB = ratings[sortedAlbums[j].id]
+      const intervalA = getConfidenceInterval(ratingA, 1.96)
+      const intervalB = getConfidenceInterval(ratingB, 1.96)
+      const overlap = Math.max(
+        0,
+        Math.min(intervalA.upper, intervalB.upper) - Math.max(intervalA.lower, intervalB.lower),
+      )
+
+      if (overlap > bestOverlap) {
+        bestOverlap = overlap
+        bestI = i
+        bestJ = j
+      }
+    }
+  }
+
+  return { i: bestI, j: bestJ, overlap: bestOverlap }
+}
+
+function buildLiveRanked(albums, trueskill) {
+  return [...albums].sort((a, b) => (trueskill[a.id].mu || 1000) - (trueskill[b.id].mu || 1000))
 }
 
 function buildInitialState(albums) {
@@ -149,14 +261,34 @@ export default function AlbumRanker({ albums }) {
   const initialPair = state.initialPairs[state.initialPairIndex] ?? null
   const currentPair = state.phase === 'initial'
     ? initialPair
-    : state.phase === 'binary' && liveRanking.length >= 2
-      ? [liveRanking[state.binary.currentIndex], liveRanking[state.binary.currentIndex + 1]]
+    : state.phase === 'binary' && liveRanking.length >= 2 && state.binary.i !== undefined && state.binary.j !== undefined
+      ? [liveRanking[state.binary.i], liveRanking[state.binary.j]]
       : null
 
   const percentComplete = Math.min(
     100,
     Math.round((state.comparisons / state.totalExpectedComparisons) * 100),
   )
+
+  const seenRatings = {}
+  for (const [id, rating] of Object.entries(state.elo)) {
+    if (state.seen[id]) seenRatings[id] = rating
+  }
+  const completenessPercent = Math.round(calculateCompleteness(seenRatings))
+
+  const rankedItems = []
+  let lastScore = null
+  let lastRank = 0
+  liveRanking.forEach((item, index) => {
+    const rating = state.elo[item.id]
+    const score = Math.round(rating.mu)
+    const rank = score === lastScore ? lastRank : index + 1
+    rankedItems.push({ item, rating, rank })
+    if (rank !== lastRank) {
+      lastRank = rank
+      lastScore = score
+    }
+  })
 
   const leftItem = currentPair ? (state.swapSides ? currentPair[1] : currentPair[0]) : null
   const rightItem = currentPair ? (state.swapSides ? currentPair[0] : currentPair[1]) : null
@@ -177,7 +309,7 @@ export default function AlbumRanker({ albums }) {
         [winner.id]: true,
         [loser.id]: true,
       }
-      const { newRatingA, newRatingB } = calculateNewELO(
+      const { newRatingA, newRatingB } = updateTrueSkill(
         nextElo[winner.id],
         nextElo[loser.id],
         true,
@@ -188,9 +320,10 @@ export default function AlbumRanker({ albums }) {
       if (prev.phase === 'initial') {
         const nextPairIndex = prev.initialPairIndex + 1
         if (nextPairIndex >= prev.initialPairs.length) {
-          const binary = {
-            currentIndex: 0,
-          }
+          const currentRanking = buildLiveRanked(albums, nextElo).filter((a) => nextSeen[a.id])
+          const binary = currentRanking.length >= 2
+            ? getBestOverlapPair(currentRanking, nextElo)
+            : { i: 0, j: 1, overlap: 0 }
           const completed = false
 
           return {
@@ -221,12 +354,8 @@ export default function AlbumRanker({ albums }) {
       if (prev.phase === 'binary') {
         const currentRanking = buildLiveRanked(albums, nextElo).filter((a) => nextSeen[a.id])
         const nextBinary = currentRanking.length >= 2
-          ? {
-              currentIndex: randomInt(0, currentRanking.length - 2),
-            }
-          : {
-              currentIndex: 0,
-            }
+          ? getBestOverlapPair(currentRanking, nextElo)
+          : { i: 0, j: 1, overlap: 0 }
 
         return {
           ...prev,
@@ -272,7 +401,10 @@ export default function AlbumRanker({ albums }) {
                   <strong>Remaining:</strong> {remainingCount}
                 </div>
                 <div>
-                  <strong>Complete:</strong> {percentComplete}%
+                  <strong>Progress:</strong> {percentComplete}%
+                </div>
+                <div>
+                  <strong>Convergence:</strong> {completenessPercent}%
                 </div>
                 {state.comparisons > 0 && (
                   <a href="#" className={styles.resetLink} onClick={(event) => { event.preventDefault(); restart() }}>
@@ -344,17 +476,23 @@ export default function AlbumRanker({ albums }) {
               <div className={styles.rankingPanel}>
                 <h2 className="title is-4">Current ranking</h2>
                 <ol className={styles.rankingList}>
-                  {liveRanking.map((item, index) => (
-                    <li key={item.id} className={styles.rankingItem}>
-                      <span className={styles.rankNumber}>{index + 1}</span>
-                      <span className={styles.eloScore}>({Math.round(state.elo[item.id])})</span>
-                      <img className={styles.thumb} src={item.cover} alt={item.album} />
-                      <div>
-                        <strong>{item.artist}</strong>
-                        <div>{item.album}</div>
-                      </div>
-                    </li>
-                  ))}
+                  {rankedItems.map(({ item, rating, rank }) => {
+                    const ci = getConfidenceInterval(rating, 1.96)
+                    const ciRange = Math.round(ci.upper - rating.mu)
+                    return (
+                      <li key={item.id} className={styles.rankingItem}>
+                        <span className={styles.rankNumber}>#{rank}</span>
+                        <span className={styles.eloScore}>
+                          {Math.round(rating.mu)} <span className={styles.ciRange}>±{ciRange}</span>
+                        </span>
+                        <img className={styles.thumb} src={item.cover} alt={item.album} />
+                        <div>
+                          <strong>{item.artist}</strong>
+                          <div>{item.album}</div>
+                        </div>
+                      </li>
+                    )
+                  })}
                 </ol>
               </div>
             </div>

@@ -107,6 +107,12 @@
   font-size: 0.9rem;
 }
 
+.ciRange {
+  font-size: 0.75rem;
+  color: #c0c0c0;
+  margin-left: 0.25rem;
+}
+
 .thumb {
   width: 48px;
   height: 48px;
